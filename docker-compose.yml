@@ -1,9 +1,25 @@
-version: '3'
+version: '3.8'
+
 services:
   fika-bot:
     build: .
     environment:
       - SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
+      - SLACK_APP_TOKEN=${SLACK_APP_TOKEN}
       - SLACK_SIGNING_SECRET=${SLACK_SIGNING_SECRET}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+    volumes:
+      - ./data:/app/data
+      - ./fika.db:/app/fika.db
+    restart: unless-stopped
+    
+  # Optional: Add a simple web dashboard
+  dashboard:
+    build: .
+    command: python -m http.server 8080
     ports:
-      - "3000:3000"
+      - "8080:8080"
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONPATH=/app
