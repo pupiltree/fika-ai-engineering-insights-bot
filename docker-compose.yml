@@ -1,0 +1,9 @@
+version: '3'
+services:
+  fika-bot:
+    build: .
+    environment:
+      - SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
+      - SLACK_SIGNING_SECRET=${SLACK_SIGNING_SECRET}
+    ports:
+      - "3000:3000"
