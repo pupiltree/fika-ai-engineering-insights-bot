@@ -1,99 +1,246 @@
-## FIKA AI Research — Engineering-Productivity Intelligence **MVP** Challenge
+# FIKA AI Engineering Productivity Intelligence Bot
 
-*[Learn more at **powersmy.biz**](https://powersmy.biz/)*
+A chat-first, AI-powered engineering productivity insights bot built with **LangChain + LangGraph** agents. Delivers DORA metrics and code churn analysis directly in Slack.
 
-### 🚀 Hiring Opportunity
+## Quick Start
 
-**We're hiring!** This challenge is part of our recruitment process for engineering positions. We offer both **remote** and **on-site** work options to accommodate your preferences and lifestyle.
+### One-Command Bootstrap
 
-### 1 ✦ Context
+**Option 1: Docker Compose (Recommended)**
+```bash
+docker-compose up --build
+```
 
-We need a chat-first, AI-powered view of how every engineer and squad are performing—both technically and in terms of business value shipped. Build a **minimum-viable product (MVP)** in fewer than seven days that delivers these insights inside Slack **or** Discord.
+**Option 2: Make**
+```bash
+make run
+```
 
-### 2 ✦ Core MVP Requirements (non-negotiables)
+**Option 3: Manual Setup**
+```bash
+pip install -r requirements.txt
+python data/seed_github_events.py
+python bot/slack_bot.py
+```
 
-| Area                     | Requirement                                                                                                                                                                                                                                                   |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Agent-centric design** | Use **LangChain + LangGraph** agents written in **Python 3.10+**. Provide at least two clear roles—*Data Harvester* and *Diff Analyst*—handing off to an *Insight Narrator* agent via LangGraph edges.                                                        |
-| **Data ingestion**       | Pull GitHub events via REST or webhooks. The commits API exposes `additions`, `deletions`, `changed_files` per commit ([docs.github.com][3]); the *List PR files* endpoint gives the same per-file counts ([docs.github.com][4]).                             |
-| **Metrics**              | Track commits, PR throughput, review latency, cycle time, CI failures **plus per-author diff stats** (lines ±, files touched). Optionally fall back to `git log --numstat` for local analysis ([stackoverflow.com][5]).                                       |
-| **Diff analytics layer** | Your *Diff Analyst* agent aggregates churn, flags spikes, and links code-churn outliers to defect risk (research shows churn correlates with bugs) ([stackoverflow.com][6]).                                                                                  |
-| **AI insight layer**     | Agents transform data into daily, weekly, monthly narratives that map to DORA’s four keys (lead-time, deploy frequency, change-failure, MTTR) ([dora.dev][7]). Log every prompt/response for auditability.                                                    |
-| **Chat-first output**    | A **Slack bot** (Bolt Python SDK) ([api.slack.com][8]) or **Discord bot** (discord.js slash-command with embeds) ([discordjs.guide][9]) must, on `/dev-report weekly`, post a chart/table + the agent summary. JSON API is optional but the bot is mandatory. |
-| **MVP polish**           | One-command bootstrap (`docker compose up` or `make run`). Include a seed script with fake GitHub events so reviewers see data instantly.                                                                                                                     |
-| **Docs**                 | `README.md` with bot install guide and an architecture diagram showing LangGraph nodes/edges, storage and chat layer.                                                                                                                                         |
+## Prerequisites
 
-### 3 ✦ Tech Stack (required)
+- Python 3.10+
+- Slack workspace and app (see Bot Installation Guide below)
+- Docker (optional, for containerized deployment)
 
-* **Language:** Python 3.10+
-* **Agent Frameworks:** LangChain ≥ 0.1.0 ([python.langchain.com][1]) and LangGraph service or OSS package ([langchain.com][2])
-* **Chat SDK:** Slack Bolt-Python **or** discord.js (node sidecar acceptable) ([api.slack.com][8], [discordjs.guide][9])
-* **Storage:** any Python-friendly store (Postgres, SQLite, DuckDB, TinyDB).
-* **Viz:** matplotlib, Plotly, or quick-chart PNGs.
+## Architecture
 
-### 4 ✦ Stretch Goals (optional)
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│  DataHarvester  │───▶│  DiffAnalyst    │───▶│ InsightNarrator │
+│  (LangChain)    │    │  (LangChain)    │    │  (LangChain)    │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+         │                       │                       │
+         ▼                       ▼                       ▼
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│ GitHub Data     │    │ Churn Analysis  │    │ DORA Narratives │
+│ (Commits, PRs)  │    │ Risk Detection  │    │ Slack Messages  │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+                                 │
+                                 ▼
+                    ┌─────────────────────────┐
+                    │     LangGraph           │
+                    │   State Management      │
+                    │   Agent Orchestration   │
+                    └─────────────────────────┘
+                                 │
+                                 ▼
+                    ┌─────────────────────────┐
+                    │     Slack Bot           │
+                    │  /dev-report weekly     │
+                    └─────────────────────────┘
+```
 
-* Forecast next week’s cycle time or churn.
-* Code-review “influence map” graph.
-* Pluggable LLM driver (OpenAI ↔ local Llama) in < 15 min.
-* Scheduled digests (bot auto-drops Monday summary).
+### Agent Workflow
 
-### 5 ✦ Deliverables
+The system uses three specialized agents working together:
 
-1. **Pull Request** to the challenge repo containing code + docs.
-2. ≤ 3-minute Loom/GIF demo (encouraged).
+1. **DataHarvester**: Pulls GitHub events (commits, PRs) from our SQLite database
+2. **DiffAnalyst**: Crunches the numbers on code churn, spots unusual spikes, flags authors with high activity
+3. **InsightNarrator**: Takes all that data and turns it into readable reports with DORA metrics
+4. **LangGraph**: Handles the coordination between agents and manages state throughout the workflow
 
-### 6 ✦ Timeline
+## Bot Installation Guide
 
-*Fork today → PR in **72 hours** (extensions on request).*
-We’ll smoke-test your bot in our workspace, then book your interview.
+### 1. Create Slack App
 
-### 7 ✦ Evaluation Rubric (100 pts)
+1. Go to https://api.slack.com/apps
+2. Click "Create New App" → "From scratch"
+3. Name your app (e.g., "FIKA AI Bot") and select your workspace
 
-| Category                         | Pts | What we look for                                                |
-| -------------------------------- | --- | --------------------------------------------------------------- |
-| LangGraph agent architecture     | 25  | Clear roles, deterministic edges, minimal hallucination.        |
-| MVP completeness & correctness   | 25  | Metrics and diff stats accurate; bot responds; seed data works. |
-| Code quality & tests             | 20  | Idiomatic Python, CI green.                                     |
-| Insight value & business mapping | 15  | Narratives help leadership act.                                 |
-| Dev X & docs                     | 10  | Fast start, clear setup, diagrams.                              |
-| Stretch innovation               | 5   | Any wow factor.                                                 |
+### 2. Configure App Permissions
 
-### 8 ✦ Interview Flow
+**OAuth & Permissions → Bot Token Scopes:**
+- `commands`
+- `chat:write`
+- `chat:write.public` (optional)
 
-1. **Code/architecture dive (45 min)**
-2. **Edge-case & scaling Q\&A (30 min)**
-3. **Product thinking & culture fit (15 min)**
+**App-Level Tokens:**
+- Create token with `connections:write` scope
 
-### 9 ✦ Ground Rules
+### 3. Enable Socket Mode
 
-Original work only; public libs are fine. Don’t commit real secrets. We may open-source the winning MVP with credit.
+1. Go to **Socket Mode** → Enable Socket Mode
+2. Use the App-Level Token created above
 
-> **Ready?** Fork ✦ Build ✦ PR ✦ Impress us.
-> Questions → **[founder@powersmy.biz](mailto:founder@powersmy.biz)**
+### 4. Add Slash Commands
+
+**Create `/dev-report` command:**
+- Command: `/dev-report`
+- Request URL: `https://example.com` (placeholder for Socket Mode)
+- Short Description: `Get engineering productivity insights`
+- Usage Hint: `weekly`
+
+**Create `/test` command:**
+- Command: `/test`
+- Request URL: `https://example.com`
+- Short Description: `Test bot connection`
+
+### 5. Install App
+
+1. Go to **Install App** → **Install to Workspace**
+2. Copy the **Bot User OAuth Token** (starts with `xoxb-`)
+3. Copy the **App-Level Token** (starts with `xapp-`)
+
+### 6. Set Environment Variables
+
+Create `.env` file in project root:
+```env
+SLACK_BOT_TOKEN=xoxb-your-bot-token-here
+SLACK_APP_TOKEN=xapp-your-app-level-token-here
+```
+
+## Features
+
+### What It Tracks
+- **Commit Analysis**: Total commits and breakdown by author
+- **PR Throughput**: How fast pull requests move through the pipeline
+- **Code Churn**: Lines added/deleted and files touched
+- **Risk Detection**: Spots unusual churn spikes and identifies outlier authors
+
+### DORA Metrics Implementation
+- **Lead Time**: Average time from PR creation to merge
+- **Deploy Frequency**: Number of deployments (we count PR merges)
+- **Change Failure Rate**: Percentage of failed CI builds
+- **MTTR**: Mean time to recovery (placeholder for now)
+
+### Available Commands
+- `/dev-report weekly`: Get the full productivity report
+- `/test`: Check if the bot is working
+- `@mention`: Get help and see what commands are available
+
+## Development
+
+### Project Structure
+```
+fika-ai-engineering-insights-bot/
+├── fika_agents/           # LangChain agents
+│   ├── data_harvester.py  # GitHub data fetching
+│   ├── diff_analyst.py    # Code churn analysis
+│   ├── insight_narrator.py # Narrative generation
+│   └── workflow.py        # LangGraph orchestration
+├── bot/                   # Slack bot
+│   └── slack_bot.py       # Bot entry point
+├── fika_db/              # Database layer
+│   └── database.py        # SQLite operations
+├── data/                  # Data seeding
+│   └── seed_github_events.py # Fake data generator
+├── utils/                 # Utilities
+│   └── metrics.py         # Metric calculations
+├── docker-compose.yml     # Container orchestration
+├── Dockerfile            # Container definition
+├── Makefile              # Build automation
+└── requirements.txt       # Python dependencies
+```
+
+### Testing the System
+```bash
+# Test the full analytics pipeline
+python main.py
+
+# Generate some fake data first
+python data/seed_github_events.py
+```
+
+### Database Schema
+We use SQLite with two main tables:
+- **commits**: id, author, message, additions, deletions, changed_files, timestamp
+- **pull_requests**: id, author, title, additions, deletions, changed_files, created_at, merged_at, review_latency, ci_status
+
+## Configuration
+
+### Environment Variables
+You'll need these two tokens from your Slack app:
+- `SLACK_BOT_TOKEN`: Bot User OAuth Token from Slack app
+- `SLACK_APP_TOKEN`: App-Level Token with connections:write scope
+
+### Database Setup
+The system creates a SQLite database (`fika_ai_insights.db`) automatically. Run the seed script to populate it with sample data for testing.
+
+## Sample Output
+
+Here's what a typical weekly report looks like:
+
+```
+Weekly Engineering Productivity Report:
+Total commits: 20
+Commits per author:
+  - alice: 5
+  - bob: 7
+  - carol: 4
+  - dave: 4
+PR throughput: 5
+Average review latency: 12.30 hours
+Code churn: +500 / -200
+Files touched: 30
+Churn spikes detected in 2 commits (possible risk)
+Outlier authors (high churn): bob
+
+DORA Metrics:
+  - Lead time (avg): 10.50 hours
+  - Deploy frequency: 5
+  - Change failure rate: 20.0%
+  - MTTR: 0.0 (not enough data for real value)
+```
+
+## Deployment Options
+
+### For Development
+```bash
+make run
+```
+
+### Production with Docker
+```bash
+docker-compose up -d
+```
+
+### Manual Production Setup
+```bash
+pip install -r requirements.txt
+python data/seed_github_events.py
+python bot/slack_bot.py
+```
+
+## Tech Stack
+
+- **Language**: Python 3.10+
+- **Agent Framework**: LangChain ≥ 0.1.0 + LangGraph
+- **Chat Integration**: Slack Bolt for Python
+- **Database**: SQLite
+- **Containerization**: Docker + Docker Compose
+- **Build System**: Make
+
+## License
+
+This project is part of the FIKA AI Engineering Challenge.
 
 ---
 
-### Quick Reference Links
-
-* LangChain docs ([python.langchain.com][1]) – prompt, tool and memory helpers.
-* LangGraph overview ([langchain.com][2]) – stateful orchestration patterns.
-* GitHub Commits API (`additions`/`deletions`) ([docs.github.com][3])
-* GitHub PR Files API (per-file diff) ([docs.github.com][4])
-* Slack slash-commands guide ([api.slack.com][8])
-* Discord embeds guide ([discordjs.guide][9])
-* Git diff `--numstat` usage ([stackoverflow.com][5])
-* DORA four-key metrics ([dora.dev][7])
-* Code-churn research on defects ([stackoverflow.com][6])
-
-These resources should cover everything you need—happy hacking!
-
-[1]: https://python.langchain.com/docs/introduction/?utm_source=chatgpt.com "Python LangChain"
-[2]: https://www.langchain.com/langgraph?utm_source=chatgpt.com "LangGraph - LangChain"
-[3]: https://docs.github.com/rest/commits/commits?utm_source=chatgpt.com "REST API endpoints for commits - GitHub Docs"
-[4]: https://docs.github.com/en/rest/pulls/pulls?utm_source=chatgpt.com "REST API endpoints for pull requests - GitHub Docs"
-[5]: https://stackoverflow.com/questions/9933325/is-there-a-way-of-having-git-show-lines-added-lines-changed-and-lines-removed?utm_source=chatgpt.com "Is there a way of having git show lines added, lines changed and ..."
-[6]: https://stackoverflow.com/questions/56941641/using-githubs-api-to-get-lines-of-code-added-deleted-per-commit-on-a-branch?utm_source=chatgpt.com "Using GitHub's API to get lines of code added/deleted per commit ..."
-[7]: https://dora.dev/guides/dora-metrics-four-keys/?utm_source=chatgpt.com "DORA's software delivery metrics: the four keys"
-[8]: https://api.slack.com/interactivity/slash-commands?utm_source=chatgpt.com "Enabling interactivity with Slash commands - Slack API"
-[9]: https://discordjs.guide/popular-topics/embeds?utm_source=chatgpt.com "Embeds | discord.js Guide"
+**Ready to get better insights into your team's productivity? Fork this repo and get started.**
