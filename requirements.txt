@@ -1,0 +1,15 @@
+python-dotenv
+requests
+slack-bolt
+slack-sdk
+PyGithub
+pandas
+numpy
+python-dateutil
+langgraph
+google-generativeai
+plotly
+matplotlib
+kaleido
+pytest
+ 
