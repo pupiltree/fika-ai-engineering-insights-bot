@@ -1,0 +1,74 @@
+[
+    {
+      "author": "Indra55",
+      "message": "feat: add user authentication module",
+      "date": "2024-07-05T14:23:00",
+      "additions": 1200,
+      "deletions": 150,
+      "total": 1350,
+      "sha": "abc123def456",
+      "hour": 14,
+      "day_of_week": "Friday",
+      "files_changed": [
+        {
+          "filename": "auth/login.js",
+          "additions": 400,
+          "deletions": 50
+        },
+        {
+          "filename": "auth/signup.js",
+          "additions": 800,
+          "deletions": 100
+        }
+      ],
+      "is_large_commit": true,
+      "is_late_commit": false,
+      "commit_type": "feature",
+      "files_count": 2
+    },
+    {
+      "author": "Pranaavvvv",
+      "message": "fix: correct password hashing issue",
+      "date": "2024-07-04T21:45:00",
+      "additions": 100,
+      "deletions": 20,
+      "total": 120,
+      "sha": "def456ghi789",
+      "hour": 21,
+      "day_of_week": "Thursday",
+      "files_changed": [
+        {
+          "filename": "auth/hashUtil.js",
+          "additions": 100,
+          "deletions": 20
+        }
+      ],
+      "is_large_commit": false,
+      "is_late_commit": true,
+      "commit_type": "bugfix",
+      "files_count": 1
+    },
+    {
+      "author": "MIHIRrPATIL",
+      "message": "docs: updated README and comments",
+      "date": "2024-07-03T10:00:00",
+      "additions": 50,
+      "deletions": 5,
+      "total": 55,
+      "sha": "ghi789jkl012",
+      "hour": 10,
+      "day_of_week": "Wednesday",
+      "files_changed": [
+        {
+          "filename": "README.md",
+          "additions": 50,
+          "deletions": 5
+        }
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "documentation",
+      "files_count": 1
+    }
+  ]
+  
