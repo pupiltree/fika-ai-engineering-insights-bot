@@ -1,8 +1,8 @@
 from fika_agents.workflow import FikaWorkflow
-from fika_db import database
+from fika_db.database import init_database
 
 if __name__ == "__main__":
-    database.init_db()
+    init_database()
     
     # Create and run the LangGraph workflow
     workflow = FikaWorkflow()

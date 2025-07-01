@@ -1,7 +1,7 @@
 from typing import List, Dict, Any
 from langchain.agents import Tool
 from langchain.schema import BaseMessage, HumanMessage
-from utils import metrics
+from utils.metrics import count_commits, commits_per_author, pr_throughput, review_latency_avg, code_churn, files_touched, dora_metrics
 
 class DiffAnalyst:
     """
@@ -16,9 +16,9 @@ class DiffAnalyst:
         """Analyze GitHub data and return insights"""
         if github_data is None:
             # Fallback to direct database access
-            from fika_db import database
-            commits = database.fetch_commits()
-            prs = database.fetch_pull_requests()
+            from fika_db.database import fetch_commits, fetch_pull_requests
+            commits = fetch_commits()
+            prs = fetch_pull_requests()
         else:
             commits = github_data.get("commits", [])
             prs = github_data.get("pull_requests", [])
@@ -26,13 +26,13 @@ class DiffAnalyst:
         analysis = {}
         
         # Basic metrics
-        analysis['commit_count'] = metrics.count_commits(commits)
-        analysis['commits_per_author'] = metrics.commits_per_author(commits)
-        analysis['pr_throughput'] = metrics.pr_throughput(prs)
-        analysis['review_latency_avg'] = metrics.review_latency_avg(prs)
-        analysis['code_churn'] = metrics.code_churn(commits)
-        analysis['files_touched'] = metrics.files_touched(commits)
-        analysis['dora_metrics'] = metrics.dora_metrics(prs)
+        analysis['commit_count'] = count_commits(commits)
+        analysis['commits_per_author'] = commits_per_author(commits)
+        analysis['pr_throughput'] = pr_throughput(prs)
+        analysis['review_latency_avg'] = review_latency_avg(prs)
+        analysis['code_churn'] = code_churn(commits)
+        analysis['files_touched'] = files_touched(commits)
+        analysis['dora_metrics'] = dora_metrics(prs)
         
         # Churn spike detection
         threshold = 100

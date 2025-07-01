@@ -1,7 +1,7 @@
 from typing import Dict, Any, List
 from langchain.agents import Tool
 from langchain.schema import BaseMessage, HumanMessage
-from fika_db import database
+from fika_db.database import fetch_commits, fetch_pull_requests
 
 class DataHarvester:
     """
@@ -14,8 +14,8 @@ class DataHarvester:
     
     def fetch_data(self) -> Dict[str, Any]:
         """Fetch all GitHub data from the database"""
-        commits = database.fetch_commits()
-        prs = database.fetch_pull_requests()
+        commits = fetch_commits()
+        prs = fetch_pull_requests()
         
         return {
             "commits": commits,

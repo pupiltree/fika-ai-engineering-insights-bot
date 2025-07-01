@@ -14,7 +14,7 @@ Script to seed the database with fake GitHub events for demo and testing purpose
 
 import random
 from datetime import datetime, timedelta
-from fika_db import database
+from fika_db.database import init_database, insert_commit, insert_pull_request
 
 authors = ["alice", "bob", "carol", "dave"]
 messages = [
@@ -34,16 +34,15 @@ def seed_commits(n=20):
     now = datetime.now()
     week_ago = now - timedelta(days=7)
     for i in range(n):
-        commit = {
-            "id": f"commit_{i}",
-            "author": random.choice(authors),
-            "message": random.choice(messages),
-            "additions": random.randint(1, 100),
-            "deletions": random.randint(0, 50),
-            "changed_files": random.randint(1, 5),
-            "timestamp": random_date(week_ago, now).isoformat()
-        }
-        database.insert_commit(commit)
+        commit_hash = f"commit_{i}"
+        author = random.choice(authors)
+        message = random.choice(messages)
+        additions = random.randint(1, 100)
+        deletions = random.randint(0, 50)
+        changed_files = random.randint(1, 5)
+        timestamp = random_date(week_ago, now).isoformat()
+        
+        insert_commit(commit_hash, author, message, timestamp, additions, deletions, changed_files)
     print(f"Seeded {n} commits.")
 
 def seed_pull_requests(n=5):
@@ -52,24 +51,23 @@ def seed_pull_requests(n=5):
     for i in range(n):
         created_at = random_date(week_ago, now)
         merged_at = created_at + timedelta(hours=random.randint(1, 48))
-        pr = {
-            "id": f"pr_{i}",
-            "author": random.choice(authors),
-            "title": f"PR Title {i}",
-            "additions": random.randint(10, 200),
-            "deletions": random.randint(0, 100),
-            "changed_files": random.randint(1, 10),
-            "created_at": created_at.isoformat(),
-            "merged_at": merged_at.isoformat(),
-            "review_latency": random.randint(1, 24),
-            "ci_status": random.choice(["success", "failure"])
-        }
-        database.insert_pull_request(pr)
+        
+        pr_number = i + 1
+        title = f"PR Title {i}"
+        author = random.choice(authors)
+        additions = random.randint(10, 200)
+        deletions = random.randint(0, 100)
+        changed_files = random.randint(1, 10)
+        created_at_str = created_at.isoformat()
+        merged_at_str = merged_at.isoformat()
+        status = "merged"
+        
+        insert_pull_request(pr_number, title, author, created_at_str, merged_at_str, additions, deletions, changed_files, status)
     print(f"Seeded {n} pull requests.")
 
 def main():
     print("Initializing database...")
-    database.init_db()
+    init_database()
     print("Database initialized.")
     seed_commits()
     seed_pull_requests()

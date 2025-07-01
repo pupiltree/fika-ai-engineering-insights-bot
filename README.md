@@ -23,13 +23,13 @@ python data/seed_github_events.py
 python bot/slack_bot.py
 ```
 
-## Prerequisites
+##  Prerequisites
 
 - Python 3.10+
 - Slack workspace and app (see Bot Installation Guide below)
 - Docker (optional, for containerized deployment)
 
-## Architecture
+##  Architecture
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
@@ -59,14 +59,12 @@ python bot/slack_bot.py
 
 ### Agent Workflow
 
-The system uses three specialized agents working together:
+1. **DataHarvester**: Fetches GitHub events (commits, PRs) from SQLite database
+2. **DiffAnalyst**: Analyzes code churn, detects spikes, identifies outlier authors
+3. **InsightNarrator**: Generates human-readable summaries with DORA metrics
+4. **LangGraph**: Orchestrates agent handoffs with stateful workflow management
 
-1. **DataHarvester**: Pulls GitHub events (commits, PRs) from our SQLite database
-2. **DiffAnalyst**: Crunches the numbers on code churn, spots unusual spikes, flags authors with high activity
-3. **InsightNarrator**: Takes all that data and turns it into readable reports with DORA metrics
-4. **LangGraph**: Handles the coordination between agents and manages state throughout the workflow
-
-## Bot Installation Guide
+##  Bot Installation Guide
 
 ### 1. Create Slack App
 
@@ -116,26 +114,26 @@ SLACK_BOT_TOKEN=xoxb-your-bot-token-here
 SLACK_APP_TOKEN=xapp-your-app-level-token-here
 ```
 
-## Features
+## 📊 Features
 
-### What It Tracks
-- **Commit Analysis**: Total commits and breakdown by author
-- **PR Throughput**: How fast pull requests move through the pipeline
-- **Code Churn**: Lines added/deleted and files touched
-- **Risk Detection**: Spots unusual churn spikes and identifies outlier authors
+### Core Metrics
+- **Commit Analysis**: Total commits, per-author breakdown
+- **PR Throughput**: Pull request velocity and review latency
+- **Code Churn**: Lines added/deleted, files touched
+- **Risk Detection**: Churn spikes and outlier authors
 
-### DORA Metrics Implementation
+### DORA Metrics
 - **Lead Time**: Average time from PR creation to merge
-- **Deploy Frequency**: Number of deployments (we count PR merges)
+- **Deploy Frequency**: Number of deployments (PR merges)
 - **Change Failure Rate**: Percentage of failed CI builds
-- **MTTR**: Mean time to recovery (placeholder for now)
+- **MTTR**: Mean time to recovery (placeholder)
 
-### Available Commands
-- `/dev-report weekly`: Get the full productivity report
-- `/test`: Check if the bot is working
-- `@mention`: Get help and see what commands are available
+### Chat Commands
+- `/dev-report weekly`: Get comprehensive productivity report
+- `/test`: Test bot connectivity
+- `@mention`: Get help and usage instructions
 
-## Development
+## 🛠️ Development
 
 ### Project Structure
 ```
@@ -159,33 +157,30 @@ fika-ai-engineering-insights-bot/
 └── requirements.txt       # Python dependencies
 ```
 
-### Testing the System
+### Running Tests
 ```bash
-# Test the full analytics pipeline
+# Test analytics pipeline
 python main.py
 
-# Generate some fake data first
+# Test with seeded data
 python data/seed_github_events.py
 ```
 
 ### Database Schema
-We use SQLite with two main tables:
 - **commits**: id, author, message, additions, deletions, changed_files, timestamp
 - **pull_requests**: id, author, title, additions, deletions, changed_files, created_at, merged_at, review_latency, ci_status
 
-## Configuration
+## 🔧 Configuration
 
 ### Environment Variables
-You'll need these two tokens from your Slack app:
 - `SLACK_BOT_TOKEN`: Bot User OAuth Token from Slack app
 - `SLACK_APP_TOKEN`: App-Level Token with connections:write scope
 
-### Database Setup
-The system creates a SQLite database (`fika_ai_insights.db`) automatically. Run the seed script to populate it with sample data for testing.
+### Database
+- SQLite database (`fika_ai_insights.db`) created automatically
+- Seeded with fake GitHub events for immediate demo
 
-## Sample Output
-
-Here's what a typical weekly report looks like:
+## 📈 Sample Output
 
 ```
 Weekly Engineering Productivity Report:
@@ -209,38 +204,38 @@ DORA Metrics:
   - MTTR: 0.0 (not enough data for real value)
 ```
 
-## Deployment Options
+## 🚀 Deployment
 
-### For Development
+### Local Development
 ```bash
 make run
 ```
 
-### Production with Docker
+### Docker Production
 ```bash
 docker-compose up -d
 ```
 
-### Manual Production Setup
+### Manual Production
 ```bash
 pip install -r requirements.txt
 python data/seed_github_events.py
 python bot/slack_bot.py
 ```
 
-## Tech Stack
+## 🧪 Tech Stack
 
 - **Language**: Python 3.10+
 - **Agent Framework**: LangChain ≥ 0.1.0 + LangGraph
-- **Chat Integration**: Slack Bolt for Python
+- **Chat SDK**: Slack Bolt for Python
 - **Database**: SQLite
 - **Containerization**: Docker + Docker Compose
-- **Build System**: Make
+- **Build**: Make
 
-## License
+## 📝 License
 
 This project is part of the FIKA AI Engineering Challenge.
 
 ---
 
-**Ready to get better insights into your team's productivity? Fork this repo and get started.**
+**Ready to boost your team's productivity insights? Fork → Build → Deploy! 🚀**

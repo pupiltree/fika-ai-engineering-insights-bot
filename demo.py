@@ -5,7 +5,7 @@ Demo script showing the complete FIKA AI Engineering Productivity Bot workflow.
 
 import time
 from fika_agents.workflow import FikaWorkflow
-from fika_db import database
+from fika_db.database import init_database
 
 def main():
     print(" FIKA AI Engineering Productivity Bot Demo")
@@ -13,7 +13,7 @@ def main():
     
     # Initialize database
     print("Initializing database...")
-    database.init_db()
+    init_database()
     
     # Create workflow
     print("Creating LangGraph workflow...")
