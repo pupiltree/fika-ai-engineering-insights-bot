@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  fika-ai-bot:
+    build: .
+    environment:
+      - SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
+      - SLACK_APP_TOKEN=${SLACK_APP_TOKEN}
+    volumes:
+      - .:/app
+      - ./fika_ai_insights.db:/app/fika_ai_insights.db
+    restart: unless-stopped
+    stdin_open: true
+    tty: true 
