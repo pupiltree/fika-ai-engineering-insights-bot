@@ -1,0 +1,68 @@
+:bar_chart: Generating your dev productivity report, please wait...
+
+Only visible to you
+17:47
+:chart_with_upwards_trend: Executive Summary
+        • 39 total commits this week
+        • +3,989 lines added, -795 lines removed
+        • 14 active contributors
+        • Net change: +3,194 lines
+:crystal_ball: Next Week Forecast (Confidence: low)
+        • Predicted Cycle Time: 17.6h (improving)
+        • Range: 14.9-22.0h
+        • Predicted Churn Ratio: 0.236 (increasing)
+        • Range: 0.165-0.33
+:trophy: Top Performer
+        • DevRishi leads with 4 commits
+        • 0.57 commits/day average
+        • 10.3% of team output
+:magnifying_glass: Code Quality Insights
+        • Average churn ratio: 0.22 (lower is better)
+        • Peak development hours: 10 AM - 2 PM
+        • Code hotspots: src/main.py, components/auth.js
+:warning: Risk Assessment
+        • Risk Level: :red_circle: HIGH
+        • Large commits: 0
+        • High churn contributors: 1
+:dart: Recommendations
+• :red_circle: High code churn detected for KaranJunior. Consider code reviews and refactoring.
+Developer    | Commits | Lines/Commit | Churn | Contribution
+------------------------------------------------------------
+Indra55      |       3 |      107.0 |  0.50 |        7.7%
+Asha24       |       3 |      107.7 |  0.09 |        7.7%
+DevRishi     |       4 |      132.2 |  0.14 |       10.3%
+Nina07       |       2 |       58.5 |  0.24 |        5.1%
+YashVerma    |       3 |      145.0 |  0.07 |        7.7%
+MehulCode    |       3 |      136.7 |  0.38 |        7.7%
+SimranX      |       3 |       93.0 |  0.23 |        7.7%
+ZaraQ        |       1 |       50.0 |  0.11 |        2.6%
+AnkitSecure  |       4 |       40.8 |  0.16 |       10.3%
+PriyankaDev  |       2 |      273.0 |  0.04 |        5.1%
+RohitBackend |       3 |      104.3 |  0.15 |        7.7%
+SarahUX      |       2 |      311.0 |  0.48 |        5.1%
+TanishQA     |       3 |      158.3 |  0.04 |        7.7%
+KaranJunior  |       3 |       67.0 |  0.51 |        7.7%
+:robot_face: AI Strategic Insights
+Okay, here's a concise and actionable summary for engineering managers based on the data:
+Overall Performance & Trends:
+• Solid Productivity: Most engineers are actively committing code. PriyankaDev and DevRishi showing higher line contribution this week
+• Churn Concerns: The forecast increasing churn ratio (0.236) is a red flag. This indicates more code being reworked or reverted.
+• Cycle Time Improvement: Positive sign. Improving cycle time (17.6h) suggests faster development and deployment.
+Code Quality & Risk:
+• Churn Ratio Risk:  A rising churn ratio needs investigation.  Possible causes: unclear requirements, design flaws, inadequate testing, or integration issues.
+• Action: Implement/reinforce mandatory code reviews, especially for areas with high recent churn.  Consider pairing engineers with higher churn with senior developers for mentorship.
+Resource Allocation:
+• ZaraQ's Contributions may require a review/discussion. See if they require mentorship and if they can be of assistance in other areas of focus in the team
+• SarahUX: Highest lines of code deleted among the team, consider following up
+Only visible to you
+17:47
+on it for review and to see if SarahUX can benefit from team support
+• Focus and Balance: Current allocation seems appropriate, no immediate issues highlighted by the commit data.
+Strategic Recommendations for Next Week:
+1.  Investigate Churn: Immediately investigate the rising churn ratio. Identify root causes and implement corrective actions (better requirements gathering, improved testing).
+2.  Code Review Focus: Emphasize thorough code reviews. Target reviews on areas identified with high recent changes or potential for churn.
+3.  Prioritize Refactoring: Dedicate a small amount of sprint time (if possible) to refactoring code with known quality issues, especially in areas contributing to churn.
+4.  Monitor SarahUX deletions: Check to see if SarahUX can receive any support from the team, identify any issues related to project scope/requirements.
+5.  Celebrate Cycle Time Improvements: Acknowledge the improving cycle time to boost team morale. Identify and reinforce practices contributing to this improvement.
+Key Takeaway:
+While productivity is good, the rising churn ratio is a serious concern. Address it proactively to prevent it from impacting future development velocity and code quality.

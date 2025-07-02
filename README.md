@@ -22,6 +22,9 @@ GitHub API → DataHarvesterAgent → DiffAnalystAgent → InsightNarratorAgent 
 - **QueryAgent**: Handles natural language queries about repository performance
 - **SampleDataHarvesterAgent**: Fetches sample GitHub commit metadata via REST API (commits, PRs, review data)
 
+![Architecture Diagram](./public/graph.png)
+*Figure 1: System Architecture Overview*
+
 All agent interactions are logged for auditability as required.
 
 ---
