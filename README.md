@@ -20,7 +20,7 @@ GitHub API → DataHarvesterAgent → DiffAnalystAgent → InsightNarratorAgent 
 - **DiffAnalystAgent**: Analyzes code churn, flags outliers, correlates with defect risk
 - **InsightNarratorAgent**: Transforms metrics into DORA-aligned narratives (lead time, deploy frequency, MTTR, change failure rate)
 - **QueryAgent**: Handles natural language queries about repository performance
-- **WorkPatternAnalyzer**: Identifies productivity patterns and cycle time trends
+- **SampleDataHarvesterAgent**: Fetches sample GitHub commit metadata via REST API (commits, PRs, review data)
 
 All agent interactions are logged for auditability as required.
 
@@ -35,13 +35,31 @@ All agent interactions are logged for auditability as required.
 - **Mean Time to Recovery (MTTR)**: Issue resolution tracking
 - **Per-Author Stats**: Lines changed, files touched, review participation
 - **Code Churn**: Identifies high-risk changes correlated with defect probability
+- **Review Influence Map**: Visualizes code review relationships between authors and reviewers
 
-### Business Value Mapping
-The InsightNarratorAgent maps technical metrics to business outcomes:
-- Squad velocity trends → delivery predictability
-- Code quality signals → maintenance overhead
-- Review patterns → knowledge distribution
-- Cycle time analysis → customer value delivery speed
+### 🔍 Review Influence Map
+
+An interactive network graph that visualizes code review relationships within your team:
+
+- **Relationship Visualization**: Shows connections between code authors and reviewers
+- **Review Frequency**: Edge thickness represents the number of reviews between team members
+- **Team Insights**: Identifies knowledge sharing patterns and potential bottlenecks
+- **Interactive Hover**: View detailed review statistics for each team member
+
+Example insights:
+- Identify key reviewers who provide most feedback
+- Spot knowledge silos where only specific team members review certain areas
+- Balance review workload across the team
+- Track how review relationships evolve over time
+
+### 🔮 Forecasting Capabilities
+
+The system includes predictive analytics to forecast key engineering metrics:
+
+- Cycle Time Forecasting
+- Churn Prediction
+- Risk Assessment
+- Business Value Mapping
 
 ---
 
@@ -63,19 +81,19 @@ pip install -r requirements.txt
 python main.py
 ```
 
-### Seed Data for Instant Demo
+### Sample Data for Instant Demo
 ```bash
-# Run with sample data (no GitHub tokens needed)
-USE_SAMPLE_DATA=true python main.py
+A `commits.json` file is provided in the `data/` directory as sample data.  
+You can use it with the `sample_data_harvester` to generate immediate highlights which is ideal for testing or demos when a GitHub token is not available.
 ```
-The seed script generates 30 days of realistic GitHub events so reviewers can see insights immediately.
+
 
 ---
 
 ## 💬 Slack Bot Commands
 
 ### Primary Command
-- **`/dev-report weekly`** - Generates comprehensive engineering performance report with:
+- **`/dev-report`** - Generates comprehensive engineering performance report with:
   - DORA metrics visualization
   - Squad performance comparison
   - Code churn risk analysis
@@ -111,7 +129,39 @@ USE_SAMPLE_DATA=false  # Set true for demo without GitHub access
 
 ---
 
-## 🔧 Slack Bot Installation Guide
+## �️ Database Configuration (Optional)
+
+The bot can optionally use a PostgreSQL database to store historical metrics and reports. If no database is configured, it will use in-memory storage by default.
+
+### Setting Up PostgreSQL
+
+1. Install PostgreSQL (if not already installed)
+2. Create a new database and user:
+   ```sql
+   CREATE DATABASE github_insights;
+   CREATE USER bot_user WITH PASSWORD 'your_secure_password';
+   GRANT ALL PRIVILEGES ON DATABASE github_insights TO bot_user;
+   ```
+
+3. Set the database URL in your `.env` file:
+   ```
+   # For PostgreSQL (recommended for production)
+   DATABASE_URL=postgresql+asyncpg://bot_user:your_secure_password@localhost/github_insights
+   
+   # Or use SQLite (default, for development)
+   # DATABASE_URL=sqlite+aiosqlite:///./github_insights.db
+   ```
+
+4. (Optional) Enable SQL query logging:
+   ```
+   SQL_ECHO=True
+   ```
+
+The database will be automatically initialized when the bot starts.
+
+---
+
+## �🔧 Slack Bot Installation Guide
 
 ### 1. Create Slack App
 1. Visit [https://api.slack.com/apps](https://api.slack.com/apps)
@@ -132,8 +182,7 @@ USE_SAMPLE_DATA=false  # Set true for demo without GitHub access
 ### 4. Add Slash Commands
 **Slash Commands** → Create:
 - Command: `/dev-report`
-- Description: "Generate engineering performance report"
-- Usage Hint: `weekly | monthly`
+- Description: "Generate engineering performance report" 
 
 ### 5. Install & Invite
 1. **Install App** → Install to Workspace
@@ -148,29 +197,32 @@ USE_SAMPLE_DATA=false  # Set true for demo without GitHub access
 .
 ├── agents/                    # LangGraph Agent Implementations
 │   ├── data_harvester.py      # GitHub API → structured data
+│   ├── sample_data_harvester.py # Mock data for demo/testing
 │   ├── diff_analyst.py        # Churn analysis & risk scoring
 │   ├── insight_narrator.py    # DORA metrics → business narratives
-│   ├── query_agent.py         # Natural language query handler
-│   └── work_pattern_analyzer.py # Productivity pattern detection
+│   └── query_agent.py         # Natural language query handler
 │
-├── utils/
-│   ├── chart_generator.py     # Plotly visualizations
-│   ├── dora_calculator.py     # DORA metrics computation
-│   └── github_client.py       # GitHub API wrapper
+├── database/                  # Database models and operations
+│   ├── __init__.py
+│   ├── db.py                 # Database connection and session management
+│   └── crud.py               # Database CRUD operations
 │
-├── data/
-│   ├── commits.json           # Sample seed data
-│   └── schema.sql             # Database schema
+├── utils/                     # Utility functions
+│   └── chart_generator.py     # Data visualization utilities
 │
-├── slack_bot/
-│   ├── app.py                 # Slack Bolt application
-│   └── handlers.py            # Command handlers
+├── data/                      # Data files
+│   └── commits.json           # Sample commit data for demo
 │
-├── tests/                     # Unit tests for agents
-├── docker-compose.yml         # One-command deployment
-├── Dockerfile                 # Container definition
-├── requirements.txt           # Python dependencies
-└── seed_data.py              # Generates demo GitHub events
+├── temp_charts/               # Temporary storage for generated charts
+├── public/                    # Static assets
+│   └── graph.png             # System architecture diagram
+│
+├── main.py                   # Main application entry point
+├── database.py               # Database initialization
+├── requirements.txt          # Python dependencies
+├── docker-compose.yml        # Container orchestration
+├── Dockerfile               # Container definition
+└── README.md                # This file
 ```
 
 ---
@@ -192,10 +244,10 @@ Covers agent logic, metric calculations, and LangGraph workflows.
 
 ## 📈 Sample Output
 
-When you run `/dev-report weekly`, expect:
+When you run `/dev-report`, expect:
 
 ```
-📊 Weekly Engineering Summary (Oct 21-28, 2024)
+📊 Engineering Summary (Oct 21-28, 2024)
 
 🚀 DORA Metrics:
 • Lead Time: 2.3 days (↓15% vs last week)
@@ -237,8 +289,7 @@ Plus interactive charts showing trends over time.
 
 ### Stretch Goals Implemented
 🎯 **Cycle time forecasting**: Predicts next week's delivery timeline  
-🎯 **Scheduled digests**: Auto-posted Monday team summaries  
-🎯 **Pluggable LLM**: Swap Gemini ↔ OpenAI in 15 seconds  
+🎯 **Code-review “influence map” graph** : Visualizes code review relationships within your team
 
 ---
 
@@ -246,7 +297,7 @@ Plus interactive charts showing trends over time.
 
 [Include 3-minute Loom video here showing:]
 1. Bot installation process
-2. `/dev-report weekly` command execution  
+2. `/dev-report` command execution  
 3. Sample insights and chart generation
 4. Natural language queries with `/dev-ask`
 
@@ -265,10 +316,6 @@ Plus interactive charts showing trends over time.
 
 ## 📞 Support & Questions
 
-Built for the FIKA AI Engineering Productivity Intelligence MVP Challenge.
-
-For technical questions or demo requests: [your-contact]
+Built for the FIKA AI Engineering Productivity Intelligence MVP Challenge. 
 
 ---
-
-**Ready to boost your team's engineering productivity? Install the bot and get insights in under 5 minutes! 🚀**

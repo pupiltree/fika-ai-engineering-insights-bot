@@ -14,13 +14,21 @@ from agents.query_agent import create_query_agent
 from utils.chart_generator import ChartGenerator
 from langgraph.graph import StateGraph
 from dotenv import load_dotenv
-from typing import TypedDict, Dict, Any
+from typing import TypedDict, Dict, Any, Optional
 import json
 import concurrent.futures
 import logging
 from pathlib import Path
+from datetime import datetime
 
-# Set up logging
+from database import (
+    init_db,
+    save_metrics,
+    get_metrics,
+    DBAccessError,
+    SessionLocal
+)
+
 logger = logging.getLogger(__name__)
 
 load_dotenv()
@@ -34,9 +42,12 @@ class DevReportState(TypedDict):
     commits: list
     analysis: dict
     summary: str
+    repository: Optional[str] = None
+    report_type: Optional[str] = "on-demand"
+    pull_requests: Optional[list] = None
 
 builder = StateGraph(DevReportState)
-builder.add_node("harvester", data_harvester_node)
+builder.add_node("harvester", sample_data_harvester)
 builder.add_node("analyst", diff_analyst_node)
 builder.add_node("narrator", insight_narrator_node)
 
@@ -49,36 +60,65 @@ channel_reports: Dict[str, Dict[str, Any]] = {}
 query_agent = create_query_agent()
 executor = concurrent.futures.ThreadPoolExecutor(max_workers=4)
 
-# Initialize chart generator
 chart_generator = ChartGenerator()
 
-def run_async_in_thread(coro):
+def initialize_database():
+    """Initialize the database connection"""
+    try:
+        init_db()
+        logger.info("Database initialized successfully")
+    except Exception as e:
+        logger.error(f"Error initializing database: {e}")
+        logger.info("Continuing without database support")
+
+initialize_database()
+
+def store_metrics(repository: str, metrics: Dict[str, Any], report_type: str = "on-demand") -> None:
+    """Store metrics in the database"""
+    try:
+        save_metrics(
+            repository=repository,
+            metrics=metrics,
+            report_type=report_type
+        )
+        logger.info(f"Successfully stored metrics for {repository}")
+    except DBAccessError as e:
+        logger.error(f"Database error storing metrics: {e}")
+    except Exception as e:
+        logger.error(f"Unexpected error storing metrics: {e}")
+
+def run_async_in_thread(coro, timeout: int = 300):
     """Run a coroutine in a new thread with its own event loop"""
     def run():
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         try:
-            result = loop.run_until_complete(coro)
-            return result
+            return loop.run_until_complete(coro)
         except Exception as e:
-            print(f"Error in async thread: {e}")
+            logger.error(f"Error in async thread: {e}", exc_info=True)
             raise
         finally:
             try:
                 pending = asyncio.all_tasks(loop)
                 for task in pending:
                     task.cancel()
-                
                 if pending:
                     loop.run_until_complete(asyncio.gather(*pending, return_exceptions=True))
-                    
             except Exception as e:
-                print(f"Error during cleanup: {e}")
+                logger.error(f"Error during async cleanup: {e}")
             finally:
                 loop.close()
     
     future = executor.submit(run)
-    return future.result(timeout=60)
+    try:
+        return future.result(timeout=timeout)
+    except concurrent.futures.TimeoutError:
+        logger.error(f"Operation timed out after {timeout} seconds")
+        future.cancel()
+        raise TimeoutError(f"Operation timed out after {timeout} seconds. The report generation is taking longer than expected. Please try again later.")
+    except Exception as e:
+        logger.error(f"Error in run_async_in_thread: {e}", exc_info=True)
+        raise
 
 def cleanup_temp_charts():
     """Clean up temporary chart files."""
@@ -112,17 +152,16 @@ def post_chart_to_slack(client: WebClient, channel_id: str, chart_path: str, tit
             return False
             
         file_size = os.path.getsize(chart_path)
-        if file_size > 20 * 1024 * 1024:  # Slack's file size limit is 20MB
+        if file_size > 20 * 1024 * 1024: 
             logger.error(f"Chart file too large: {file_size/1024/1024:.2f}MB")
             return False
             
         filename = os.path.basename(chart_path)
         
         try:
-            # First try with files_upload_v2
             with open(chart_path, 'rb') as file_content:
                 response = client.files_upload_v2(
-                    channel=channel_id,  # Note: 'channel' instead of 'channels' in v2
+                    channel=channel_id,  
                     file=file_content,
                     title=title or "Development Metrics",
                     filename=filename,
@@ -139,10 +178,8 @@ def post_chart_to_slack(client: WebClient, channel_id: str, chart_path: str, tit
         except SlackApiError as e:
             logger.error(f"Slack API error: {e.response['error']}")
             
-            # Fallback to chat.postMessage with file upload
             try:
                 with open(chart_path, 'rb') as file_content:
-                    # Upload the file first
                     upload_response = client.files_upload_v2(
                         channels=channel_id,
                         file=file_content,
@@ -151,11 +188,9 @@ def post_chart_to_slack(client: WebClient, channel_id: str, chart_path: str, tit
                     )
                     
                     if upload_response.get('ok', False):
-                        # Get the file URL
                         file_info = upload_response['file']
                         file_url = file_info.get('url_private')
                         
-                        # Post a message with the file
                         if file_url:
                             client.chat_postMessage(
                                 channel=channel_id,
@@ -196,28 +231,35 @@ def handle_dev_report_command(ack, body, respond, client: WebClient):
             channel_id = body["channel_id"]
             respond("📊 Generating your dev productivity report, please wait...")
             
-            # Generate the report using LangGraph
-            result = graph.invoke({})
+            state = {
+                "commits": [],
+                "analysis": {},
+                "summary": "",
+                "report_type": "on-demand"
+            }
+            
+            result = run_async_in_thread(graph.ainvoke(state))
+            
+            if result and "analysis" in result:
+                store_metrics(
+                    repository="default_repo",
+                    metrics=result["analysis"],
+                    report_type=result.get("report_type", "on-demand")
+                )
+            
+            channel_reports[channel_id] = result
             summary = result.get("summary", "No summary available.")
             
-            # Store the full result for potential follow-up questions
-            channel_reports[channel_id] = result
-            
-            # Send the summary in chunks to avoid Slack's message length limits
             chunk_size = 3000
             for i in range(0, len(summary), chunk_size):
-                chunk = summary[i:i+chunk_size]
-                respond(chunk)
+                respond(summary[i:i+chunk_size])
             
-            # Generate and upload charts if we have commit data
             if 'commits' in result and result['commits']:
                 respond("📈 Generating visualizations... (this may take a moment)")
                 
                 try:
-                    # Clean up old charts
                     cleanup_temp_charts()
                     
-                    # Generate all charts
                     chart_paths = []
                     chart_methods = [
                         (chart_generator.generate_commit_activity_chart, "commit_activity"),
@@ -226,15 +268,41 @@ def handle_dev_report_command(ack, body, respond, client: WebClient):
                         (chart_generator.generate_hourly_commit_chart, "hourly_commits")
                     ]
                     
+                    # Generate standard charts from commits
                     for method, chart_name in chart_methods:
                         try:
                             chart_path = method(result['commits'])
                             if chart_path and os.path.exists(chart_path):
                                 chart_paths.append(chart_path)
+                                logger.info(f"✅ Generated chart: {os.path.basename(chart_path)}")
+                            else:
+                                logger.warning(f"⚠️ Failed to generate chart: {chart_name}")
                         except Exception as e:
-                            logger.error(f"Error generating {chart_name} chart: {str(e)}")
+                            logger.error(f"❌ Error generating {chart_name} chart: {str(e)}", exc_info=True)
                     
-                    # Upload charts to Slack
+                    # Generate review influence map if pull request data is available
+                    pr_data = result.get('pull_requests', [])
+                    logger.info(f"Found {len(pr_data)} pull requests in the result")
+                    
+                    if pr_data:
+                        logger.info(f"Sample PR data: {json.dumps(pr_data[0], indent=2)}")
+                        try:
+                            logger.info("Attempting to generate review influence map...")
+                            chart_path = chart_generator.generate_review_influence_map(pr_data)
+                            if chart_path and os.path.exists(chart_path):
+                                chart_paths.append(chart_path)
+                                logger.info(f"✅ Successfully generated review influence map: {chart_path}")
+                            else:
+                                logger.warning("⚠️ Failed to generate review influence map: No valid data or file not created")
+                                if not pr_data:
+                                    logger.warning("⚠️ No pull request data available")
+                                else:
+                                    logger.warning(f"⚠️ PR data exists but chart generation failed. First PR: {pr_data[0]}")
+                        except Exception as e:
+                            logger.error(f"❌ Error generating review influence map: {str(e)}", exc_info=True)
+                    else:
+                        logger.warning("⚠️ No pull request data found in the result")
+                    
                     successful_uploads = 0
                     for chart_path in chart_paths:
                         if os.path.exists(chart_path):
@@ -247,30 +315,28 @@ def handle_dev_report_command(ack, body, respond, client: WebClient):
                             if upload_result:
                                 successful_uploads += 1
                     
-                    # Provide feedback on uploads
                     if successful_uploads > 0:
                         respond(f"✅ Successfully uploaded {successful_uploads} chart(s)!")
                     else:
                         respond("⚠️ Could not upload any charts. The text report is still available.")
-                        
+                            
                 except Exception as e:
                     logger.error(f"Error in chart generation/upload: {e}", exc_info=True)
                     respond("⚠️ There was an error generating some visualizations. The text report is still available.")
             
-            # Let users know they can ask follow-up questions
             respond("💡 You can now ask questions about this report using `/dev-ask [your question]`")
             
         except Exception as e:
             logger.error(f"Error in handle_dev_report_command: {e}", exc_info=True)
             respond("❌ An error occurred while generating the report. Please try again later.")
     
-    # Process the report in a separate thread to avoid blocking
     thread = threading.Thread(target=process_report)
-    thread.daemon = True  # Allow the program to exit even if this thread is still running
+    thread.daemon = True  
     thread.start()
 
 @app.command("/dev-ask")
 def handle_dev_ask_command(ack, body, respond, client: WebClient):
+    """Handle the /dev-ask slash command."""
     ack()
     
     def process_question():
@@ -307,15 +373,24 @@ def cleanup():
     """Cleanup function to be called on exit"""
     cleanup_temp_charts()
     executor.shutdown(wait=False)
+    
+    
+    async def close_db():
+        from database import engine
+        if engine:
+            await engine.dispose()
+    
+    try:
+        run_async_in_thread(close_db())
+    except Exception as e:
+        logger.error(f"Error during database cleanup: {e}")
 
 import atexit
 atexit.register(cleanup)
 
 if __name__ == "__main__":
-    # Ensure temp directory exists
     os.makedirs('temp_charts', exist_ok=True)
     
-    # Start the app
     SocketModeHandler(
         app=app,
         app_token=os.environ["SLACK_APP_TOKEN"]

@@ -12,4 +12,5 @@ plotly
 matplotlib
 kaleido
 pytest
- 
+sqlalchemy
+psycopg2-binary

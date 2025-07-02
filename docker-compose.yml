@@ -7,10 +7,8 @@ services:
       dockerfile: Dockerfile
     container_name: github-bot
     restart: unless-stopped
-    volumes:
-      - .:/app
-      - /app/venv
-      - /app/__pycache__
+    depends_on:
+      - db
     environment:
       - SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
       - SLACK_APP_TOKEN=${SLACK_APP_TOKEN}
@@ -18,13 +16,23 @@ services:
       - GITHUB_REPO=${GITHUB_REPO}
       - GEMINI_API_KEY=${GEMINI_API_KEY}
       - PYTHONUNBUFFERED=1
-    working_dir: /app
-    # Uncomment the following line if you want to run in development mode with auto-reload
-    # command: sh -c "pip install watchdog && watchmedo auto-restart --recursive --pattern="*.py" -- python main.py"
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/github_bot
+    volumes:
+      - .:/app
+      - /app/venv
+      - /app/__pycache__
 
-# Create a .env file in the same directory with your actual tokens:
-# SLACK_BOT_TOKEN=xoxb-your-token
-# SLACK_APP_TOKEN=xapp-your-token
-# GITHUB_TOKEN=ghp_your_token
-# GITHUB_REPO=owner/repo
-# GEMINI_API_KEY=your-gemini-api-key
+  db:
+    image: postgres:15
+    container_name: github-bot-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=github_bot
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:

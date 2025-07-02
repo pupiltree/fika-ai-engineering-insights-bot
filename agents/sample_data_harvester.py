@@ -1,26 +1,46 @@
 import json
 import os
+import logging
 from collections import defaultdict
+from typing import Dict, Any, List
 
-def sample_data_harvester(state):
-    print("\n📁 [SampleDataAgent] Loading sample commit data from /data/sample_commits.json")
+logger = logging.getLogger(__name__)
+
+def sample_data_harvester(state: Dict[str, Any]) -> Dict[str, Any]:
+    print("\n [SampleDataAgent] Loading sample commit data from /data/commits.json")
 
     try:
+        # Load commits
         with open(os.path.join("data", "commits.json"), "r") as f:
             commits = json.load(f)
+        
+        print(f" Loaded {len(commits)} commits")
+        
+        # Extract pull requests from commits
+        pull_requests = []
+        for commit in commits:
+            if 'pull_request' in commit and commit['pull_request']:
+                pr_data = commit['pull_request']
+                # Add author from commit to the PR data
+                pr_data['author'] = commit.get('author')
+                pull_requests.append(pr_data)
+        
+        logger.info(f"✅ Extracted {len(pull_requests)} pull requests with review data")
+        if pull_requests:
+            logger.info(f"Sample PR: {json.dumps(pull_requests[0], indent=2, default=str)}")
+        
+        # Return the state with commits and pull_requests
+        return {
+            **state,
+            "commits": commits,
+            "pull_requests": pull_requests  # Include pull_requests in the state
+        }
+        
     except Exception as e:
-        print(f"⚠️ Failed to load sample commits: {e}")
-        commits = []
-
-    print(f"✅ Loaded {len(commits)} sample commits.")
-
-    state["commits"] = commits
-
-    
-    file_changes = defaultdict(int)
-    for commit in commits:
-        for file in commit.get("files_changed", []):
-            file_changes[file["filename"]] += 1
-
-    state["file_hotspots"] = dict(sorted(file_changes.items(), key=lambda x: x[1], reverse=True)[:10])
-    return state
+        logger.error(f"Failed to load sample data: {e}", exc_info=True)
+        return {
+            "commits": [],
+            "pull_requests": [],
+            "file_hotspots": {},
+            "error": str(e)
+        }

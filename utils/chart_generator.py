@@ -440,30 +440,204 @@ class ChartGenerator:
             logger.error(f"Error in generate_hourly_commit_chart: {str(e)}")
             return None
 
-def generate_all_charts(commits: List[Dict[str, Any]]) -> List[str]:
-    """Generate all available charts and return their file paths."""
-    if not commits:
+    def generate_review_influence_map(self, pull_requests: List[Dict[str, Any]]) -> Optional[str]:
+        """
+        Generate a code-review influence map showing relationships between reviewers and authors.
+        
+        Args:
+            pull_requests: List of pull request data with 'author' and 'reviewers' fields
+            
+        Returns:
+            Path to the saved chart image or None if generation fails
+        """
+        logger.info("Starting review influence map generation...")
+        
+        if not pull_requests:
+            logger.warning("No pull request data provided")
+            return None
+            
+        try:
+            logger.info(f"Processing {len(pull_requests)} pull requests")
+            
+            # Process data to count review relationships
+            review_edges = []
+            for pr in pull_requests:
+                # Get author from commit data if not in PR data
+                author = pr.get('author')
+                if not author and 'commit' in pr and 'author' in pr['commit']:
+                    author = pr['commit']['author'].get('login') or pr['commit']['author'].get('name')
+                
+                reviewers = pr.get('reviewers', [])
+                
+                if not author or not reviewers:
+                    logger.warning(f"Skipping PR due to missing author or reviewers. Author: {author}, Reviewers: {reviewers}")
+                    continue
+                    
+                logger.debug(f"Processing PR by {author} with {len(reviewers)} reviewers")
+                for reviewer in reviewers:
+                    if reviewer:  # Skip empty reviewer names
+                        review_edges.append({'source': reviewer, 'target': author, 'weight': 1})
+            
+            if not review_edges:
+                logger.warning("No valid review relationships found in pull request data")
+                logger.warning(f"Processed {len(pull_requests)} PRs but found no valid author-reviewer pairs")
+                return None
+                
+            logger.info(f"Found {len(review_edges)} review relationships")
+            
+            # Create DataFrame and group by source/target
+            df_edges = pd.DataFrame(review_edges)
+            df_edges = df_edges.groupby(['source', 'target'])['weight'].sum().reset_index()
+            
+            # Get unique authors and reviewers
+            authors = set(df_edges['target'].unique())
+            reviewers = set(df_edges['source'].unique())
+            all_nodes = list(authors.union(reviewers))
+            
+            logger.info(f"Found {len(authors)} authors and {len(reviewers)} reviewers")
+            logger.debug(f"Authors: {authors}")
+            logger.debug(f"Reviewers: {reviewers}")
+            
+            if not all_nodes:
+                logger.warning("No valid nodes found for the graph")
+                return None
+                
+            # Create figure
+            fig = go.Figure()
+            
+            # Add edges
+            for _, row in df_edges.iterrows():
+                try:
+                    source_idx = all_nodes.index(row['source'])
+                    target_idx = all_nodes.index(row['target'])
+                    
+                    fig.add_trace(go.Scatter(
+                        x=[source_idx, (source_idx + target_idx) / 2, target_idx],
+                        y=[0, 0.4, 1],
+                        mode='lines',
+                        line=dict(width=min(8, 1 + row['weight'] * 0.5), color='rgba(100, 100, 200, 0.4)'),
+                        hoverinfo='text',
+                        hovertext=f"{row['source']} → {row['target']}<br>Reviews: {row['weight']}",
+                        showlegend=False
+                    ))
+                except Exception as e:
+                    logger.error(f"Error adding edge {row['source']} → {row['target']}: {str(e)}")
+            
+            # Add reviewer nodes (top)
+            reviewer_nodes = [node for node in all_nodes if node in reviewers]
+            reviewer_x = [all_nodes.index(node) for node in reviewer_nodes]
+            
+            # Add author nodes (bottom)
+            author_nodes = [node for node in all_nodes if node in authors]
+            author_x = [all_nodes.index(node) for node in author_nodes]
+            
+            # Add reviewer nodes trace
+            if reviewer_x:
+                fig.add_trace(go.Scatter(
+                    x=reviewer_x,
+                    y=[0] * len(reviewer_nodes),
+                    mode='markers+text',
+                    marker=dict(size=20, color='#ff7f0e', line=dict(width=2, color='#cc6a00')),
+                    text=reviewer_nodes,
+                    textposition='top center',
+                    name='Reviewers',
+                    hoverinfo='text',
+                    hovertext=[f'Reviewer: {node}<br>Reviews given: {sum(df_edges[df_edges["source"] == node]["weight"])}' 
+                              for node in reviewer_nodes]
+                ))
+            
+            # Add author nodes trace
+            if author_x:
+                fig.add_trace(go.Scatter(
+                    x=author_x,
+                    y=[1] * len(author_nodes),
+                    mode='markers+text',
+                    marker=dict(size=20, color='#1f77b4', line=dict(width=2, color='#15507a')),
+                    text=author_nodes,
+                    textposition='bottom center',
+                    name='Authors',
+                    hoverinfo='text',
+                    hovertext=[f'Author: {node}<br>Reviews received: {sum(df_edges[df_edges["target"] == node]["weight"])}' 
+                              for node in author_nodes]
+                ))
+            
+            # Update layout
+            fig.update_layout(
+                title='Code Review Influence Map',
+                showlegend=True,
+                hovermode='closest',
+                margin=dict(b=100, l=50, r=50, t=80),
+                xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+                yaxis=dict(showgrid=False, zeroline=False, showticklabels=False, range=[-0.1, 1.1]),
+                plot_bgcolor='white',
+                height=600,
+                annotations=[
+                    dict(text="Reviewers", x=0.5, y=1.05, showarrow=False, 
+                         xref="paper", yref="paper", font=dict(size=14, color="#ff7f0e")),
+                    dict(text="Authors", x=0.5, y=-0.1, showarrow=False, 
+                         xref="paper", yref="paper", font=dict(size=14, color="#1f77b4"))
+                ]
+            )
+            
+            # Save the plot
+            chart_path = self._save_plot(fig, 'review_influence_map')
+            if chart_path and os.path.exists(chart_path):
+                logger.info(f"Successfully saved chart to {chart_path}")
+                return chart_path
+            else:
+                logger.error("Failed to save chart")
+                return None
+                
+        except Exception as e:
+            logger.error(f"Error in generate_review_influence_map: {str(e)}", exc_info=True)
+            return None
+
+def generate_all_charts(commits: List[Dict[str, Any]], pull_requests: List[Dict[str, Any]] = None) -> List[str]:
+    """
+    Generate all available charts and return their file paths.
+    
+    Args:
+        commits: List of commit data
+        pull_requests: Optional list of pull request data for review influence map
+        
+    Returns:
+        List of paths to generated chart images
+    """
+    if not commits and not pull_requests:
         return []
         
     chart_paths = []
     generator = ChartGenerator()
     
-    chart_generators = [
-        (generator.generate_commit_activity_chart, "commit_activity"),
-        (generator.generate_author_contribution_chart, "author_contributions"),
-        (generator.generate_file_activity_chart, "file_activity"),
-        (generator.generate_hourly_commit_chart, "hourly_commits")
-    ]
+    # Generate commit-based charts if commits are available
+    if commits:
+        chart_generators = [
+            (generator.generate_commit_activity_chart, "commit_activity"),
+            (generator.generate_author_contribution_chart, "author_contributions"),
+            (generator.generate_file_activity_chart, "file_activity"),
+            (generator.generate_hourly_commit_chart, "hourly_commits")
+        ]
+        
+        for generator_func, chart_name in chart_generators:
+            try:
+                chart_path = generator_func(commits)
+                if chart_path and os.path.exists(chart_path):
+                    chart_paths.append(chart_path)
+                else:
+                    logger.warning(f"Failed to generate {chart_name} chart")
+            except Exception as e:
+                logger.error(f"Error in chart generator {generator_func.__name__}: {str(e)}", exc_info=True)
+                continue
     
-    for generator_func, chart_name in chart_generators:
+    # Generate review influence map if pull request data is available
+    if pull_requests:
         try:
-            chart_path = generator_func(commits)
+            chart_path = generator.generate_review_influence_map(pull_requests)
             if chart_path and os.path.exists(chart_path):
                 chart_paths.append(chart_path)
             else:
-                logger.warning(f"Failed to generate {chart_name} chart")
+                logger.warning("Failed to generate review influence map")
         except Exception as e:
-            logger.error(f"Error in chart generator {generator_func.__name__}: {str(e)}", exc_info=True)
-            continue
+            logger.error(f"Error generating review influence map: {str(e)}", exc_info=True)
     
     return chart_paths
