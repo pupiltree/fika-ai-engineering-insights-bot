@@ -1,8 +1,7 @@
-from langchain_core.tools import tool
 
-@tool
-def analyze_diff(events):
+def analyze_diff(state):
     """analyze"""
+    events=state["commits"]
     churn_data = []
     for event in events:
         stats = event.get("stats", {})
@@ -12,4 +11,6 @@ def analyze_diff(events):
             "deletions": stats.get("deletions", 0),
             "total": stats.get("total", 0)
         })
-    return churn_data
+    return {**state, "churn_report": churn_data}
+
+
