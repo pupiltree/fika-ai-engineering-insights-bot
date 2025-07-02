@@ -1,14 +1,36 @@
-# Ignore Python cache and virtual env
+# Python
 __pycache__/
-*.pyc
-.venv/
+*.py[cod]
+*.egg
+*.egg-info/
+*.pyo
+*.pyd
+.Python
 env/
+venv/
+.venv/
+ENV/
+build/
+dist/
 
-# Ignore database and logs
-*.db
-*.sqlite
+# VSCode
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs
 *.log
 
-# Ignore IDE and OS files
-.vscode/
-.DS_Store
+# Database
+*.sqlite3
+*.db
+
+# System
+Thumbs.db
+
+# Streamlit cache
+.streamlit/
+
+# Docker
+*.tar
