@@ -346,6 +346,15 @@ class EnhancedInsightNarrator:
         # Generate forecasts
         forecast = self.forecast_next_week(analysis, historical_data)
         
+        # Calculate DORA metrics
+        cycle_time_metrics = self.calculate_cycle_time()
+        dora_metrics = f"""📊 *DORA Metrics*
+        • Deployment Frequency: {len(analysis) // 7 if len(analysis) > 7 else '1-7'}/day (based on active days)
+        • Lead Time for Changes: {cycle_time_metrics['avg_cycle_time_hours']:.1f} hours (avg)
+        • Change Failure Rate: {sum(1 for r in metrics['risk_indicators'].values() if r.get('high_churn', False)) / len(metrics['risk_indicators']) * 100:.1f}% of changes with high churn
+        • Mean Time to Recover: {cycle_time_metrics['pr_merge_time_hours']:.1f} hours (PR merge time)
+        • Feature Completion: {cycle_time_metrics['feature_completion_days']:.1f} days (avg) """
+        
         sections = []
         
         total_commits = sum(stats['commits'] for stats in analysis.values())
@@ -368,6 +377,9 @@ class EnhancedInsightNarrator:
         • Range: {forecast['churn_forecast']['range']['optimistic']}-{forecast['churn_forecast']['range']['pessimistic']}"""
         
         sections.append(forecast_section)
+        
+        # Add DORA metrics section
+        sections.append(dora_metrics)
         
         # Add risk scenarios if any
         if forecast['risk_scenarios']:
