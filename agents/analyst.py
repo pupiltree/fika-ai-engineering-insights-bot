@@ -1,6 +1,7 @@
 import sqlite3
 import statistics
 from datetime import datetime
+import random
 
 class DiffAnalyst:
     def __init__(self, db_path="fika_insights.db"):
@@ -17,7 +18,7 @@ class DiffAnalyst:
         total_churn = sum(churns)
         avg_churn = statistics.mean(churns) if churns else 0
         churn_std = statistics.stdev(churns) if len(churns) > 1 else 0
-        churn_spikes = [c for c in churns if churn_std and c > avg_churn + 2*churn_std]
+        churn_spikes = [c for c in churns if churn_std and c > avg_churn + 2 * churn_std]
 
         return {
             "total_commits": len(churns),
@@ -47,9 +48,23 @@ class DiffAnalyst:
             "avg_review_latency_hours": avg_review_latency,
         }
 
+    def forecast_churn(self, commits_metrics):
+        """
+        Naively forecast next week's churn per commit based on recent average churn,
+        adding a small random variation to simulate uncertainty.
+        """
+        avg = commits_metrics.get("avg_churn", 0)
+        # add ±10% random noise
+        variation = random.uniform(-0.1, 0.1) * avg
+        forecast = avg + variation
+        return round(forecast, 2)
+
 if __name__ == "__main__":
     analyst = DiffAnalyst()
     commits_metrics = analyst.analyze_commits()
     prs_metrics = analyst.analyze_pull_requests()
+    forecasted_churn = analyst.forecast_churn(commits_metrics)
+
     print(f"[✔] Commit Metrics: {commits_metrics}")
     print(f"[✔] PR Metrics: {prs_metrics}")
+    print(f"[🔮] Forecasted churn next week: {forecasted_churn} lines per commit")
