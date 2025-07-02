@@ -32,13 +32,10 @@ async def dev_report(interaction: discord.Interaction):
     # Run your full pipeline
     result = run_pipeline()
 
-    # Prepare the generated chart images
-    chart_files = [
-        File("reports/commits_vs_prs.png"),
-        File("reports/churn_per_author.png"),
-    ]
+    # Prepare the generated chart images dynamically
+    chart_files = [File(path) for path in result.get("charts", [])]
 
-    # Send narrative + charts as a follow-up message
+    # Send narrative + all generated charts as a follow-up message
     await interaction.followup.send(
         content=result["narrative"],
         files=chart_files

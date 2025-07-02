@@ -2,6 +2,7 @@ from agents.harvester import DataHarvester
 from agents.analyst import DiffAnalyst
 from agents.narrator import InsightNarrator
 from reports.plot import plot_commits_vs_prs, plot_churn_per_author
+import os
 
 def run_pipeline():
     print("[🚀] Starting pipeline...")
@@ -24,7 +25,7 @@ def run_pipeline():
     narrative = narrator.generate_narrative(commits_metrics, prs_metrics, forecasted_churn)
     print(f"[✔] InsightNarrator: Narrative generated.")
 
-    # 4) Generate charts in reports/
+    # 4) Generate standard charts in reports/
     plot_commits_vs_prs(
         commits_count=commits_metrics["total_commits"],
         prs_count=prs_metrics["total_prs"],
@@ -39,11 +40,19 @@ def run_pipeline():
     author_churns_list = sorted(author_churns.items(), key=lambda x: x[0])
     plot_churn_per_author(author_churns_list)
 
+    # 5) Generate code-review influence map
+    influence_map_path = analyst.generate_influence_graph()
+
     return {
         "commits_metrics": commits_metrics,
         "prs_metrics": prs_metrics,
         "forecasted_churn": forecasted_churn,
         "narrative": narrative,
+        "charts": [
+            "reports/commits_vs_prs.png",
+            "reports/churn_per_author.png",
+            influence_map_path
+        ]
     }
 
 if __name__ == "__main__":
@@ -51,3 +60,6 @@ if __name__ == "__main__":
     print("\n[📊] Final Narrative:\n")
     print(result["narrative"])
     print(f"\n🔮 Forecasted Churn Next Week: {result['forecasted_churn']} lines per commit")
+    print("\n[📁] Charts generated:")
+    for path in result["charts"]:
+        print(f"  - {path}")

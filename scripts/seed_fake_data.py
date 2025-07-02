@@ -26,6 +26,7 @@ cur.execute("""
 CREATE TABLE IF NOT EXISTS pull_requests (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     author TEXT,
+    reviewer TEXT,
     opened_at TEXT,
     closed_at TEXT,
     merged_at TEXT,
@@ -35,19 +36,26 @@ CREATE TABLE IF NOT EXISTS pull_requests (
 );
 """)
 
+# Example authors and reviewers
+authors = ["alice", "bob", "charlie"]
+reviewers = ["eve", "frank", "grace"]
+
 # Insert fake commits
 for _ in range(50):
-    author = random.choice(["alice", "bob", "charlie"])
+    author = random.choice(authors)
     date = (datetime.datetime.now() - datetime.timedelta(days=random.randint(0, 14))).isoformat()
     additions = random.randint(10, 500)
     deletions = random.randint(5, 300)
     files_changed = random.randint(1, 15)
-    cur.execute("INSERT INTO commits (author, date, additions, deletions, files_changed) VALUES (?, ?, ?, ?, ?)",
-                (author, date, additions, deletions, files_changed))
+    cur.execute(
+        "INSERT INTO commits (author, date, additions, deletions, files_changed) VALUES (?, ?, ?, ?, ?)",
+        (author, date, additions, deletions, files_changed)
+    )
 
-# Insert fake pull requests
+# Insert fake pull requests with reviewers
 for _ in range(20):
-    author = random.choice(["alice", "bob", "charlie"])
+    author = random.choice(authors)
+    reviewer = random.choice(reviewers)
     days_ago = random.randint(0, 14)
     opened = datetime.datetime.now() - datetime.timedelta(days=days_ago, hours=random.randint(1, 12))
     closed = opened + datetime.timedelta(hours=random.randint(1, 48))
@@ -56,11 +64,22 @@ for _ in range(20):
     deletions = random.randint(50, 700)
     files_changed = random.randint(1, 20)
     cur.execute("""
-        INSERT INTO pull_requests (author, opened_at, closed_at, merged_at, files_changed, additions, deletions)
-        VALUES (?, ?, ?, ?, ?, ?, ?)""",
-        (author, opened.isoformat(), closed.isoformat(), merged.isoformat(), files_changed, additions, deletions))
+        INSERT INTO pull_requests (
+            author, reviewer, opened_at, closed_at, merged_at,
+            files_changed, additions, deletions
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    """, (
+        author,
+        reviewer,
+        opened.isoformat(),
+        closed.isoformat(),
+        merged.isoformat(),
+        files_changed,
+        additions,
+        deletions
+    ))
 
 conn.commit()
 conn.close()
 
-print("[✔] Seeded database with fake commits and pull requests.")
+print("[✔] Seeded database with fake commits and pull requests (with reviewers).")
