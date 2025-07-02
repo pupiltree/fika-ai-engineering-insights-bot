@@ -64,14 +64,29 @@ class InsightNarrator:
             return "[❌] GROQ_API_KEY not set."
         headers = {"Authorization": f"Bearer {api_key}"}
         payload = {
-    "model": "llama3-8b-8192",
-    "messages": [
-        {"role": "system", "content": "You are a DevOps analyst generating DORA insights."},
-        {"role": "user", "content": f"Polish and professionalize this summary:\n{prompt}"}
-    ]
-}
-
-
+            "model": "llama3-8b-8192",
+            "messages": [
+                {
+                    "role": "system",
+                    "content": (
+                        "You are a senior DevOps engineer and technical writer who generates professional, concise, "
+                        "and insightful engineering reports. Your task is to turn raw DORA metrics and churn analysis "
+                        "into clear, actionable summaries for engineering leadership. Keep the tone formal, informative, "
+                        "and focused on key takeaways. Avoid repetition and unnecessary words."
+                    )
+                },
+                {
+                    "role": "user",
+                    "content": (
+                        f"Here are the raw DORA and code churn insights:\n\n{prompt}\n\n"
+                        "Please rewrite them into a polished report summary with bullet points or short paragraphs, "
+                        "suitable for sharing with CTOs and engineering managers. Clearly highlight deployment frequency, "
+                        "lead time, change churn, change failure risk, and the forecasted churn for next week. "
+                        "Conclude with recommendations if any metrics indicate potential risks or areas for improvement."
+                    )
+                }
+            ]
+        }
         resp = requests.post(
             "https://api.groq.com/openai/v1/chat/completions",
             headers=headers,
@@ -81,6 +96,7 @@ class InsightNarrator:
         print(f"[🐞] Groq raw response: {resp.status_code} {resp.text}")
         data = resp.json()
         return data.get("choices", [{}])[0].get("message", {}).get("content", "[❌] Groq generation failed.").strip()
+
 
 if __name__ == "__main__":
     # Example test data
