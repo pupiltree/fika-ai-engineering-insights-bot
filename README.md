@@ -14,14 +14,16 @@ This project implements a Discord bot delivering AI-powered, DORA-aligned engine
 
 ✅ **Agent Architecture**
 - **DataHarvester**: fetches commit and PR data.
-- **DiffAnalyst**: calculates metrics, churn, detects churn spikes.
-- **InsightNarrator**: generates DORA-aligned AI insights.
+- **DiffAnalyst**: calculates metrics, churn, detects churn spikes, forecasts churn.
+- **InsightNarrator**: generates DORA-aligned AI insights using built-in Python or pluggable LLMs (OpenAI, Ollama, Groq).
 
 ✅ **Seed Script** with fake GitHub events for instant evaluation.
 
 ✅ **Discord Bot Slash Command** `/devreport`
 - Posts AI-generated summaries.
-- Attaches PNG charts (Commits vs PRs, Churn per Author).
+- Attaches PNG charts (Commits vs PRs, Churn per Author, Influence Map).
+
+✅ **Scheduled Weekly Digests** automatically posted every Monday at 9 AM.
 
 ✅ **One-command bootstrap**: `./run.sh`
 
@@ -65,6 +67,10 @@ pip install -r requirements.txt
 ```env
 export DISCORD_BOT_TOKEN="your-bot-token-here"
 export DISCORD_GUILD_ID="your-server-id-here"
+export DISCORD_CHANNEL_ID="your-channel-id-here"   # channel to post scheduled digests
+export LLM_PROVIDER=groq                           # or "builtin", "openai", "llama"
+export GROQ_API_KEY="your-groq-key-if-using-groq"
+
 ```
 
 4️⃣ **Load your environment:**
@@ -95,7 +101,7 @@ source .env
 
 Type `/devreport` in your Discord server:
 - The bot will generate AI insights.
-- The bot will post a narrative summary along with commit and churn charts.
+- The bot will post a narrative summary along with commit, churn, and influence charts.
 
 ---
 
@@ -129,7 +135,7 @@ The animated demo GIF below demonstrates:
 - The bot’s narrative and charts response.
 
 ![Demo GIF](demo.gif)
-
+![Demo GIF](demo_2.gif)
 ---
 
 ## 📜 License
