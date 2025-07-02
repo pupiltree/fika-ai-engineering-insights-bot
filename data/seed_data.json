@@ -1,0 +1,53 @@
+[
+    {
+        "sha": "abc123",
+        "commit": {"author": {"name": "Alice"}, "date": "2025-06-25T10:00:00Z"},
+        "stats": {"additions": 100, "deletions": 50, "total": 150},
+        "files": [{"filename": "file1.py"}, {"filename": "file2.py"}]
+    },
+    {
+        "sha": "def456",
+        "commit": {"author": {"name": "Bob"}, "date": "2025-06-26T12:00:00Z"},
+        "stats": {"additions": 200, "deletions": 100, "total": 300},
+        "files": [{"filename": "file3.py"}]
+    },
+    {
+        "sha": "ghi789",
+        "commit": {"author": {"name": "Charlie"}, "date": "2025-06-28T15:30:00Z"},
+        "stats": {"additions": 50, "deletions": 20, "total": 70},
+        "files": [{"filename": "file4.js"}]
+    },
+    {
+        "sha": "jkl012",
+        "commit": {"author": {"name": "Alice"}, "date": "2025-06-29T11:00:00Z"},
+        "stats": {"additions": 150, "deletions": 75, "total": 225},
+        "files": [{"filename": "file5.py"}]
+    },
+    {
+        "sha": "mno345",
+        "commit": {"author": {"name": "Bob"}, "date": "2025-06-30T14:20:00Z"},
+        "stats": {"additions": 300, "deletions": 200, "total": 500},
+        "files": [{"filename": "file6.py"}, {"filename": "file7.py"}]
+    },
+    {
+        "number": 1,
+        "author": "Alice",
+        "created_at": "2025-06-25T09:00:00Z",
+        "closed_at": "2025-06-25T15:00:00Z",
+        "state": "closed"
+    },
+    {
+        "number": 2,
+        "author": "Bob",
+        "created_at": "2025-06-27T10:00:00Z",
+        "closed_at": "2025-06-27T18:00:00Z",
+        "state": "closed"
+    },
+    {
+        "number": 3,
+        "author": "Charlie",
+        "created_at": "2025-06-29T13:00:00Z",
+        "closed_at": null,
+        "state": "open"
+    }
+]
