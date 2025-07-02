@@ -1,99 +1,365 @@
-## FIKA AI Research — Engineering-Productivity Intelligence **MVP** Challenge
+# 🚀 GitOps Insight Bot - FIKA AI Engineering Productivity MVP
 
-*[Learn more at **powersmy.biz**](https://powersmy.biz/)*
-
-### 🚀 Hiring Opportunity
-
-**We're hiring!** This challenge is part of our recruitment process for engineering positions. We offer both **remote** and **on-site** work options to accommodate your preferences and lifestyle.
-
-### 1 ✦ Context
-
-We need a chat-first, AI-powered view of how every engineer and squad are performing—both technically and in terms of business value shipped. Build a **minimum-viable product (MVP)** in fewer than seven days that delivers these insights inside Slack **or** Discord.
-
-### 2 ✦ Core MVP Requirements (non-negotiables)
-
-| Area                     | Requirement                                                                                                                                                                                                                                                   |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Agent-centric design** | Use **LangChain + LangGraph** agents written in **Python 3.10+**. Provide at least two clear roles—*Data Harvester* and *Diff Analyst*—handing off to an *Insight Narrator* agent via LangGraph edges.                                                        |
-| **Data ingestion**       | Pull GitHub events via REST or webhooks. The commits API exposes `additions`, `deletions`, `changed_files` per commit ([docs.github.com][3]); the *List PR files* endpoint gives the same per-file counts ([docs.github.com][4]).                             |
-| **Metrics**              | Track commits, PR throughput, review latency, cycle time, CI failures **plus per-author diff stats** (lines ±, files touched). Optionally fall back to `git log --numstat` for local analysis ([stackoverflow.com][5]).                                       |
-| **Diff analytics layer** | Your *Diff Analyst* agent aggregates churn, flags spikes, and links code-churn outliers to defect risk (research shows churn correlates with bugs) ([stackoverflow.com][6]).                                                                                  |
-| **AI insight layer**     | Agents transform data into daily, weekly, monthly narratives that map to DORA’s four keys (lead-time, deploy frequency, change-failure, MTTR) ([dora.dev][7]). Log every prompt/response for auditability.                                                    |
-| **Chat-first output**    | A **Slack bot** (Bolt Python SDK) ([api.slack.com][8]) or **Discord bot** (discord.js slash-command with embeds) ([discordjs.guide][9]) must, on `/dev-report weekly`, post a chart/table + the agent summary. JSON API is optional but the bot is mandatory. |
-| **MVP polish**           | One-command bootstrap (`docker compose up` or `make run`). Include a seed script with fake GitHub events so reviewers see data instantly.                                                                                                                     |
-| **Docs**                 | `README.md` with bot install guide and an architecture diagram showing LangGraph nodes/edges, storage and chat layer.                                                                                                                                         |
-
-### 3 ✦ Tech Stack (required)
-
-* **Language:** Python 3.10+
-* **Agent Frameworks:** LangChain ≥ 0.1.0 ([python.langchain.com][1]) and LangGraph service or OSS package ([langchain.com][2])
-* **Chat SDK:** Slack Bolt-Python **or** discord.js (node sidecar acceptable) ([api.slack.com][8], [discordjs.guide][9])
-* **Storage:** any Python-friendly store (Postgres, SQLite, DuckDB, TinyDB).
-* **Viz:** matplotlib, Plotly, or quick-chart PNGs.
-
-### 4 ✦ Stretch Goals (optional)
-
-* Forecast next week’s cycle time or churn.
-* Code-review “influence map” graph.
-* Pluggable LLM driver (OpenAI ↔ local Llama) in < 15 min.
-* Scheduled digests (bot auto-drops Monday summary).
-
-### 5 ✦ Deliverables
-
-1. **Pull Request** to the challenge repo containing code + docs.
-2. ≤ 3-minute Loom/GIF demo (encouraged).
-
-### 6 ✦ Timeline
-
-*Fork today → PR in **72 hours** (extensions on request).*
-We’ll smoke-test your bot in our workspace, then book your interview.
-
-### 7 ✦ Evaluation Rubric (100 pts)
-
-| Category                         | Pts | What we look for                                                |
-| -------------------------------- | --- | --------------------------------------------------------------- |
-| LangGraph agent architecture     | 25  | Clear roles, deterministic edges, minimal hallucination.        |
-| MVP completeness & correctness   | 25  | Metrics and diff stats accurate; bot responds; seed data works. |
-| Code quality & tests             | 20  | Idiomatic Python, CI green.                                     |
-| Insight value & business mapping | 15  | Narratives help leadership act.                                 |
-| Dev X & docs                     | 10  | Fast start, clear setup, diagrams.                              |
-| Stretch innovation               | 5   | Any wow factor.                                                 |
-
-### 8 ✦ Interview Flow
-
-1. **Code/architecture dive (45 min)**
-2. **Edge-case & scaling Q\&A (30 min)**
-3. **Product thinking & culture fit (15 min)**
-
-### 9 ✦ Ground Rules
-
-Original work only; public libs are fine. Don’t commit real secrets. We may open-source the winning MVP with credit.
-
-> **Ready?** Fork ✦ Build ✦ PR ✦ Impress us.
-> Questions → **[founder@powersmy.biz](mailto:founder@powersmy.biz)**
+A chat-first, AI-powered engineering productivity bot that delivers technical and business value insights directly inside Slack. Built with LangChain + LangGraph agents to analyze GitHub commit data and generate DORA-aligned performance summaries.
 
 ---
 
-### Quick Reference Links
+## 🏗️ Architecture Overview
 
-* LangChain docs ([python.langchain.com][1]) – prompt, tool and memory helpers.
-* LangGraph overview ([langchain.com][2]) – stateful orchestration patterns.
-* GitHub Commits API (`additions`/`deletions`) ([docs.github.com][3])
-* GitHub PR Files API (per-file diff) ([docs.github.com][4])
-* Slack slash-commands guide ([api.slack.com][8])
-* Discord embeds guide ([discordjs.guide][9])
-* Git diff `--numstat` usage ([stackoverflow.com][5])
-* DORA four-key metrics ([dora.dev][7])
-* Code-churn research on defects ([stackoverflow.com][6])
+This MVP uses a multi-agent system orchestrated by LangGraph to transform raw GitHub data into actionable engineering insights:
 
-These resources should cover everything you need—happy hacking!
+```
+GitHub API → DataHarvesterAgent → DiffAnalystAgent → InsightNarratorAgent → Slack Bot
+                    ↓                    ↓                    ↓
+              Raw Commit Data    Churn Analysis    DORA-Aligned Reports
+```
 
-[1]: https://python.langchain.com/docs/introduction/?utm_source=chatgpt.com "Python LangChain"
-[2]: https://www.langchain.com/langgraph?utm_source=chatgpt.com "LangGraph - LangChain"
-[3]: https://docs.github.com/rest/commits/commits?utm_source=chatgpt.com "REST API endpoints for commits - GitHub Docs"
-[4]: https://docs.github.com/en/rest/pulls/pulls?utm_source=chatgpt.com "REST API endpoints for pull requests - GitHub Docs"
-[5]: https://stackoverflow.com/questions/9933325/is-there-a-way-of-having-git-show-lines-added-lines-changed-and-lines-removed?utm_source=chatgpt.com "Is there a way of having git show lines added, lines changed and ..."
-[6]: https://stackoverflow.com/questions/56941641/using-githubs-api-to-get-lines-of-code-added-deleted-per-commit-on-a-branch?utm_source=chatgpt.com "Using GitHub's API to get lines of code added/deleted per commit ..."
-[7]: https://dora.dev/guides/dora-metrics-four-keys/?utm_source=chatgpt.com "DORA's software delivery metrics: the four keys"
-[8]: https://api.slack.com/interactivity/slash-commands?utm_source=chatgpt.com "Enabling interactivity with Slash commands - Slack API"
-[9]: https://discordjs.guide/popular-topics/embeds?utm_source=chatgpt.com "Embeds | discord.js Guide"
+### LangGraph Agent Architecture
+
+- **DataHarvesterAgent**: Fetches GitHub commit metadata via REST API (commits, PRs, review data)
+- **DiffAnalystAgent**: Analyzes code churn, flags outliers, correlates with defect risk
+- **InsightNarratorAgent**: Transforms metrics into DORA-aligned narratives (lead time, deploy frequency, MTTR, change failure rate)
+- **QueryAgent**: Handles natural language queries about repository performance
+- **SampleDataHarvesterAgent**: Fetches sample GitHub commit metadata via REST API (commits, PRs, review data)
+
+![Architecture Diagram](./public/graph.png)
+*Figure 1: System Architecture Overview*
+
+All agent interactions are logged for auditability as required.
+
+---
+
+## 📊 Core Metrics & DORA Alignment
+
+### Tracked Metrics
+- **Lead Time**: Commit to deployment time tracking
+- **Deploy Frequency**: Release cadence analysis  
+- **Change Failure Rate**: CI failure correlation
+- **Mean Time to Recovery (MTTR)**: Issue resolution tracking
+- **Per-Author Stats**: Lines changed, files touched, review participation
+- **Code Churn**: Identifies high-risk changes correlated with defect probability
+- **Review Influence Map**: Visualizes code review relationships between authors and reviewers
+
+### Sample Report Output
+
+Here's an example of the weekly developer productivity report generated by the system:
+
+```markdown
+:bar_chart: Executive Summary
+• 39 total commits this week
+• +3,989 lines added, -795 lines removed
+• 14 active contributors
+• Net change: +3,194 lines
+
+:crystal_ball: Next Week Forecast (Confidence: low)
+• Predicted Cycle Time: 17.6h (improving)
+• Range: 14.9-22.0h
+• Predicted Churn Ratio: 0.236 (increasing)
+• Range: 0.165-0.33
+```
+
+### Visual Insights
+
+#### Commit Activity Over Time
+![Commit Activity](./public/commit_activity.png)
+*Figure 2: Daily commit patterns and volume*
+
+#### Author Contributions
+![Author Contributions](./public/author_contributions.png)
+*Figure 3: Breakdown of contributions by developer*
+
+#### Review Influence Map
+![Review Influence Map](./public/review_influence_map.png)
+*Figure 4: Team collaboration and code review relationships*
+
+### Strategic Recommendations
+
+1. **Investigate Churn**: The forecasted increasing churn ratio (0.236) indicates potential issues with code quality or requirements clarity.
+2. **Code Review Focus**: Target reviews on areas with high recent changes.
+3. **Resource Allocation**: Monitor team members with unusual contribution patterns.
+4. **Performance Tracking**: Celebrate improvements in cycle time while addressing quality concerns.
+
+For the complete report format and additional metrics, see [public/report.txt](./public/report.txt).
+
+### 🔍 Review Influence Map
+
+An interactive network graph that visualizes code review relationships within your team:
+
+- **Relationship Visualization**: Shows connections between code authors and reviewers
+- **Review Frequency**: Edge thickness represents the number of reviews between team members
+- **Team Insights**: Identifies knowledge sharing patterns and potential bottlenecks
+- **Interactive Hover**: View detailed review statistics for each team member
+
+Example insights:
+- Identify key reviewers who provide most feedback
+- Spot knowledge silos where only specific team members review certain areas
+- Balance review workload across the team
+- Track how review relationships evolve over time
+
+### 🔮 Forecasting Capabilities
+
+The system includes predictive analytics to forecast key engineering metrics:
+
+- Cycle Time Forecasting
+- Churn Prediction
+- Risk Assessment
+- Business Value Mapping
+
+---
+
+## 🚀 Quick Start (One-Command Bootstrap)
+
+### Option 1: Docker Compose (Recommended)
+```bash
+git clone <repo-url>
+cd gitops-insight-bot
+cp .env.example .env  # Configure your tokens
+docker-compose up --build
+```
+
+### Option 2: Local Development
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python main.py
+```
+
+### Sample Data for Instant Demo
+```bash
+A `commits.json` file is provided in the `data/` directory as sample data.  
+You can use it with the `sample_data_harvester` to generate immediate highlights which is ideal for testing or demos when a GitHub token is not available.
+```
+
+
+---
+
+## 💬 Slack Bot Commands
+
+### Primary Command
+- **`/dev-report`** - Generates comprehensive engineering performance report with:
+  - DORA metrics visualization
+  - Squad performance comparison
+  - Code churn risk analysis
+  - Actionable insights for leadership
+
+### Interactive Queries
+- **`/dev-ask "Who are the top contributors this month?"`**
+- **`/dev-ask "What files have the highest churn risk?"`**
+- **`/dev-ask "How's our cycle time trending?"`**
+
+All responses include charts, tables, and agent-generated summaries.
+
+---
+
+## ⚙️ Environment Configuration
+
+```ini
+# GitHub Data Ingestion
+GITHUB_TOKEN=ghp_yourtokenhere
+GITHUB_REPO=owner/repo-name
+
+# Slack Integration  
+SLACK_BOT_TOKEN=xoxb-...
+SLACK_APP_TOKEN=xapp-...
+
+# AI Insights
+GEMINI_API_KEY=your_gemini_key
+
+# Optional: Fallback to local git analysis
+USE_LOCAL_GIT=false
+USE_SAMPLE_DATA=false  # Set true for demo without GitHub access
+```
+
+---
+
+## �️ Database Configuration (Optional)
+
+The bot can optionally use a PostgreSQL database to store historical metrics and reports. If no database is configured, it will use in-memory storage by default.
+
+### Setting Up PostgreSQL
+
+1. Install PostgreSQL (if not already installed)
+2. Create a new database and user:
+   ```sql
+   CREATE DATABASE github_insights;
+   CREATE USER bot_user WITH PASSWORD 'your_secure_password';
+   GRANT ALL PRIVILEGES ON DATABASE github_insights TO bot_user;
+   ```
+
+3. Set the database URL in your `.env` file:
+   ```
+   # For PostgreSQL (recommended for production)
+   DATABASE_URL=postgresql+asyncpg://bot_user:your_secure_password@localhost/github_insights
+   
+   # Or use SQLite (default, for development)
+   # DATABASE_URL=sqlite+aiosqlite:///./github_insights.db
+   ```
+
+4. (Optional) Enable SQL query logging:
+   ```
+   SQL_ECHO=True
+   ```
+
+The database will be automatically initialized when the bot starts.
+
+---
+
+## �🔧 Slack Bot Installation Guide
+
+### 1. Create Slack App
+1. Visit [https://api.slack.com/apps](https://api.slack.com/apps)
+2. **Create New App** → From scratch
+3. Name: `GitOps Insight Bot`
+
+### 2. Configure Permissions
+**OAuth & Permissions** → **Bot Token Scopes**:
+- `commands` (slash commands)
+- `chat:write` (post messages)
+- `files:write` (upload charts)
+- `chat:write.public` (post in channels)
+
+### 3. Enable Socket Mode
+- Navigate to **Socket Mode** → Toggle ON
+- Generate App Level Token → Copy to `SLACK_APP_TOKEN`
+
+### 4. Add Slash Commands
+**Slash Commands** → Create:
+- Command: `/dev-report`
+- Description: "Generate engineering performance report" 
+
+### 5. Install & Invite
+1. **Install App** → Install to Workspace
+2. Copy **Bot User OAuth Token** to `SLACK_BOT_TOKEN`  
+3. In Slack: `/invite @GitOps Insight Bot`
+
+---
+
+## 📁 Project Structure
+
+```
+.
+├── agents/                    # LangGraph Agent Implementations
+│   ├── data_harvester.py      # GitHub API → structured data
+│   ├── sample_data_harvester.py # Mock data for demo/testing
+│   ├── diff_analyst.py        # Churn analysis & risk scoring
+│   ├── insight_narrator.py    # DORA metrics → business narratives
+│   └── query_agent.py         # Natural language query handler
+│
+├── database/                  # Database models and operations
+│   ├── __init__.py
+│   ├── db.py                 # Database connection and session management
+│   └── crud.py               # Database CRUD operations
+│
+├── utils/                     # Utility functions
+│   └── chart_generator.py     # Data visualization utilities
+│
+├── data/                      # Data files
+│   └── commits.json           # Sample commit data for demo
+│
+├── temp_charts/               # Temporary storage for generated charts
+├── public/                    # Static assets
+│   └── graph.png             # System architecture diagram
+│
+├── main.py                   # Main application entry point
+├── database.py               # Database initialization
+├── requirements.txt          # Python dependencies
+├── docker-compose.yml        # Container orchestration
+├── Dockerfile               # Container definition
+└── README.md                # This file
+```
+
+---
+
+## 🧪 Testing & Data Sources
+
+### Data Ingestion Methods
+1. **Live GitHub API**: Real-time commit, PR, and review data
+2. **Local Git Analysis**: Fallback using `git log --numstat` 
+3. **Sample Data**: 30-day seed dataset for immediate demo
+
+### Test Coverage
+```bash
+pytest tests/ --cov=agents
+```
+Covers agent logic, metric calculations, and LangGraph workflows.
+
+---
+
+## 📈 Sample Output
+
+When you run `/dev-report`, expect:
+
+```
+📊 Engineering Summary (Oct 21-28, 2024)
+
+🚀 DORA Metrics:
+• Lead Time: 2.3 days (↓15% vs last week)
+• Deploy Frequency: 12 releases (↑25%)  
+• Change Failure Rate: 8.2% (↓3%)
+• MTTR: 4.1 hours (stable)
+
+⚡ Squad Performance:
+• Frontend Team: 47 commits, 12 PRs merged
+• Backend Team: 31 commits, 8 PRs merged  
+• DevOps: 19 commits, 100% CI success
+
+🔍 Code Quality Insights:
+• High churn files: auth/login.py, api/users.py
+• Review bottleneck: 18hr avg wait time
+• Top contributor: @sarah_dev (67 files changed)
+
+💡 Recommendations:
+• Consider breaking down large PRs in auth module
+• Schedule pair reviews for high-churn areas
+• Deploy frequency trending positive—great work!
+```
+
+Plus interactive charts showing trends over time.
+
+---
+
+## 🏆 Challenge Requirements Met
+
+✅ **Agent-centric design**: LangChain + LangGraph with clear role separation  
+✅ **GitHub data ingestion**: REST API + webhook support  
+✅ **DORA metrics**: All four keys tracked and visualized  
+✅ **Diff analytics**: Churn analysis with defect risk correlation  
+✅ **AI insights**: Gemini-powered narratives with full audit logs  
+✅ **Chat-first**: Slack bot with `/dev-report` command  
+✅ **One-command bootstrap**: `docker-compose up --build`  
+✅ **Seed data**: Instant demo without GitHub tokens  
+✅ **Architecture docs**: LangGraph workflow diagram included  
+
+### Stretch Goals Implemented
+🎯 **Cycle time forecasting**: Predicts next week's delivery timeline  
+🎯 **Code-review “influence map” graph** : Visualizes code review relationships within your team
+
+---
+
+## 🚀 Demo
+
+[Include 3-minute Loom video here showing:]
+1. Bot installation process
+2. `/dev-report` command execution  
+3. Sample insights and chart generation
+4. Natural language queries with `/dev-ask`
+
+---
+
+## 🛠️ Tech Stack
+
+- **Python 3.10+** with asyncio for performance
+- **LangChain ≥ 0.1.0** + **LangGraph** for agent orchestration
+- **Slack Bolt SDK** for chat integration
+- **Plotly** for interactive visualizations  
+- **SQLite/PostgreSQL** for metric storage
+- **Docker** for deployment simplicity
+
+---
+
+## 📞 Support & Questions
+
+Built for the FIKA AI Engineering Productivity Intelligence MVP Challenge. 
+
+---

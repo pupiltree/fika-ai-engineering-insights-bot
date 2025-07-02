@@ -1,0 +1,1026 @@
+[
+    {
+      "author": "Indra55",
+      "message": "Refactor authentication middleware",
+      "date": "2025-06-21T14:30:00+05:30",
+      "additions": 124,
+      "deletions": 87,
+      "total": 211,
+      "sha": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
+      "hour": 14,
+      "day_of_week": "Wednesday",
+      "files_changed": [
+        {"filename": "Backend/middleware/auth.js", "additions": 87, "deletions": 45},
+        {"filename": "Backend/tests/auth.test.js", "additions": 37, "deletions": 42}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "refactor",
+      "files_count": 2,
+      "pull_request": {
+        "number": 42,
+        "title": "Refactor authentication middleware for better error handling",
+        "state": "merged",
+        "created_at": "2025-06-20T10:15:00+05:30",
+        "merged_at": "2025-06-21T14:30:00+05:30",
+        "reviewers": ["reviewer1", "reviewer2"],
+        "review_comments": 8,
+        "labels": ["enhancement", "security"],
+        "review_status": "approved"
+      }
+    },
+    {
+      "author": "Indra55",
+      "message": "Fix JWT token validation edge case",
+      "date": "2025-06-19T11:20:00+05:30",
+      "additions": 23,
+      "deletions": 8,
+      "total": 31,
+      "sha": "x9y8z7w6v5u4t3s2r1q0p9o8n7m6l5k4j3i2h1g0",
+      "hour": 11,
+      "day_of_week": "Monday",
+      "files_changed": [
+        {"filename": "Backend/middleware/auth.js", "additions": 23, "deletions": 8}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "bugfix",
+      "files_count": 1,
+      "pull_request": null
+    },
+    {
+      "author": "Indra55",
+      "message": "WIP: experimenting with new auth flow",
+      "date": "2025-06-17T23:45:00+05:30",
+      "additions": 67,
+      "deletions": 12,
+      "total": 79,
+      "sha": "w8v7u6t5s4r3q2p1o0n9m8l7k6j5i4h3g2f1e0d9",
+      "hour": 23,
+      "day_of_week": "Saturday",
+      "files_changed": [
+        {"filename": "Backend/middleware/experimental_auth.js", "additions": 67, "deletions": 12}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": true,
+      "commit_type": "wip",
+      "files_count": 1,
+      "pull_request": null
+    },
+    {
+      "author": "Asha24",
+      "message": "Add user profile UI with dynamic data binding",
+      "date": "2025-06-20T09:45:00+05:30",
+      "additions": 233,
+      "deletions": 0,
+      "total": 233,
+      "sha": "b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2",
+      "hour": 9,
+      "day_of_week": "Tuesday",
+      "files_changed": [
+        {"filename": "Frontend/components/ProfileCard.jsx", "additions": 150, "deletions": 0},
+        {"filename": "Frontend/styles/profile.css", "additions": 83, "deletions": 0}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "feature",
+      "files_count": 2,
+      "pull_request": {
+        "number": 43,
+        "title": "Implement user profile component with styles",
+        "state": "open",
+        "created_at": "2025-06-19T17:25:00+05:30",
+        "merged_at": null,
+        "reviewers": ["reviewer3"],
+        "review_comments": 12,
+        "labels": ["feature", "frontend", "needs-work"],
+        "review_status": "changes_requested"
+      }
+    },
+    {
+      "author": "Asha24",
+      "message": "Update profile card responsive design",
+      "date": "2025-06-18T16:30:00+05:30",
+      "additions": 45,
+      "deletions": 22,
+      "total": 67,
+      "sha": "v7u6t5s4r3q2p1o0n9m8l7k6j5i4h3g2f1e0d9c8",
+      "hour": 16,
+      "day_of_week": "Sunday",
+      "files_changed": [
+        {"filename": "Frontend/styles/profile.css", "additions": 45, "deletions": 22}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "enhancement",
+      "files_count": 1,
+      "pull_request": null
+    },
+    {
+      "author": "Asha24",
+      "message": "Fix profile avatar upload bug",
+      "date": "2025-06-16T14:15:00+05:30",
+      "additions": 18,
+      "deletions": 5,
+      "total": 23,
+      "sha": "u6t5s4r3q2p1o0n9m8l7k6j5i4h3g2f1e0d9c8b7",
+      "hour": 14,
+      "day_of_week": "Friday",
+      "files_changed": [
+        {"filename": "Frontend/components/ProfileCard.jsx", "additions": 18, "deletions": 5}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "bugfix",
+      "files_count": 1,
+      "pull_request": {
+        "number": 41,
+        "title": "Fix avatar upload functionality",
+        "state": "merged",
+        "created_at": "2025-06-16T13:00:00+05:30",
+        "merged_at": "2025-06-16T14:15:00+05:30",
+        "reviewers": ["reviewer1"],
+        "review_comments": 2,
+        "labels": ["bugfix", "frontend"],
+        "review_status": "approved"
+      }
+    },
+    {
+      "author": "DevRishi",
+      "message": "Fix API pagination issue in book listing endpoint",
+      "date": "2025-06-19T16:10:00+05:30",
+      "additions": 54,
+      "deletions": 18,
+      "total": 72,
+      "sha": "d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3",
+      "hour": 16,
+      "day_of_week": "Monday",
+      "files_changed": [
+        {"filename": "Backend/routes/books.js", "additions": 30, "deletions": 10},
+        {"filename": "Backend/utils/paginator.js", "additions": 24, "deletions": 8}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": true,
+      "commit_type": "bugfix",
+      "files_count": 2,
+      "pull_request": {
+        "number": 44,
+        "title": "Fix book listing pagination bug",
+        "state": "merged",
+        "created_at": "2025-06-18T22:40:00+05:30",
+        "merged_at": "2025-06-19T16:10:00+05:30",
+        "reviewers": ["reviewer2"],
+        "review_comments": 3,
+        "labels": ["bug", "backend"],
+        "review_status": "approved"
+      }
+    },
+    {
+      "author": "DevRishi",
+      "message": "Add book search functionality with filters",
+      "date": "2025-06-21T10:30:00+05:30",
+      "additions": 289,
+      "deletions": 45,
+      "total": 334,
+      "sha": "t5s4r3q2p1o0n9m8l7k6j5i4h3g2f1e0d9c8b7a6",
+      "hour": 10,
+      "day_of_week": "Wednesday",
+      "files_changed": [
+        {"filename": "Backend/routes/books.js", "additions": 156, "deletions": 23},
+        {"filename": "Backend/controllers/searchController.js", "additions": 133, "deletions": 22}
+      ],
+      "is_large_commit": true,
+      "is_late_commit": false,
+      "commit_type": "feature",
+      "files_count": 2,
+      "pull_request": {
+        "number": 51,
+        "title": "Implement advanced book search with multiple filters",
+        "state": "open",
+        "created_at": "2025-06-20T15:20:00+05:30",
+        "merged_at": null,
+        "reviewers": ["reviewer1", "reviewer4"],
+        "review_comments": 15,
+        "labels": ["feature", "backend", "in-review"],
+        "review_status": "pending"
+      }
+    },
+    {
+      "author": "DevRishi",
+      "message": "damn pagination still broken, quick fix",
+      "date": "2025-06-18T21:55:00+05:30",
+      "additions": 8,
+      "deletions": 3,
+      "total": 11,
+      "sha": "s4r3q2p1o0n9m8l7k6j5i4h3g2f1e0d9c8b7a6z5",
+      "hour": 21,
+      "day_of_week": "Sunday",
+      "files_changed": [
+        {"filename": "Backend/utils/paginator.js", "additions": 8, "deletions": 3}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": true,
+      "commit_type": "hotfix",
+      "files_count": 1,
+      "pull_request": null
+    },
+    {
+      "author": "DevRishi",
+      "message": "Initial book listing endpoint setup",
+      "date": "2025-06-15T09:20:00+05:30",
+      "additions": 112,
+      "deletions": 0,
+      "total": 112,
+      "sha": "r3q2p1o0n9m8l7k6j5i4h3g2f1e0d9c8b7a6z5y4",
+      "hour": 9,
+      "day_of_week": "Friday",
+      "files_changed": [
+        {"filename": "Backend/routes/books.js", "additions": 78, "deletions": 0},
+        {"filename": "Backend/utils/paginator.js", "additions": 34, "deletions": 0}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "feature",
+      "files_count": 2,
+      "pull_request": {
+        "number": 38,
+        "title": "Add book listing API endpoint",
+        "state": "merged",
+        "created_at": "2025-06-14T14:30:00+05:30",
+        "merged_at": "2025-06-15T09:20:00+05:30",
+        "reviewers": ["reviewer2", "reviewer3"],
+        "review_comments": 6,
+        "labels": ["feature", "backend"],
+        "review_status": "approved"
+      }
+    },
+    {
+      "author": "Nina07",
+      "message": "Improve accessibility for main navbar",
+      "date": "2025-06-18T13:00:00+05:30",
+      "additions": 60,
+      "deletions": 15,
+      "total": 75,
+      "sha": "f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5",
+      "hour": 13,
+      "day_of_week": "Sunday",
+      "files_changed": [
+        {"filename": "Frontend/components/Navbar.jsx", "additions": 40, "deletions": 10},
+        {"filename": "Frontend/styles/navbar.css", "additions": 20, "deletions": 5}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "enhancement",
+      "files_count": 2,
+      "pull_request": {
+        "number": 45,
+        "title": "Enhance navbar accessibility",
+        "state": "closed",
+        "created_at": "2025-06-17T08:00:00+05:30",
+        "merged_at": null,
+        "reviewers": ["reviewer1"],
+        "review_comments": 1,
+        "labels": ["accessibility", "UI/UX", "wontfix"],
+        "review_status": "rejected"
+      }
+    },
+    {
+      "author": "Nina07",
+      "message": "Add ARIA labels to navigation elements",
+      "date": "2025-06-20T15:45:00+05:30",
+      "additions": 34,
+      "deletions": 8,
+      "total": 42,
+      "sha": "q2p1o0n9m8l7k6j5i4h3g2f1e0d9c8b7a6z5y4x3",
+      "hour": 15,
+      "day_of_week": "Tuesday",
+      "files_changed": [
+        {"filename": "Frontend/components/Navbar.jsx", "additions": 34, "deletions": 8}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "accessibility",
+      "files_count": 1,
+      "pull_request": {
+        "number": 52,
+        "title": "Improve navbar ARIA support",
+        "state": "merged",
+        "created_at": "2025-06-20T14:30:00+05:30",
+        "merged_at": "2025-06-20T15:45:00+05:30",
+        "reviewers": ["reviewer3"],
+        "review_comments": 0,
+        "labels": ["accessibility", "frontend"],
+        "review_status": "approved"
+      }
+    },
+    {
+      "author": "YashVerma",
+      "message": "Add unit tests for recipe controller",
+      "date": "2025-06-17T10:50:00+05:30",
+      "additions": 198,
+      "deletions": 0,
+      "total": 198,
+      "sha": "g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6",
+      "hour": 10,
+      "day_of_week": "Saturday",
+      "files_changed": [
+        {"filename": "Backend/tests/recipe.test.js", "additions": 198, "deletions": 0}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "test",
+      "files_count": 1,
+      "pull_request": {
+        "number": 46,
+        "title": "Add unit tests for recipe controller logic",
+        "state": "merged",
+        "created_at": "2025-06-16T16:00:00+05:30",
+        "merged_at": "2025-06-17T10:50:00+05:30",
+        "reviewers": ["reviewer4"],
+        "review_comments": 3,
+        "labels": ["testing", "backend"],
+        "review_status": "approved"
+      }
+    },
+    {
+      "author": "YashVerma",
+      "message": "Fix failing recipe tests after API changes",
+      "date": "2025-06-19T12:15:00+05:30",
+      "additions": 42,
+      "deletions": 28,
+      "total": 70,
+      "sha": "p1o0n9m8l7k6j5i4h3g2f1e0d9c8b7a6z5y4x3w2",
+      "hour": 12,
+      "day_of_week": "Monday",
+      "files_changed": [
+        {"filename": "Backend/tests/recipe.test.js", "additions": 42, "deletions": 28}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "test",
+      "files_count": 1,
+      "pull_request": null
+    },
+    {
+      "author": "YashVerma",
+      "message": "Add integration tests for recipe endpoints",
+      "date": "2025-06-21T16:20:00+05:30",
+      "additions": 167,
+      "deletions": 0,
+      "total": 167,
+      "sha": "o0n9m8l7k6j5i4h3g2f1e0d9c8b7a6z5y4x3w2v1",
+      "hour": 16,
+      "day_of_week": "Wednesday",
+      "files_changed": [
+        {"filename": "Backend/tests/recipe.integration.test.js", "additions": 167, "deletions": 0}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "test",
+      "files_count": 1,
+      "pull_request": {
+        "number": 53,
+        "title": "Add comprehensive integration tests for recipes",
+        "state": "open",
+        "created_at": "2025-06-21T15:00:00+05:30",
+        "merged_at": null,
+        "reviewers": ["reviewer2", "reviewer4"],
+        "review_comments": 7,
+        "labels": ["testing", "backend", "in-review"],
+        "review_status": "pending"
+      }
+    },
+    {
+      "author": "MehulCode",
+      "message": "Optimize image loading with lazy loading support",
+      "date": "2025-06-15T15:30:00+05:30",
+      "additions": 75,
+      "deletions": 22,
+      "total": 97,
+      "sha": "h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7",
+      "hour": 15,
+      "day_of_week": "Friday",
+      "files_changed": [
+        {"filename": "Frontend/components/ImageViewer.jsx", "additions": 55, "deletions": 22},
+        {"filename": "Frontend/utils/lazyLoader.js", "additions": 20, "deletions": 0}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": true,
+      "commit_type": "performance",
+      "files_count": 2,
+      "pull_request": {
+        "number": 47,
+        "title": "Improve performance via lazy loading",
+        "state": "merged",
+        "created_at": "2025-06-14T22:10:00+05:30",
+        "merged_at": "2025-06-15T15:30:00+05:30",
+        "reviewers": ["reviewer2", "reviewer5"],
+        "review_comments": 5,
+        "labels": ["performance", "frontend"],
+        "review_status": "approved"
+      }
+    },
+    {
+      "author": "MehulCode",
+      "message": "Add image compression before upload",
+      "date": "2025-06-18T11:45:00+05:30",
+      "additions": 89,
+      "deletions": 12,
+      "total": 101,
+      "sha": "n9m8l7k6j5i4h3g2f1e0d9c8b7a6z5y4x3w2v1u0",
+      "hour": 11,
+      "day_of_week": "Sunday",
+      "files_changed": [
+        {"filename": "Frontend/utils/imageProcessor.js", "additions": 89, "deletions": 12}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "feature",
+      "files_count": 1,
+      "pull_request": null
+    },
+    {
+      "author": "MehulCode",
+      "message": "Refactor image utils and add WebP support",
+      "date": "2025-06-20T18:20:00+05:30",
+      "additions": 134,
+      "deletions": 78,
+      "total": 212,
+      "sha": "m8l7k6j5i4h3g2f1e0d9c8b7a6z5y4x3w2v1u0t9",
+      "hour": 18,
+      "day_of_week": "Tuesday",
+      "files_changed": [
+        {"filename": "Frontend/utils/imageProcessor.js", "additions": 67, "deletions": 45},
+        {"filename": "Frontend/utils/lazyLoader.js", "additions": 45, "deletions": 23},
+        {"filename": "Frontend/components/ImageViewer.jsx", "additions": 22, "deletions": 10}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": true,
+      "commit_type": "refactor",
+      "files_count": 3,
+      "pull_request": {
+        "number": 54,
+        "title": "Major image handling improvements with WebP",
+        "state": "open",
+        "created_at": "2025-06-20T16:45:00+05:30",
+        "merged_at": null,
+        "reviewers": ["reviewer1", "reviewer3", "reviewer5"],
+        "review_comments": 21,
+        "labels": ["enhancement", "performance", "frontend", "needs-work"],
+        "review_status": "changes_requested"
+      }
+    },
+    {
+      "author": "SimranX",
+      "message": "Add dark mode toggle feature",
+      "date": "2025-06-14T12:20:00+05:30",
+      "additions": 142,
+      "deletions": 30,
+      "total": 172,
+      "sha": "i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8",
+      "hour": 12,
+      "day_of_week": "Thursday",
+      "files_changed": [
+        {"filename": "Frontend/components/ThemeToggle.jsx", "additions": 70, "deletions": 0},
+        {"filename": "Frontend/styles/theme.css", "additions": 72, "deletions": 30}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "feature",
+      "files_count": 2,
+      "pull_request": {
+        "number": 48,
+        "title": "Add dark mode support",
+        "state": "merged",
+        "created_at": "2025-06-13T08:30:00+05:30",
+        "merged_at": "2025-06-14T12:20:00+05:30",
+        "reviewers": ["reviewer1", "reviewer3"],
+        "review_comments": 6,
+        "labels": ["feature", "UI/UX"],
+        "review_status": "approved"
+      }
+    },
+    {
+      "author": "SimranX",
+      "message": "Fix theme persistence across sessions",
+      "date": "2025-06-16T10:10:00+05:30",
+      "additions": 28,
+      "deletions": 5,
+      "total": 33,
+      "sha": "l7k6j5i4h3g2f1e0d9c8b7a6z5y4x3w2v1u0t9s8",
+      "hour": 10,
+      "day_of_week": "Friday",
+      "files_changed": [
+        {"filename": "Frontend/components/ThemeToggle.jsx", "additions": 28, "deletions": 5}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "bugfix",
+      "files_count": 1,
+      "pull_request": {
+        "number": 49,
+        "title": "Fix theme not persisting after refresh",
+        "state": "merged",
+        "created_at": "2025-06-16T09:30:00+05:30",
+        "merged_at": "2025-06-16T10:10:00+05:30",
+        "reviewers": ["reviewer1"],
+        "review_comments": 1,
+        "labels": ["bugfix", "frontend"],
+        "review_status": "approved"
+      }
+    },
+    {
+      "author": "SimranX",
+      "message": "Add system theme preference detection",
+      "date": "2025-06-19T14:35:00+05:30",
+      "additions": 56,
+      "deletions": 18,
+      "total": 74,
+      "sha": "k6j5i4h3g2f1e0d9c8b7a6z5y4x3w2v1u0t9s8r7",
+      "hour": 14,
+      "day_of_week": "Monday",
+      "files_changed": [
+        {"filename": "Frontend/components/ThemeToggle.jsx", "additions": 35, "deletions": 12},
+        {"filename": "Frontend/hooks/useTheme.js", "additions": 21, "deletions": 6}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "enhancement",
+      "files_count": 2,
+      "pull_request": null
+    },
+    {
+      "author": "ZaraQ",
+      "message": "Add environment validation for deployment",
+      "date": "2025-06-13T11:05:00+05:30",
+      "additions": 45,
+      "deletions": 5,
+      "total": 50,
+      "sha": "j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9",
+      "hour": 11,
+      "day_of_week": "Wednesday",
+      "files_changed": [
+        {"filename": "Backend/utils/envCheck.js", "additions": 45, "deletions": 5}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "chore",
+      "files_count": 1,
+      "pull_request": {
+        "number": 49,
+        "title": "Add environment validator for safer deploys",
+        "state": "merged",
+        "created_at": "2025-06-12T10:00:00+05:30",
+        "merged_at": "2025-06-13T11:05:00+05:30",
+        "reviewers": ["reviewer4"],
+        "review_comments": 0,
+        "labels": ["chore", "devops"],
+        "review_status": "approved"
+      }
+    },
+    {
+      "author": "AnkitSecure",
+      "message": "Patch token expiry bypass vulnerability",
+      "date": "2025-06-12T18:45:00+05:30",
+      "additions": 20,
+      "deletions": 10,
+      "total": 30,
+      "sha": "k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0",
+      "hour": 18,
+      "day_of_week": "Tuesday",
+      "files_changed": [
+        {"filename": "Backend/middleware/auth.js", "additions": 20, "deletions": 10}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": true,
+      "commit_type": "security",
+      "files_count": 1,
+      "pull_request": {
+        "number": 50,
+        "title": "Fix security flaw in token expiry check",
+        "state": "merged",
+        "created_at": "2025-06-11T23:15:00+05:30",
+        "merged_at": "2025-06-12T18:45:00+05:30",
+        "reviewers": ["reviewer2"],
+        "review_comments": 2,
+        "labels": ["security", "critical"],
+        "review_status": "approved"
+      }
+    },
+    {
+      "author": "AnkitSecure",
+      "message": "Add rate limiting to API endpoints",
+      "date": "2025-06-15T13:20:00+05:30",
+      "additions": 78,
+      "deletions": 0,
+      "total": 78,
+      "sha": "j5i4h3g2f1e0d9c8b7a6z5y4x3w2v1u0t9s8r7q6",
+      "hour": 13,
+      "day_of_week": "Friday",
+      "files_changed": [
+        {"filename": "Backend/middleware/rateLimiter.js", "additions": 56, "deletions": 0},
+        {"filename": "Backend/routes/index.js", "additions": 22, "deletions": 0}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "security",
+      "files_count": 2,
+      "pull_request": {
+        "number": 55,
+        "title": "Implement API rate limiting for DoS protection",
+        "state": "merged",
+        "created_at": "2025-06-15T11:00:00+05:30",
+        "merged_at": "2025-06-15T13:20:00+05:30",
+        "reviewers": ["reviewer2", "reviewer4"],
+        "review_comments": 4,
+        "labels": ["security", "backend"],
+        "review_status": "approved"
+      }
+    },
+    {
+      "author": "AnkitSecure",
+      "message": "Update dependencies to patch security vulnerabilities",
+      "date": "2025-06-17T08:30:00+05:30",
+      "additions": 0,
+      "deletions": 0,
+      "total": 0,
+      "sha": "i4h3g2f1e0d9c8b7a6z5y4x3w2v1u0t9s8r7q6p5",
+      "hour": 8,
+      "day_of_week": "Saturday",
+      "files_changed": [
+        {"filename": "package.json", "additions": 12, "deletions": 12},
+        {"filename": "package-lock.json", "additions": 2847, "deletions": 2689}
+      ],
+      "is_large_commit": true,
+      "is_late_commit": false,
+      "commit_type": "security",
+      "files_count": 2,
+      "pull_request": {
+        "number": 56,
+        "title": "Security: Update vulnerable dependencies",
+        "state": "merged",
+        "created_at": "2025-06-17T07:45:00+05:30",
+        "merged_at": "2025-06-17T08:30:00+05:30",
+        "reviewers": ["reviewer1", "reviewer2"],
+        "review_comments": 1,
+        "labels": ["security", "dependencies", "critical"],
+        "review_status": "approved"
+      }
+    },
+    {
+      "author": "AnkitSecure",
+      "message": "Add input sanitization for user registration",
+      "date": "2025-06-20T16:15:00+05:30",
+      "additions": 43,
+      "deletions": 12,
+      "total": 55,
+      "sha": "h3g2f1e0d9c8b7a6z5y4x3w2v1u0t9s8r7q6p5o4",
+      "hour": 16,
+      "day_of_week": "Tuesday",
+      "files_changed": [
+        {"filename": "Backend/controllers/authController.js", "additions": 43, "deletions": 12}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "security",
+      "files_count": 1,
+      "pull_request": null
+    },
+    {
+      "author": "PriyankaDev",
+      "message": "Create responsive dashboard layout",
+      "date": "2025-06-21T11:30:00+05:30",
+      "additions": 456,
+      "deletions": 0,
+      "total": 456,
+      "sha": "g2f1e0d9c8b7a6z5y4x3w2v1u0t9s8r7q6p5o4n3",
+      "hour": 11,
+      "day_of_week": "Wednesday",
+      "files_changed": [
+        {"filename": "Frontend/pages/Dashboard.jsx", "additions": 234, "deletions": 0},
+        {"filename": "Frontend/components/DashboardCard.jsx", "additions": 123, "deletions": 0},
+        {"filename": "Frontend/styles/dashboard.css", "additions": 99, "deletions": 0}
+      ],
+      "is_large_commit": true,
+      "is_late_commit": false,
+      "commit_type": "feature",
+      "files_count": 3,
+      "pull_request": {
+        "number": 57,
+        "title": "Add responsive dashboard with analytics cards",
+        "state": "open",
+        "created_at": "2025-06-21T10:00:00+05:30",
+        "merged_at": null,
+        "reviewers": ["reviewer1", "reviewer3"],
+        "review_comments": 9,
+        "labels": ["feature", "frontend", "dashboard"],
+        "review_status": "pending"
+      }
+    },
+    {
+      "author": "PriyankaDev",
+      "message": "Fix dashboard mobile responsiveness",
+      "date": "2025-06-20T14:45:00+05:30",
+      "additions": 67,
+      "deletions": 23,
+      "total": 90,
+      "sha": "f1e0d9c8b7a6z5y4x3w2v1u0t9s8r7q6p5o4n3m2",
+      "hour": 14,
+      "day_of_week": "Tuesday",
+      "files_changed": [
+        {"filename": "Frontend/styles/dashboard.css", "additions": 67, "deletions": 23}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "bugfix",
+      "files_count": 1,
+      "pull_request": null
+    },
+    {
+      "author": "RohitBackend",
+      "message": "Implement caching layer for API responses",
+      "date": "2025-06-18T17:25:00+05:30",
+      "additions": 167,
+      "deletions": 34,
+      "total": 201,
+      "sha": "e0d9c8b7a6z5y4x3w2v1u0t9s8r7q6p5o4n3m2l1",
+      "hour": 17,
+      "day_of_week": "Sunday",
+      "files_changed": [
+        {"filename": "Backend/middleware/cache.js", "additions": 89, "deletions": 0},
+        {"filename": "Backend/routes/api.js", "additions": 45, "deletions": 23},
+        {"filename": "Backend/config/redis.js", "additions": 33, "deletions": 11}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": true,
+      "commit_type": "performance",
+      "files_count": 3,
+      "pull_request": {
+        "number": 58,
+        "title": "Add Redis caching for improved API performance",
+        "state": "merged",
+        "created_at": "2025-06-18T15:30:00+05:30",
+        "merged_at": "2025-06-18T17:25:00+05:30",
+        "reviewers": ["reviewer2", "reviewer4"],
+        "review_comments": 11,
+        "labels": ["performance", "backend", "caching"],
+        "review_status": "approved"
+      }
+    },
+    {
+      "author": "RohitBackend",
+      "message": "hotfix: redis connection timeout issue",
+      "date": "2025-06-19T22:10:00+05:30",
+      "additions": 15,
+      "deletions": 8,
+      "total": 23,
+      "sha": "d9c8b7a6z5y4x3w2v1u0t9s8r7q6p5o4n3m2l1k0",
+      "hour": 22,
+      "day_of_week": "Monday",
+      "files_changed": [
+        {"filename": "Backend/config/redis.js", "additions": 15, "deletions": 8}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": true,
+      "commit_type": "hotfix",
+      "files_count": 1,
+      "pull_request": null
+    },
+    {
+      "author": "RohitBackend",
+      "message": "Add database indexing for better query performance",
+      "date": "2025-06-16T13:40:00+05:30",
+      "additions": 89,
+      "deletions": 0,
+      "total": 89,
+      "sha": "c8b7a6z5y4x3w2v1u0t9s8r7q6p5o4n3m2l1k0j9",
+      "hour": 13,
+      "day_of_week": "Friday",
+      "files_changed": [
+        {"filename": "Backend/migrations/20250616_add_indexes.sql", "additions": 89, "deletions": 0}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "performance",
+      "files_count": 1,
+      "pull_request": {
+        "number": 59,
+        "title": "Add database indexes for common queries",
+        "state": "merged",
+        "created_at": "2025-06-16T12:15:00+05:30",
+        "merged_at": "2025-06-16T13:40:00+05:30",
+        "reviewers": ["reviewer4"],
+        "review_comments": 2,
+        "labels": ["performance", "database"],
+        "review_status": "approved"
+      }
+    },
+    {
+      "author": "SarahUX",
+      "message": "Redesign login page with modern UI",
+      "date": "2025-06-14T10:15:00+05:30",
+      "additions": 298,
+      "deletions": 156,
+      "total": 454,
+      "sha": "b7a6z5y4x3w2v1u0t9s8r7q6p5o4n3m2l1k0j9i8",
+      "hour": 10,
+      "day_of_week": "Thursday",
+      "files_changed": [
+        {"filename": "Frontend/pages/Login.jsx", "additions": 189, "deletions": 98},
+        {"filename": "Frontend/styles/login.css", "additions": 109, "deletions": 58}
+      ],
+      "is_large_commit": true,
+      "is_late_commit": false,
+      "commit_type": "design",
+      "files_count": 2,
+      "pull_request": {
+        "number": 60,
+        "title": "Modern login page redesign",
+        "state": "open",
+        "created_at": "2025-06-13T16:20:00+05:30",
+        "merged_at": null,
+        "reviewers": ["reviewer1", "reviewer3", "reviewer5"],
+        "review_comments": 18,
+        "labels": ["design", "UI/UX", "frontend", "needs-work"],
+        "review_status": "changes_requested"
+      }
+    },
+    {
+      "author": "SarahUX",
+      "message": "Add loading states and error handling to forms",
+      "date": "2025-06-17T15:50:00+05:30",
+      "additions": 123,
+      "deletions": 45,
+      "total": 168,
+      "sha": "a6z5y4x3w2v1u0t9s8r7q6p5o4n3m2l1k0j9i8h7",
+      "hour": 15,
+      "day_of_week": "Saturday",
+      "files_changed": [
+        {"filename": "Frontend/components/LoginForm.jsx", "additions": 67, "deletions": 23},
+        {"filename": "Frontend/components/RegisterForm.jsx", "additions": 56, "deletions": 22}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "enhancement",
+      "files_count": 2,
+      "pull_request": {
+        "number": 61,
+        "title": "Improve form UX with loading states",
+        "state": "merged",
+        "created_at": "2025-06-17T14:30:00+05:30",
+        "merged_at": "2025-06-17T15:50:00+05:30",
+        "reviewers": ["reviewer3"],
+        "review_comments": 3,
+        "labels": ["enhancement", "UI/UX"],
+        "review_status": "approved"
+      }
+    },
+    {
+      "author": "TanishQA",
+      "message": "Add end-to-end tests for user authentication flow",
+      "date": "2025-06-15T12:30:00+05:30",
+      "additions": 245,
+      "deletions": 0,
+      "total": 245,
+      "sha": "z5y4x3w2v1u0t9s8r7q6p5o4n3m2l1k0j9i8h7g6",
+      "hour": 12,
+      "day_of_week": "Friday",
+      "files_changed": [
+        {"filename": "tests/e2e/auth.spec.js", "additions": 189, "deletions": 0},
+        {"filename": "tests/e2e/helpers/auth.js", "additions": 56, "deletions": 0}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "test",
+      "files_count": 2,
+      "pull_request": {
+        "number": 62,
+        "title": "Add comprehensive auth e2e tests",
+        "state": "merged",
+        "created_at": "2025-06-15T09:45:00+05:30",
+        "merged_at": "2025-06-15T12:30:00+05:30",
+        "reviewers": ["reviewer4"],
+        "review_comments": 5,
+        "labels": ["testing", "e2e"],
+        "review_status": "approved"
+      }
+    },
+    {
+      "author": "TanishQA",
+      "message": "Fix flaky test in user registration suite",
+      "date": "2025-06-18T09:20:00+05:30",
+      "additions": 34,
+      "deletions": 18,
+      "total": 52,
+      "sha": "y4x3w2v1u0t9s8r7q6p5o4n3m2l1k0j9i8h7g6f5",
+      "hour": 9,
+      "day_of_week": "Sunday",
+      "files_changed": [
+        {"filename": "tests/e2e/auth.spec.js", "additions": 34, "deletions": 18}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "test",
+      "files_count": 1,
+      "pull_request": null
+    },
+    {
+      "author": "TanishQA",
+      "message": "Add performance tests for API endpoints",
+      "date": "2025-06-21T13:15:00+05:30",
+      "additions": 178,
+      "deletions": 0,
+      "total": 178,
+      "sha": "x3w2v1u0t9s8r7q6p5o4n3m2l1k0j9i8h7g6f5e4",
+      "hour": 13,
+      "day_of_week": "Wednesday",
+      "files_changed": [
+        {"filename": "tests/performance/api.test.js", "additions": 134, "deletions": 0},
+        {"filename": "tests/performance/setup.js", "additions": 44, "deletions": 0}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "test",
+      "files_count": 2,
+      "pull_request": {
+        "number": 63,
+        "title": "Add performance testing suite",
+        "state": "open",
+        "created_at": "2025-06-21T12:00:00+05:30",
+        "merged_at": null,
+        "reviewers": ["reviewer2", "reviewer4"],
+        "review_comments": 6,
+        "labels": ["testing", "performance"],
+        "review_status": "pending"
+      }
+    },
+    {
+      "author": "KaranJunior",
+      "message": "oops forgot semicolon",
+      "date": "2025-06-16T18:05:00+05:30",
+      "additions": 1,
+      "deletions": 1,
+      "total": 2,
+      "sha": "w2v1u0t9s8r7q6p5o4n3m2l1k0j9i8h7g6f5e4d3",
+      "hour": 18,
+      "day_of_week": "Friday",
+      "files_changed": [
+        {"filename": "Frontend/utils/helpers.js", "additions": 1, "deletions": 1}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": true,
+      "commit_type": "fix",
+      "files_count": 1,
+      "pull_request": null
+    },
+    {
+      "author": "KaranJunior",
+      "message": "Add utility functions for date formatting",
+      "date": "2025-06-19T16:40:00+05:30",
+      "additions": 87,
+      "deletions": 0,
+      "total": 87,
+      "sha": "v1u0t9s8r7q6p5o4n3m2l1k0j9i8h7g6f5e4d3c2",
+      "hour": 16,
+      "day_of_week": "Monday",
+      "files_changed": [
+        {"filename": "Frontend/utils/dateUtils.js", "additions": 87, "deletions": 0}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": false,
+      "commit_type": "utility",
+      "files_count": 1,
+      "pull_request": {
+        "number": 64,
+        "title": "Add date formatting utilities",
+        "state": "merged",
+        "created_at": "2025-06-19T15:30:00+05:30",
+        "merged_at": "2025-06-19T16:40:00+05:30",
+        "reviewers": ["reviewer1"],
+        "review_comments": 1,
+        "labels": ["utility", "frontend"],
+        "review_status": "approved"
+      }
+    },
+    {
+      "author": "KaranJunior",
+      "message": "trying to fix the build issue but not sure what's wrong",
+      "date": "2025-06-21T20:30:00+05:30",
+      "additions": 45,
+      "deletions": 67,
+      "total": 112,
+      "sha": "u0t9s8r7q6p5o4n3m2l1k0j9i8h7g6f5e4d3c2b1",
+      "hour": 20,
+      "day_of_week": "Wednesday",
+      "files_changed": [
+        {"filename": "Frontend/webpack.config.js", "additions": 23, "deletions": 34},
+        {"filename": "Frontend/package.json", "additions": 12, "deletions": 18},
+        {"filename": "Frontend/src/index.js", "additions": 10, "deletions": 15}
+      ],
+      "is_large_commit": false,
+      "is_late_commit": true,
+      "commit_type": "fix",
+      "files_count": 3,
+      "pull_request": null
+    }
+  ]

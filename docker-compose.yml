@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  github-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: github-bot
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      - SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
+      - SLACK_APP_TOKEN=${SLACK_APP_TOKEN}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - GITHUB_REPO=${GITHUB_REPO}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - PYTHONUNBUFFERED=1
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/github_bot
+    volumes:
+      - .:/app
+      - /app/venv
+      - /app/__pycache__
+
+  db:
+    image: postgres:15
+    container_name: github-bot-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=github_bot
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:
