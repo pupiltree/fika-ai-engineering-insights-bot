@@ -1,0 +1,27 @@
+from ai_insights_bot import analyze_sentiment, summarize_text, extract_keywords
+
+def test_sentiment_analysis():
+    result = analyze_sentiment("I love using AI tools.")
+    assert result['label'] in ['POSITIVE', 'NEGATIVE']
+    assert 0 <= result['score'] <= 1
+
+def test_summarization():
+    long_text = (
+        "OpenAI has released many powerful AI models. "
+        "These tools are transforming the way developers build applications."
+    )
+    summary = summarize_text(long_text)
+    assert isinstance(summary, str)
+    assert len(summary) < len(long_text)
+
+def test_keywords():
+    text = "AI models are powerful. Models learn from data. Data is key to AI."
+    keywords = extract_keywords(text)
+    assert isinstance(keywords, list)
+    assert len(keywords) > 0
+
+if __name__ == "__main__":
+    test_sentiment_analysis()
+    test_summarization()
+    test_keywords()
+    print("All tests passed!")
