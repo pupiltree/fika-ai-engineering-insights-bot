@@ -44,6 +44,10 @@ def init_database():
     conn.close()
     print(f"Database '{DATABASE_NAME}' initialized successfully!")
 
+def init_db():
+    """Alias for init_database() for backward compatibility"""
+    return init_database()
+
 def insert_commit(commit_hash: str, author: str, message: str, timestamp: str, 
                  additions: int = 0, deletions: int = 0, changed_files: int = 0):
     """Insert a commit into the database"""
