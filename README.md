@@ -8,7 +8,7 @@
 
 1. **Clone the repository:**
    ```sh
-   git clone <this-repo-url>
+   git clone https://github.com/Dheena731/fika-ai-engineering-insights-bot.git
    cd fika-ai-engineering-insights-bot
    ```
 2. **Copy and edit the environment file:**
