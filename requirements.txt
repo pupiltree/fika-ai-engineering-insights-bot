@@ -1,0 +1,26 @@
+# Core Dependencies
+langchain
+langgraph
+langchain-google-genai
+pydantic-settings  
+
+# Slack Bot
+slack-bolt
+slack-sdk
+
+# Data & Storage
+requests
+pandas
+numpy
+
+# Visualization
+plotly
+matplotlib
+kaleido
+
+# Development
+python-dotenv
+pydantic
+pytest
+black
+flake8

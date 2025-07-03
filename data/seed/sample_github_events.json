@@ -1,0 +1,1726 @@
+[
+  {
+    "id": "commit_abc1000ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "alice.smith",
+    "timestamp": "2025-06-25T19:37:19.957114",
+    "raw_data": {
+      "sha": "abc1000ef",
+      "commit": {
+        "author": {
+          "name": "alice.smith",
+          "date": "2025-06-25T19:37:19.957114"
+        },
+        "message": "Add feature validation for user input"
+      },
+      "stats": {
+        "additions": 20,
+        "deletions": 5,
+        "total": 25
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        }
+      ]
+    },
+    "additions": 20,
+    "deletions": 5,
+    "changed_files": 1,
+    "pr_number": null,
+    "commit_sha": "abc1000ef"
+  },
+  {
+    "id": "commit_abc1001ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "alice.smith",
+    "timestamp": "2025-06-26T09:12:19.957114",
+    "raw_data": {
+      "sha": "abc1001ef",
+      "commit": {
+        "author": {
+          "name": "alice.smith",
+          "date": "2025-06-26T09:12:19.957114"
+        },
+        "message": "Fix bug in authentication flow"
+      },
+      "stats": {
+        "additions": 35,
+        "deletions": 13,
+        "total": 48
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        }
+      ]
+    },
+    "additions": 35,
+    "deletions": 13,
+    "changed_files": 2,
+    "pr_number": null,
+    "commit_sha": "abc1001ef"
+  },
+  {
+    "id": "commit_abc1002ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "alice.smith",
+    "timestamp": "2025-06-26T22:47:19.957114",
+    "raw_data": {
+      "sha": "abc1002ef",
+      "commit": {
+        "author": {
+          "name": "alice.smith",
+          "date": "2025-06-26T22:47:19.957114"
+        },
+        "message": "Update documentation for API endpoints"
+      },
+      "stats": {
+        "additions": 50,
+        "deletions": 21,
+        "total": 71
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        }
+      ]
+    },
+    "additions": 50,
+    "deletions": 21,
+    "changed_files": 3,
+    "pr_number": null,
+    "commit_sha": "abc1002ef"
+  },
+  {
+    "id": "commit_abc1003ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "alice.smith",
+    "timestamp": "2025-06-27T11:22:19.957114",
+    "raw_data": {
+      "sha": "abc1003ef",
+      "commit": {
+        "author": {
+          "name": "alice.smith",
+          "date": "2025-06-27T11:22:19.957114"
+        },
+        "message": "Refactor database connection handling"
+      },
+      "stats": {
+        "additions": 65,
+        "deletions": 9,
+        "total": 74
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        }
+      ]
+    },
+    "additions": 65,
+    "deletions": 9,
+    "changed_files": 1,
+    "pr_number": null,
+    "commit_sha": "abc1003ef"
+  },
+  {
+    "id": "commit_abc1004ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "alice.smith",
+    "timestamp": "2025-06-27T16:57:19.957114",
+    "raw_data": {
+      "sha": "abc1004ef",
+      "commit": {
+        "author": {
+          "name": "alice.smith",
+          "date": "2025-06-27T16:57:19.957114"
+        },
+        "message": "Implement caching for performance improvement"
+      },
+      "stats": {
+        "additions": 30,
+        "deletions": 17,
+        "total": 47
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        }
+      ]
+    },
+    "additions": 30,
+    "deletions": 17,
+    "changed_files": 2,
+    "pr_number": null,
+    "commit_sha": "abc1004ef"
+  },
+  {
+    "id": "commit_abc1005ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "alice.smith",
+    "timestamp": "2025-06-28T06:32:19.957114",
+    "raw_data": {
+      "sha": "abc1005ef",
+      "commit": {
+        "author": {
+          "name": "alice.smith",
+          "date": "2025-06-28T06:32:19.957114"
+        },
+        "message": "Add unit tests for core functionality"
+      },
+      "stats": {
+        "additions": 45,
+        "deletions": 5,
+        "total": 50
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        }
+      ]
+    },
+    "additions": 45,
+    "deletions": 5,
+    "changed_files": 3,
+    "pr_number": null,
+    "commit_sha": "abc1005ef"
+  },
+  {
+    "id": "commit_abc1006ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "alice.smith",
+    "timestamp": "2025-06-28T19:07:19.957114",
+    "raw_data": {
+      "sha": "abc1006ef",
+      "commit": {
+        "author": {
+          "name": "alice.smith",
+          "date": "2025-06-28T19:07:19.957114"
+        },
+        "message": "Update dependencies to latest versions"
+      },
+      "stats": {
+        "additions": 60,
+        "deletions": 13,
+        "total": 73
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        }
+      ]
+    },
+    "additions": 60,
+    "deletions": 13,
+    "changed_files": 1,
+    "pr_number": null,
+    "commit_sha": "abc1006ef"
+  },
+  {
+    "id": "commit_abc1007ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "alice.smith",
+    "timestamp": "2025-06-29T08:42:19.957114",
+    "raw_data": {
+      "sha": "abc1007ef",
+      "commit": {
+        "author": {
+          "name": "alice.smith",
+          "date": "2025-06-29T08:42:19.957114"
+        },
+        "message": "Fix memory leak in background process"
+      },
+      "stats": {
+        "additions": 25,
+        "deletions": 21,
+        "total": 46
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        }
+      ]
+    },
+    "additions": 25,
+    "deletions": 21,
+    "changed_files": 2,
+    "pr_number": null,
+    "commit_sha": "abc1007ef"
+  },
+  {
+    "id": "commit_abc1008ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "alice.smith",
+    "timestamp": "2025-06-29T13:17:19.957114",
+    "raw_data": {
+      "sha": "abc1008ef",
+      "commit": {
+        "author": {
+          "name": "alice.smith",
+          "date": "2025-06-29T13:17:19.957114"
+        },
+        "message": "Add error handling for edge cases"
+      },
+      "stats": {
+        "additions": 40,
+        "deletions": 9,
+        "total": 49
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        }
+      ]
+    },
+    "additions": 40,
+    "deletions": 9,
+    "changed_files": 3,
+    "pr_number": null,
+    "commit_sha": "abc1008ef"
+  },
+  {
+    "id": "commit_abc1009ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "alice.smith",
+    "timestamp": "2025-06-30T02:52:19.957114",
+    "raw_data": {
+      "sha": "abc1009ef",
+      "commit": {
+        "author": {
+          "name": "alice.smith",
+          "date": "2025-06-30T02:52:19.957114"
+        },
+        "message": "Optimize query performance"
+      },
+      "stats": {
+        "additions": 55,
+        "deletions": 17,
+        "total": 72
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        }
+      ]
+    },
+    "additions": 55,
+    "deletions": 17,
+    "changed_files": 1,
+    "pr_number": null,
+    "commit_sha": "abc1009ef"
+  },
+  {
+    "id": "commit_abc1010ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "alice.smith",
+    "timestamp": "2025-06-30T16:27:19.957114",
+    "raw_data": {
+      "sha": "abc1010ef",
+      "commit": {
+        "author": {
+          "name": "alice.smith",
+          "date": "2025-06-30T16:27:19.957114"
+        },
+        "message": "Add feature validation for user input"
+      },
+      "stats": {
+        "additions": 20,
+        "deletions": 5,
+        "total": 25
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        }
+      ]
+    },
+    "additions": 20,
+    "deletions": 5,
+    "changed_files": 2,
+    "pr_number": null,
+    "commit_sha": "abc1010ef"
+  },
+  {
+    "id": "commit_abc1011ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "alice.smith",
+    "timestamp": "2025-07-01T05:02:19.957114",
+    "raw_data": {
+      "sha": "abc1011ef",
+      "commit": {
+        "author": {
+          "name": "alice.smith",
+          "date": "2025-07-01T05:02:19.957114"
+        },
+        "message": "Fix bug in authentication flow"
+      },
+      "stats": {
+        "additions": 35,
+        "deletions": 13,
+        "total": 48
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        }
+      ]
+    },
+    "additions": 35,
+    "deletions": 13,
+    "changed_files": 3,
+    "pr_number": null,
+    "commit_sha": "abc1011ef"
+  },
+  {
+    "id": "commit_abc1012ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "alice.smith",
+    "timestamp": "2025-07-01T10:37:19.957114",
+    "raw_data": {
+      "sha": "abc1012ef",
+      "commit": {
+        "author": {
+          "name": "alice.smith",
+          "date": "2025-07-01T10:37:19.957114"
+        },
+        "message": "Update documentation for API endpoints"
+      },
+      "stats": {
+        "additions": 50,
+        "deletions": 21,
+        "total": 71
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        }
+      ]
+    },
+    "additions": 50,
+    "deletions": 21,
+    "changed_files": 1,
+    "pr_number": null,
+    "commit_sha": "abc1012ef"
+  },
+  {
+    "id": "commit_abc1013ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "alice.smith",
+    "timestamp": "2025-07-02T00:12:19.957114",
+    "raw_data": {
+      "sha": "abc1013ef",
+      "commit": {
+        "author": {
+          "name": "alice.smith",
+          "date": "2025-07-02T00:12:19.957114"
+        },
+        "message": "Refactor database connection handling"
+      },
+      "stats": {
+        "additions": 65,
+        "deletions": 9,
+        "total": 74
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        }
+      ]
+    },
+    "additions": 65,
+    "deletions": 9,
+    "changed_files": 2,
+    "pr_number": null,
+    "commit_sha": "abc1013ef"
+  },
+  {
+    "id": "commit_abc1014ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "alice.smith",
+    "timestamp": "2025-07-02T12:47:19.957114",
+    "raw_data": {
+      "sha": "abc1014ef",
+      "commit": {
+        "author": {
+          "name": "alice.smith",
+          "date": "2025-07-02T12:47:19.957114"
+        },
+        "message": "Implement caching for performance improvement"
+      },
+      "stats": {
+        "additions": 30,
+        "deletions": 17,
+        "total": 47
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        }
+      ]
+    },
+    "additions": 30,
+    "deletions": 17,
+    "changed_files": 3,
+    "pr_number": null,
+    "commit_sha": "abc1014ef"
+  },
+  {
+    "id": "commit_abc1015ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "bob.jones",
+    "timestamp": "2025-06-25T19:37:19.957114",
+    "raw_data": {
+      "sha": "abc1015ef",
+      "commit": {
+        "author": {
+          "name": "bob.jones",
+          "date": "2025-06-25T19:37:19.957114"
+        },
+        "message": "Add feature validation for user input"
+      },
+      "stats": {
+        "additions": 60,
+        "deletions": 20,
+        "total": 80
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        }
+      ]
+    },
+    "additions": 60,
+    "deletions": 20,
+    "changed_files": 3,
+    "pr_number": null,
+    "commit_sha": "abc1015ef"
+  },
+  {
+    "id": "commit_abc1016ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "bob.jones",
+    "timestamp": "2025-06-27T02:00:19.957114",
+    "raw_data": {
+      "sha": "abc1016ef",
+      "commit": {
+        "author": {
+          "name": "bob.jones",
+          "date": "2025-06-27T02:00:19.957114"
+        },
+        "message": "Fix bug in authentication flow"
+      },
+      "stats": {
+        "additions": 100,
+        "deletions": 35,
+        "total": 135
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        },
+        {
+          "filename": "src/module3.py"
+        }
+      ]
+    },
+    "additions": 100,
+    "deletions": 35,
+    "changed_files": 4,
+    "pr_number": null,
+    "commit_sha": "abc1016ef"
+  },
+  {
+    "id": "commit_abc1017ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "bob.jones",
+    "timestamp": "2025-06-28T08:23:19.957114",
+    "raw_data": {
+      "sha": "abc1017ef",
+      "commit": {
+        "author": {
+          "name": "bob.jones",
+          "date": "2025-06-28T08:23:19.957114"
+        },
+        "message": "Update documentation for API endpoints"
+      },
+      "stats": {
+        "additions": 140,
+        "deletions": 50,
+        "total": 190
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        },
+        {
+          "filename": "src/module3.py"
+        },
+        {
+          "filename": "src/module4.py"
+        }
+      ]
+    },
+    "additions": 140,
+    "deletions": 50,
+    "changed_files": 5,
+    "pr_number": null,
+    "commit_sha": "abc1017ef"
+  },
+  {
+    "id": "commit_abc1018ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "bob.jones",
+    "timestamp": "2025-06-29T13:46:19.957114",
+    "raw_data": {
+      "sha": "abc1018ef",
+      "commit": {
+        "author": {
+          "name": "bob.jones",
+          "date": "2025-06-29T13:46:19.957114"
+        },
+        "message": "Refactor database connection handling"
+      },
+      "stats": {
+        "additions": 80,
+        "deletions": 25,
+        "total": 105
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        },
+        {
+          "filename": "src/module3.py"
+        },
+        {
+          "filename": "src/module4.py"
+        },
+        {
+          "filename": "src/module5.py"
+        }
+      ]
+    },
+    "additions": 80,
+    "deletions": 25,
+    "changed_files": 6,
+    "pr_number": null,
+    "commit_sha": "abc1018ef"
+  },
+  {
+    "id": "commit_abc1019ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "bob.jones",
+    "timestamp": "2025-06-30T12:09:19.957114",
+    "raw_data": {
+      "sha": "abc1019ef",
+      "commit": {
+        "author": {
+          "name": "bob.jones",
+          "date": "2025-06-30T12:09:19.957114"
+        },
+        "message": "Implement caching for performance improvement"
+      },
+      "stats": {
+        "additions": 120,
+        "deletions": 40,
+        "total": 160
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        }
+      ]
+    },
+    "additions": 120,
+    "deletions": 40,
+    "changed_files": 3,
+    "pr_number": null,
+    "commit_sha": "abc1019ef"
+  },
+  {
+    "id": "commit_abc1020ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "bob.jones",
+    "timestamp": "2025-07-01T18:32:19.957114",
+    "raw_data": {
+      "sha": "abc1020ef",
+      "commit": {
+        "author": {
+          "name": "bob.jones",
+          "date": "2025-07-01T18:32:19.957114"
+        },
+        "message": "Add unit tests for core functionality"
+      },
+      "stats": {
+        "additions": 60,
+        "deletions": 55,
+        "total": 115
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        },
+        {
+          "filename": "src/module3.py"
+        }
+      ]
+    },
+    "additions": 60,
+    "deletions": 55,
+    "changed_files": 4,
+    "pr_number": null,
+    "commit_sha": "abc1020ef"
+  },
+  {
+    "id": "commit_abc1021ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "charlie.wang",
+    "timestamp": "2025-06-25T19:37:19.957114",
+    "raw_data": {
+      "sha": "abc1021ef",
+      "commit": {
+        "author": {
+          "name": "charlie.wang",
+          "date": "2025-06-25T19:37:19.957114"
+        },
+        "message": "Add feature validation for user input"
+      },
+      "stats": {
+        "additions": 150,
+        "deletions": 50,
+        "total": 200
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        },
+        {
+          "filename": "src/module3.py"
+        },
+        {
+          "filename": "src/module4.py"
+        },
+        {
+          "filename": "src/module5.py"
+        },
+        {
+          "filename": "src/module6.py"
+        },
+        {
+          "filename": "src/module7.py"
+        }
+      ]
+    },
+    "additions": 150,
+    "deletions": 50,
+    "changed_files": 8,
+    "pr_number": null,
+    "commit_sha": "abc1021ef"
+  },
+  {
+    "id": "commit_abc1022ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "charlie.wang",
+    "timestamp": "2025-06-26T19:00:19.957114",
+    "raw_data": {
+      "sha": "abc1022ef",
+      "commit": {
+        "author": {
+          "name": "charlie.wang",
+          "date": "2025-06-26T19:00:19.957114"
+        },
+        "message": "Fix bug in authentication flow"
+      },
+      "stats": {
+        "additions": 250,
+        "deletions": 80,
+        "total": 330
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        },
+        {
+          "filename": "src/module3.py"
+        },
+        {
+          "filename": "src/module4.py"
+        },
+        {
+          "filename": "src/module5.py"
+        },
+        {
+          "filename": "src/module6.py"
+        },
+        {
+          "filename": "src/module7.py"
+        },
+        {
+          "filename": "src/module8.py"
+        }
+      ]
+    },
+    "additions": 250,
+    "deletions": 80,
+    "changed_files": 9,
+    "pr_number": null,
+    "commit_sha": "abc1022ef"
+  },
+  {
+    "id": "commit_abc1023ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "charlie.wang",
+    "timestamp": "2025-06-27T18:23:19.957114",
+    "raw_data": {
+      "sha": "abc1023ef",
+      "commit": {
+        "author": {
+          "name": "charlie.wang",
+          "date": "2025-06-27T18:23:19.957114"
+        },
+        "message": "Update documentation for API endpoints"
+      },
+      "stats": {
+        "additions": 350,
+        "deletions": 110,
+        "total": 460
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        },
+        {
+          "filename": "src/module3.py"
+        },
+        {
+          "filename": "src/module4.py"
+        },
+        {
+          "filename": "src/module5.py"
+        },
+        {
+          "filename": "src/module6.py"
+        },
+        {
+          "filename": "src/module7.py"
+        },
+        {
+          "filename": "src/module8.py"
+        },
+        {
+          "filename": "src/module9.py"
+        }
+      ]
+    },
+    "additions": 350,
+    "deletions": 110,
+    "changed_files": 10,
+    "pr_number": null,
+    "commit_sha": "abc1023ef"
+  },
+  {
+    "id": "commit_abc1024ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "charlie.wang",
+    "timestamp": "2025-06-28T16:46:19.957114",
+    "raw_data": {
+      "sha": "abc1024ef",
+      "commit": {
+        "author": {
+          "name": "charlie.wang",
+          "date": "2025-06-28T16:46:19.957114"
+        },
+        "message": "Refactor database connection handling"
+      },
+      "stats": {
+        "additions": 150,
+        "deletions": 140,
+        "total": 290
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        },
+        {
+          "filename": "src/module3.py"
+        },
+        {
+          "filename": "src/module4.py"
+        },
+        {
+          "filename": "src/module5.py"
+        },
+        {
+          "filename": "src/module6.py"
+        },
+        {
+          "filename": "src/module7.py"
+        },
+        {
+          "filename": "src/module8.py"
+        },
+        {
+          "filename": "src/module9.py"
+        },
+        {
+          "filename": "src/module10.py"
+        }
+      ]
+    },
+    "additions": 150,
+    "deletions": 140,
+    "changed_files": 11,
+    "pr_number": null,
+    "commit_sha": "abc1024ef"
+  },
+  {
+    "id": "commit_abc1025ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "charlie.wang",
+    "timestamp": "2025-06-29T08:09:19.957114",
+    "raw_data": {
+      "sha": "abc1025ef",
+      "commit": {
+        "author": {
+          "name": "charlie.wang",
+          "date": "2025-06-29T08:09:19.957114"
+        },
+        "message": "Implement caching for performance improvement"
+      },
+      "stats": {
+        "additions": 250,
+        "deletions": 70,
+        "total": 320
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        },
+        {
+          "filename": "src/module3.py"
+        },
+        {
+          "filename": "src/module4.py"
+        },
+        {
+          "filename": "src/module5.py"
+        },
+        {
+          "filename": "src/module6.py"
+        },
+        {
+          "filename": "src/module7.py"
+        },
+        {
+          "filename": "src/module8.py"
+        },
+        {
+          "filename": "src/module9.py"
+        },
+        {
+          "filename": "src/module10.py"
+        },
+        {
+          "filename": "src/module11.py"
+        }
+      ]
+    },
+    "additions": 250,
+    "deletions": 70,
+    "changed_files": 12,
+    "pr_number": null,
+    "commit_sha": "abc1025ef"
+  },
+  {
+    "id": "commit_abc1026ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "charlie.wang",
+    "timestamp": "2025-06-30T07:32:19.957114",
+    "raw_data": {
+      "sha": "abc1026ef",
+      "commit": {
+        "author": {
+          "name": "charlie.wang",
+          "date": "2025-06-30T07:32:19.957114"
+        },
+        "message": "Add unit tests for core functionality"
+      },
+      "stats": {
+        "additions": 350,
+        "deletions": 100,
+        "total": 450
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        },
+        {
+          "filename": "src/module3.py"
+        },
+        {
+          "filename": "src/module4.py"
+        },
+        {
+          "filename": "src/module5.py"
+        },
+        {
+          "filename": "src/module6.py"
+        },
+        {
+          "filename": "src/module7.py"
+        }
+      ]
+    },
+    "additions": 350,
+    "deletions": 100,
+    "changed_files": 8,
+    "pr_number": null,
+    "commit_sha": "abc1026ef"
+  },
+  {
+    "id": "commit_abc1027ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "charlie.wang",
+    "timestamp": "2025-07-01T05:55:19.957114",
+    "raw_data": {
+      "sha": "abc1027ef",
+      "commit": {
+        "author": {
+          "name": "charlie.wang",
+          "date": "2025-07-01T05:55:19.957114"
+        },
+        "message": "Update dependencies to latest versions"
+      },
+      "stats": {
+        "additions": 150,
+        "deletions": 130,
+        "total": 280
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        },
+        {
+          "filename": "src/module3.py"
+        },
+        {
+          "filename": "src/module4.py"
+        },
+        {
+          "filename": "src/module5.py"
+        },
+        {
+          "filename": "src/module6.py"
+        },
+        {
+          "filename": "src/module7.py"
+        },
+        {
+          "filename": "src/module8.py"
+        }
+      ]
+    },
+    "additions": 150,
+    "deletions": 130,
+    "changed_files": 9,
+    "pr_number": null,
+    "commit_sha": "abc1027ef"
+  },
+  {
+    "id": "commit_abc1028ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "charlie.wang",
+    "timestamp": "2025-07-02T05:18:19.957114",
+    "raw_data": {
+      "sha": "abc1028ef",
+      "commit": {
+        "author": {
+          "name": "charlie.wang",
+          "date": "2025-07-02T05:18:19.957114"
+        },
+        "message": "Fix memory leak in background process"
+      },
+      "stats": {
+        "additions": 250,
+        "deletions": 60,
+        "total": 310
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        },
+        {
+          "filename": "src/module3.py"
+        },
+        {
+          "filename": "src/module4.py"
+        },
+        {
+          "filename": "src/module5.py"
+        },
+        {
+          "filename": "src/module6.py"
+        },
+        {
+          "filename": "src/module7.py"
+        },
+        {
+          "filename": "src/module8.py"
+        },
+        {
+          "filename": "src/module9.py"
+        }
+      ]
+    },
+    "additions": 250,
+    "deletions": 60,
+    "changed_files": 10,
+    "pr_number": null,
+    "commit_sha": "abc1028ef"
+  },
+  {
+    "id": "commit_abc1029ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "diana.kim",
+    "timestamp": "2025-06-25T19:37:19.957114",
+    "raw_data": {
+      "sha": "abc1029ef",
+      "commit": {
+        "author": {
+          "name": "diana.kim",
+          "date": "2025-06-25T19:37:19.957114"
+        },
+        "message": "Add feature validation for user input"
+      },
+      "stats": {
+        "additions": 60,
+        "deletions": 20,
+        "total": 80
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        }
+      ]
+    },
+    "additions": 60,
+    "deletions": 20,
+    "changed_files": 3,
+    "pr_number": null,
+    "commit_sha": "abc1029ef"
+  },
+  {
+    "id": "commit_abc1030ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "diana.kim",
+    "timestamp": "2025-06-29T10:00:19.957114",
+    "raw_data": {
+      "sha": "abc1030ef",
+      "commit": {
+        "author": {
+          "name": "diana.kim",
+          "date": "2025-06-29T10:00:19.957114"
+        },
+        "message": "Fix bug in authentication flow"
+      },
+      "stats": {
+        "additions": 100,
+        "deletions": 35,
+        "total": 135
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        },
+        {
+          "filename": "src/module3.py"
+        }
+      ]
+    },
+    "additions": 100,
+    "deletions": 35,
+    "changed_files": 4,
+    "pr_number": null,
+    "commit_sha": "abc1030ef"
+  },
+  {
+    "id": "commit_abc1031ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "eve.garcia",
+    "timestamp": "2025-06-25T19:37:19.957114",
+    "raw_data": {
+      "sha": "abc1031ef",
+      "commit": {
+        "author": {
+          "name": "eve.garcia",
+          "date": "2025-06-25T19:37:19.957114"
+        },
+        "message": "Add feature validation for user input"
+      },
+      "stats": {
+        "additions": 60,
+        "deletions": 20,
+        "total": 80
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        }
+      ]
+    },
+    "additions": 60,
+    "deletions": 20,
+    "changed_files": 3,
+    "pr_number": null,
+    "commit_sha": "abc1031ef"
+  },
+  {
+    "id": "commit_abc1032ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "eve.garcia",
+    "timestamp": "2025-06-27T02:00:19.957114",
+    "raw_data": {
+      "sha": "abc1032ef",
+      "commit": {
+        "author": {
+          "name": "eve.garcia",
+          "date": "2025-06-27T02:00:19.957114"
+        },
+        "message": "Fix bug in authentication flow"
+      },
+      "stats": {
+        "additions": 100,
+        "deletions": 35,
+        "total": 135
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        },
+        {
+          "filename": "src/module3.py"
+        }
+      ]
+    },
+    "additions": 100,
+    "deletions": 35,
+    "changed_files": 4,
+    "pr_number": null,
+    "commit_sha": "abc1032ef"
+  },
+  {
+    "id": "commit_abc1033ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "eve.garcia",
+    "timestamp": "2025-06-28T08:23:19.957114",
+    "raw_data": {
+      "sha": "abc1033ef",
+      "commit": {
+        "author": {
+          "name": "eve.garcia",
+          "date": "2025-06-28T08:23:19.957114"
+        },
+        "message": "Update documentation for API endpoints"
+      },
+      "stats": {
+        "additions": 140,
+        "deletions": 50,
+        "total": 190
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        },
+        {
+          "filename": "src/module3.py"
+        },
+        {
+          "filename": "src/module4.py"
+        }
+      ]
+    },
+    "additions": 140,
+    "deletions": 50,
+    "changed_files": 5,
+    "pr_number": null,
+    "commit_sha": "abc1033ef"
+  },
+  {
+    "id": "commit_abc1034ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "eve.garcia",
+    "timestamp": "2025-06-29T13:46:19.957114",
+    "raw_data": {
+      "sha": "abc1034ef",
+      "commit": {
+        "author": {
+          "name": "eve.garcia",
+          "date": "2025-06-29T13:46:19.957114"
+        },
+        "message": "Refactor database connection handling"
+      },
+      "stats": {
+        "additions": 80,
+        "deletions": 25,
+        "total": 105
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        },
+        {
+          "filename": "src/module3.py"
+        },
+        {
+          "filename": "src/module4.py"
+        },
+        {
+          "filename": "src/module5.py"
+        }
+      ]
+    },
+    "additions": 80,
+    "deletions": 25,
+    "changed_files": 6,
+    "pr_number": null,
+    "commit_sha": "abc1034ef"
+  },
+  {
+    "id": "commit_abc1035ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "eve.garcia",
+    "timestamp": "2025-06-30T12:09:19.957114",
+    "raw_data": {
+      "sha": "abc1035ef",
+      "commit": {
+        "author": {
+          "name": "eve.garcia",
+          "date": "2025-06-30T12:09:19.957114"
+        },
+        "message": "Implement caching for performance improvement"
+      },
+      "stats": {
+        "additions": 120,
+        "deletions": 40,
+        "total": 160
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        }
+      ]
+    },
+    "additions": 120,
+    "deletions": 40,
+    "changed_files": 3,
+    "pr_number": null,
+    "commit_sha": "abc1035ef"
+  },
+  {
+    "id": "commit_abc1036ef",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "commit",
+    "author": "eve.garcia",
+    "timestamp": "2025-07-01T18:32:19.957114",
+    "raw_data": {
+      "sha": "abc1036ef",
+      "commit": {
+        "author": {
+          "name": "eve.garcia",
+          "date": "2025-07-01T18:32:19.957114"
+        },
+        "message": "Add unit tests for core functionality"
+      },
+      "stats": {
+        "additions": 60,
+        "deletions": 55,
+        "total": 115
+      },
+      "files": [
+        {
+          "filename": "src/module0.py"
+        },
+        {
+          "filename": "src/module1.py"
+        },
+        {
+          "filename": "src/module2.py"
+        },
+        {
+          "filename": "src/module3.py"
+        }
+      ]
+    },
+    "additions": 60,
+    "deletions": 55,
+    "changed_files": 4,
+    "pr_number": null,
+    "commit_sha": "abc1036ef"
+  },
+  {
+    "id": "pr_100",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "pull_request",
+    "author": "alice.smith",
+    "timestamp": "2025-06-28T00:37:19.957114",
+    "raw_data": {
+      "number": 100,
+      "title": "Add user authentication system",
+      "state": "closed",
+      "merged_at": "2025-06-28T08:37:19.957114",
+      "user": {
+        "login": "alice.smith"
+      },
+      "files": [
+        {
+          "filename": "src/auth.py",
+          "additions": 150,
+          "deletions": 20
+        },
+        {
+          "filename": "tests/test_auth.py",
+          "additions": 80,
+          "deletions": 5
+        }
+      ]
+    },
+    "additions": 230,
+    "deletions": 25,
+    "changed_files": 2,
+    "pr_number": 100,
+    "commit_sha": null
+  },
+  {
+    "id": "pr_101",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "pull_request",
+    "author": "bob.jones",
+    "timestamp": "2025-06-29T00:37:19.957114",
+    "raw_data": {
+      "number": 101,
+      "title": "Implement data validation layer",
+      "state": "closed",
+      "merged_at": "2025-06-29T08:37:19.957114",
+      "user": {
+        "login": "bob.jones"
+      },
+      "files": [
+        {
+          "filename": "src/auth.py",
+          "additions": 150,
+          "deletions": 20
+        },
+        {
+          "filename": "tests/test_auth.py",
+          "additions": 80,
+          "deletions": 5
+        }
+      ]
+    },
+    "additions": 230,
+    "deletions": 25,
+    "changed_files": 2,
+    "pr_number": 101,
+    "commit_sha": null
+  },
+  {
+    "id": "pr_102",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "pull_request",
+    "author": "charlie.wang",
+    "timestamp": "2025-06-30T00:37:19.957114",
+    "raw_data": {
+      "number": 102,
+      "title": "Fix performance issues in search",
+      "state": "closed",
+      "merged_at": "2025-06-30T08:37:19.957114",
+      "user": {
+        "login": "charlie.wang"
+      },
+      "files": [
+        {
+          "filename": "src/auth.py",
+          "additions": 150,
+          "deletions": 20
+        },
+        {
+          "filename": "tests/test_auth.py",
+          "additions": 80,
+          "deletions": 5
+        }
+      ]
+    },
+    "additions": 230,
+    "deletions": 25,
+    "changed_files": 2,
+    "pr_number": 102,
+    "commit_sha": null
+  },
+  {
+    "id": "review_1000",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "pull_request_review",
+    "author": "eve.garcia",
+    "timestamp": "2025-06-28T02:37:19.957114",
+    "raw_data": {
+      "id": 1000,
+      "state": "APPROVED",
+      "submitted_at": "2025-06-28T02:37:19.957114",
+      "user": {
+        "login": "eve.garcia"
+      }
+    },
+    "additions": null,
+    "deletions": null,
+    "changed_files": null,
+    "pr_number": 100,
+    "commit_sha": null
+  },
+  {
+    "id": "review_1001",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "pull_request_review",
+    "author": "diana.kim",
+    "timestamp": "2025-06-29T02:37:19.957114",
+    "raw_data": {
+      "id": 1001,
+      "state": "CHANGES_REQUESTED",
+      "submitted_at": "2025-06-29T02:37:19.957114",
+      "user": {
+        "login": "diana.kim"
+      }
+    },
+    "additions": null,
+    "deletions": null,
+    "changed_files": null,
+    "pr_number": 101,
+    "commit_sha": null
+  },
+  {
+    "id": "review_1002",
+    "repo_name": "JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge",
+    "event_type": "pull_request_review",
+    "author": "alice.smith",
+    "timestamp": "2025-06-30T02:37:19.957114",
+    "raw_data": {
+      "id": 1002,
+      "state": "APPROVED",
+      "submitted_at": "2025-06-30T02:37:19.957114",
+      "user": {
+        "login": "alice.smith"
+      }
+    },
+    "additions": null,
+    "deletions": null,
+    "changed_files": null,
+    "pr_number": 102,
+    "commit_sha": null
+  }
+]
