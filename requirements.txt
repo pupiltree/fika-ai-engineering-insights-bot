@@ -1,0 +1,16 @@
+# Core dependencies
+slack-bolt
+python-dotenv
+llama-cpp-python
+matplotlib
+numpy
+pandas
+requests
+langchain
+langchain-openai
+scipy
+langgraph
+typing-extensions
+pydantic
+pytest
+tqdm

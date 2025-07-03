@@ -1,0 +1,8 @@
+OPENROUTER_API_KEY= your_openrouter_api_key_here
+GITHUB_TOKEN= your_github_token_here
+GITHUB_REPO= your_github_repo_here
+SLACK_APP_TOKEN= your_slack_app_token_here
+SLACK_BOT_TOKEN= your_slack_bot_token_here
+#if using OpenRouter, set the provider to openai or set to llama for local LLMs
+#LLM_PROVIDER=llama
+#LLM_PROVIDER= openai
