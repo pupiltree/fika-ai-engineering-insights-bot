@@ -29,8 +29,9 @@ def weekly_report(ack, respond, command):
     chart_files = [
         ("output/commits_over_time.png", "Commits Over Time"),
         ("output/risky_vs_safe.png", "Risky vs Safe Commits"),
+        ("output/churn_analysis.png", "Churn Analysis"),
         ("output/dora_metrics.png", "DORA Metrics"),
-        ("output/pr_review_latency.png", "PR Review Latency"),
+        ("output/pr_review.png", "PR Review Latency"),
     ]
     for file_path, title in chart_files:
         if os.path.exists(file_path):
@@ -45,21 +46,19 @@ def daily_report(ack, respond, command):
     run_pipeline(timeframe="daily")
     _respond_with_report(respond)
 
-@app.command("/dora-metrics")
-def dora_metrics(ack, respond, command):
+@app.command("/dev-monthly-report")
+def monthly_report(ack, respond, command):
     ack()
-    run_pipeline(timeframe="weekly")  # Or use cached values
-    try:
-        with open("output/metrics.json", "r") as f:
-            metrics = json.load(f)
-        respond(f"""*DORA Metrics*:
-- 🕒 Lead Time: {metrics['lead_time']} hrs
-- 🚀 Deployment Frequency: {metrics['deploy_freq']}
-- ❌ Change Failure Rate: {metrics['failure_rate']}%
-- 🔁 MTTR: {metrics['mttr']} hrs
-        """)
-    except Exception as e:
-        respond(f"Failed to load metrics: {e}")
+    respond("Generating *monthly* report for your team...")
+    run_pipeline(timeframe="monthly")
+    _respond_with_report(respond)
+
+@app.command("/monthly-summary")
+def monthly_summary(ack, respond, command):
+    ack()
+    respond("Generating *monthly summary* for your team...")
+    run_pipeline(timeframe="monthly")
+    _respond_with_report(respond)
 
 def _respond_with_report(respond):
     try:
@@ -81,21 +80,6 @@ def send_chart_to_slack(channel, file_path, title):
     except Exception as e:
         print(f"Error uploading file to Slack: {e}")
 
-@app.command("/dev-charts")
-def send_charts(ack, respond, command):
-    ack()
-    channel = command['channel_id']
-    chart_files = [
-        ("output/commits_over_time.png", "Commits Over Time"),
-        ("output/risky_vs_safe.png", "Risky vs Safe Commits"),
-        ("output/dora_metrics.png", "DORA Metrics"),
-        ("output/pr_review_latency.png", "PR Review Latency"),
-    ]
-    for file_path, title in chart_files:
-        if os.path.exists(file_path):
-            send_chart_to_slack(channel, file_path, title)
-        else:
-            respond(f"Chart not found: {file_path}")
 
 if __name__ == "__main__":
     print("🚀 Starting FIKA Slack Bot (Socket Mode)...")
