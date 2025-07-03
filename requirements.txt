@@ -1,0 +1,21 @@
+# Core dependencies
+slack-bolt
+slack-bolt.adapter.socket_mode
+python-dotenv
+llama-cpp-python
+matplotlib
+numpy
+pandas
+requests
+python-dotenv
+langchain
+langchain-openai
+scipy
+langgraph
+dataclasses
+typing-extensions
+sqlite3
+llama-cpp-python
+pydantic
+pytest
+tqdm

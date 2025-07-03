@@ -10,28 +10,34 @@ class DataHarvesterAgent:
         self.github_token = os.getenv("GITHUB_TOKEN")
         self.repo = os.getenv("GITHUB_REPO")
         self.headers = {'Authorization': f'token {self.github_token}'} if self.github_token else {}
+        self.seed_data_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "seed_data.json")
         print(f"📡 {self.name} initialized")
 
     def run(self, state: Dict) -> Dict:
         repo = self.repo or state.get("repo")
-        use_seed = state.get("use_seed", False)
+        use_seed = state.get("use_seed", True)
 
         if use_seed:
             print("📦 Loading from seed data...")
-            with open("data/seed_data.json", "r") as f:
+            with open(self.seed_data_path, "r") as f:
                 seed = json.load(f)
             commits = seed.get("commits", [])
             prs = seed.get("prs", [])
         else:
             commits, prs = self.fetch_github_data(repo)
-            if not commits:
-                print("⚠️ No commits found on GitHub, falling back to seed data...")
-                with open("data/seed_data.json", "r") as f:
+            if not commits and not prs:
+                print("⚠️ No data from GitHub, falling back to seed data...")
+                with open(self.seed_data_path, "r") as f:
                     seed = json.load(f)
                 commits = seed.get("commits", [])
                 prs = seed.get("prs", [])
 
-        return {**state, "commits": commits, "prs": prs}
+        return {
+            **state,
+            "repo": repo,
+            "commits": commits,
+            "prs": prs,
+        }
 
     def fetch_github_data(self, repo: str) -> Tuple[list, list]:
         commits = self.fetch_commits(repo)
@@ -55,11 +61,11 @@ class DataHarvesterAgent:
                 "author": author_info.get("name", "unknown"),
                 "date": author_info.get("date", ""),
                 "message": commit_data.get("message", ""),
-                "additions": 0,  # Could be extended by fetching each commit's stats
+                "additions": 0,
                 "deletions": 0,
                 "files_changed": 0,
                 "after_hours": self.is_after_hours(author_info.get("date")),
-                "is_risky": False  # To be calculated later
+                "is_risky": False
             }
             commits.append(commit)
         return commits
@@ -75,7 +81,7 @@ class DataHarvesterAgent:
         prs = []
         for pr in response.json():
             if not pr.get("merged_at"):
-                continue  # Skip unmerged PRs
+                continue
             latency = self.calculate_latency(pr.get("created_at"), pr.get("merged_at"))
             prs.append({
                 "pr_id": f"PR{pr['number']}",
@@ -83,8 +89,8 @@ class DataHarvesterAgent:
                 "created_at": pr["created_at"],
                 "merged_at": pr["merged_at"],
                 "review_latency_hrs": latency,
-                "ci_status": "unknown",  # Could be enhanced via GitHub Checks API
-                "commits": []  # Can be populated later
+                "ci_status": "unknown",
+                "commits": []
             })
         return prs
 
@@ -94,7 +100,8 @@ class DataHarvesterAgent:
             created_dt = datetime.strptime(created, fmt)
             merged_dt = datetime.strptime(merged, fmt)
             return round((merged_dt - created_dt).total_seconds() / 3600, 2)
-        except:
+        except Exception as e:
+            print(f"⚠️ Latency calculation error: {e}")
             return 0.0
 
     def is_after_hours(self, iso_date: str) -> bool:

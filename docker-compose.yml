@@ -1,0 +1,19 @@
+version: '3.9'
+services:
+  fika-bot:
+    build: .
+    container_name: fika-ai-bot
+    environment:
+      - SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
+      - SLACK_APP_TOKEN=${SLACK_APP_TOKEN}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - GITHUB_REPO=${GITHUB_REPO}
+      - LLM_PROVIDER=${LLM_PROVIDER}
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+      - LLAMA_MODEL_PATH=${LLAMA_MODEL_PATH}
+    volumes:
+      - ./output:/app/output
+      - ./storage:/app/storage
+      - ./data:/app/data
+    command: ["python", "bot/slack_bot.py"]
+    restart: unless-stopped
