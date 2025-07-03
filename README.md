@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # PowerBiz Developer Analytics
 
 An AI-powered developer analytics platform using LangChain + LangGraph agents to track engineering performance and deliver insights through Slack.
@@ -342,6 +343,8 @@ For questions or issues:
 
 **Built with ❤️ using LangChain, LangGraph, and modern Python tooling.**
 =======
+=======
+>>>>>>> eddd19b4351bad0688fc7c782e39e9b2ec944911
 ## FIKA AI Research — Engineering-Productivity Intelligence **MVP** Challenge
 
 *[Learn more at **powersmy.biz**](https://powersmy.biz/)*
@@ -440,5 +443,9 @@ These resources should cover everything you need—happy hacking!
 [6]: https://stackoverflow.com/questions/56941641/using-githubs-api-to-get-lines-of-code-added-deleted-per-commit-on-a-branch?utm_source=chatgpt.com "Using GitHub's API to get lines of code added/deleted per commit ..."
 [7]: https://dora.dev/guides/dora-metrics-four-keys/?utm_source=chatgpt.com "DORA's software delivery metrics: the four keys"
 [8]: https://api.slack.com/interactivity/slash-commands?utm_source=chatgpt.com "Enabling interactivity with Slash commands - Slack API"
+<<<<<<< HEAD
+[9]: https://discordjs.guide/popular-topics/embeds?utm_source=chatgpt.com "Embeds | discord.js Guide"
+>>>>>>> eddd19b4351bad0688fc7c782e39e9b2ec944911
+=======
 [9]: https://discordjs.guide/popular-topics/embeds?utm_source=chatgpt.com "Embeds | discord.js Guide"
 >>>>>>> eddd19b4351bad0688fc7c782e39e9b2ec944911
