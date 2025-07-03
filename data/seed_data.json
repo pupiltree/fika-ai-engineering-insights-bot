@@ -1,0 +1,90 @@
+{
+  "commits": [
+    {
+      "sha": "a1",
+      "author": "Nikhil",
+      "message": "Initial project structure and CI setup",
+      "date": "2025-06-28T09:00:00Z",
+      "stats": { "additions": 150, "deletions": 20 }
+    },
+    {
+      "sha": "a2",
+      "author": "Aarav",
+      "message": "Implemented DataHarvester logic",
+      "date": "2025-06-29T11:00:00Z",
+      "stats": { "additions": 300, "deletions": 30 }
+    },
+    {
+      "sha": "a3",
+      "author": "Nikhil",
+      "message": "SlackBot command handler and routing",
+      "date": "2025-06-30T12:30:00Z",
+      "stats": { "additions": 250, "deletions": 15 }
+    },
+    {
+      "sha": "a4",
+      "author": "Sneha",
+      "message": "Chart generation using matplotlib",
+      "date": "2025-07-01T08:45:00Z",
+      "stats": { "additions": 220, "deletions": 50 }
+    },
+    {
+      "sha": "a5",
+      "author": "Aarav",
+      "message": "LangGraph StateGraph integration with nodes",
+      "date": "2025-07-01T14:15:00Z",
+      "stats": { "additions": 500, "deletions": 100 }
+    },
+    {
+      "sha": "a6",
+      "author": "Nikhil",
+      "message": "Refactor churn analysis logic",
+      "date": "2025-07-02T10:20:00Z",
+      "stats": { "additions": 180, "deletions": 70 }
+    },
+    {
+      "sha": "a7",
+      "author": "Sneha",
+      "message": "Bugfix for missing churn key error",
+      "date": "2025-07-02T16:45:00Z",
+      "stats": { "additions": 90, "deletions": 5 }
+    },
+    {
+      "sha": "a8",
+      "author": "Aarav",
+      "message": "Add CI failure tracking metrics",
+      "date": "2025-07-03T08:00:00Z",
+      "stats": { "additions": 350, "deletions": 60 }
+    },
+    {
+      "sha": "a9",
+      "author": "Sneha",
+      "message": "Test seed data ingestion and Slack upload",
+      "date": "2025-07-03T11:10:00Z",
+      "stats": { "additions": 40, "deletions": 0 }
+    }
+  ],
+  "pull_requests": [
+    {
+      "title": "Add LangGraph orchestration pipeline",
+      "user": "Aarav",
+      "created_at": "2025-07-01T09:15:00Z",
+      "merged_at": "2025-07-01T10:00:00Z",
+      "state": "closed"
+    },
+    {
+      "title": "Improve error handling for Slack bot",
+      "user": "Nikhil",
+      "created_at": "2025-07-02T12:00:00Z",
+      "merged_at": "2025-07-02T13:00:00Z",
+      "state": "closed"
+    },
+    {
+      "title": "Refactor agent chaining with LangGraph",
+      "user": "Sneha",
+      "created_at": "2025-07-02T18:00:00Z",
+      "merged_at": null,
+      "state": "open"
+    }
+  ]
+}
