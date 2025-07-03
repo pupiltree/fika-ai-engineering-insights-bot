@@ -1,6 +1,5 @@
 # Core dependencies
 slack-bolt
-slack-bolt.adapter.socket_mode
 python-dotenv
 llama-cpp-python
 matplotlib
@@ -14,7 +13,6 @@ scipy
 langgraph
 dataclasses
 typing-extensions
-sqlite3
 llama-cpp-python
 pydantic
 pytest

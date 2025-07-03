@@ -1,0 +1,33 @@
+FIKA AI Engineering Insights Bot — Architecture Diagram
+
+Legend:
+[Node] = LangGraph Agent Node
+-->    = Edge (data flow)
+[DB]   = Storage Layer (SQLite)
+[Slack]= Chat Layer (Slack Bot)
+
+
++-------------------+      +-------------------+      +---------------------+
+| DataHarvesterAgent| ---> | DiffAnalyzerAgent | ---> | InsightNarratorAgent|
++-------------------+      +-------------------+      +---------------------+
+        |                        |                          |
+        v                        v                          v
+     [DB: SQLite]         [Charts: Matplotlib]         [Slack Bot]
+        |                        |                          |
+        +------------------------+--------------------------+
+
+Details:
+- DataHarvesterAgent: Ingests GitHub/seed data, stores in SQLite
+- DiffAnalyzerAgent: Reads from DB, computes DORA/churn/latency, writes analysis
+- InsightNarratorAgent: Reads analysis, generates markdown via LLM, logs to DB
+- Slack Bot: Reads reports/charts from DB/output, posts to Slack
+
+LangGraph Orchestration:
+[DataHarvesterAgent] --> [DiffAnalyzerAgent] --> [InsightNarratorAgent]
+
+Storage:
+- All data, analysis, and reports are persisted in [DB: SQLite]
+- Charts are saved as PNGs in /output
+
+Chat Layer:
+- Slack Bot listens for slash commands, triggers pipeline, and posts results
