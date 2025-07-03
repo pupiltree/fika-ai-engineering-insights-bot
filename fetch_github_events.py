@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from state_schema import MyState
 
 load_dotenv()
-GITHUB_TOKEN = ""
+GITHUB_TOKEN = "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"
 
 
 

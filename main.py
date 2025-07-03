@@ -7,7 +7,7 @@ from diff_analyst_agent import diff_analyst_agent
 from author_stats_agent import author_stats_agent
 from insight_narrator_agent import insight_narrator_agent
 import os
-
+from insight_narrator_agent import send_to_slack 
 
 
 
@@ -35,5 +35,5 @@ final_state = graph.invoke({
 print("\n✅ Final Insight:", final_state["insight"])
 print("👥 Author Stats:", final_state["author_stats"])
 
+send_to_slack(final_state["insight"], final_state["author_stats"])
 
-#dekfrnt
