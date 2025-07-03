@@ -13,7 +13,7 @@ The agents work on real-time data directly from the this Github Repository.
 - 💬 Posts interactive weekly reports to Slack via a slash command (`/dev-report`)
 - ♻️ Uses caching to avoid repeated GitHub API calls
 - 🧩 Modular architecture built using **LangGraph**, **LangChain**, and **Slack Bolt**
-
+- 👀Analyzed GitHub activity to calculate key DORA metrics like deployment frequency, change volume (churn), and developer commit frequency using commits, pull requests, and timestamps.
 ---
 
 ## 🧩 Agents Overview
