@@ -171,5 +171,3 @@ Appreciate the opportunity to showcase this. Looking forward to your review and 
 
 —
 Nikhil Sukthe
-
-```
