@@ -1,99 +1,395 @@
-## FIKA AI Research — Engineering-Productivity Intelligence **MVP** Challenge
 
-*[Learn more at **powersmy.biz**](https://powersmy.biz/)*
+# 🚀 Engineering Productivity Intelligence MVP
 
-### 🚀 Hiring Opportunity
-
-**We're hiring!** This challenge is part of our recruitment process for engineering positions. We offer both **remote** and **on-site** work options to accommodate your preferences and lifestyle.
-
-### 1 ✦ Context
-
-We need a chat-first, AI-powered view of how every engineer and squad are performing—both technically and in terms of business value shipped. Build a **minimum-viable product (MVP)** in fewer than seven days that delivers these insights inside Slack **or** Discord.
-
-### 2 ✦ Core MVP Requirements (non-negotiables)
-
-| Area                     | Requirement                                                                                                                                                                                                                                                   |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Agent-centric design** | Use **LangChain + LangGraph** agents written in **Python 3.10+**. Provide at least two clear roles—*Data Harvester* and *Diff Analyst*—handing off to an *Insight Narrator* agent via LangGraph edges.                                                        |
-| **Data ingestion**       | Pull GitHub events via REST or webhooks. The commits API exposes `additions`, `deletions`, `changed_files` per commit ([docs.github.com][3]); the *List PR files* endpoint gives the same per-file counts ([docs.github.com][4]).                             |
-| **Metrics**              | Track commits, PR throughput, review latency, cycle time, CI failures **plus per-author diff stats** (lines ±, files touched). Optionally fall back to `git log --numstat` for local analysis ([stackoverflow.com][5]).                                       |
-| **Diff analytics layer** | Your *Diff Analyst* agent aggregates churn, flags spikes, and links code-churn outliers to defect risk (research shows churn correlates with bugs) ([stackoverflow.com][6]).                                                                                  |
-| **AI insight layer**     | Agents transform data into daily, weekly, monthly narratives that map to DORA’s four keys (lead-time, deploy frequency, change-failure, MTTR) ([dora.dev][7]). Log every prompt/response for auditability.                                                    |
-| **Chat-first output**    | A **Slack bot** (Bolt Python SDK) ([api.slack.com][8]) or **Discord bot** (discord.js slash-command with embeds) ([discordjs.guide][9]) must, on `/dev-report weekly`, post a chart/table + the agent summary. JSON API is optional but the bot is mandatory. |
-| **MVP polish**           | One-command bootstrap (`docker compose up` or `make run`). Include a seed script with fake GitHub events so reviewers see data instantly.                                                                                                                     |
-| **Docs**                 | `README.md` with bot install guide and an architecture diagram showing LangGraph nodes/edges, storage and chat layer.                                                                                                                                         |
-
-### 3 ✦ Tech Stack (required)
-
-* **Language:** Python 3.10+
-* **Agent Frameworks:** LangChain ≥ 0.1.0 ([python.langchain.com][1]) and LangGraph service or OSS package ([langchain.com][2])
-* **Chat SDK:** Slack Bolt-Python **or** discord.js (node sidecar acceptable) ([api.slack.com][8], [discordjs.guide][9])
-* **Storage:** any Python-friendly store (Postgres, SQLite, DuckDB, TinyDB).
-* **Viz:** matplotlib, Plotly, or quick-chart PNGs.
-
-### 4 ✦ Stretch Goals (optional)
-
-* Forecast next week’s cycle time or churn.
-* Code-review “influence map” graph.
-* Pluggable LLM driver (OpenAI ↔ local Llama) in < 15 min.
-* Scheduled digests (bot auto-drops Monday summary).
-
-### 5 ✦ Deliverables
-
-1. **Pull Request** to the challenge repo containing code + docs.
-2. ≤ 3-minute Loom/GIF demo (encouraged).
-
-### 6 ✦ Timeline
-
-*Fork today → PR in **72 hours** (extensions on request).*
-We’ll smoke-test your bot in our workspace, then book your interview.
-
-### 7 ✦ Evaluation Rubric (100 pts)
-
-| Category                         | Pts | What we look for                                                |
-| -------------------------------- | --- | --------------------------------------------------------------- |
-| LangGraph agent architecture     | 25  | Clear roles, deterministic edges, minimal hallucination.        |
-| MVP completeness & correctness   | 25  | Metrics and diff stats accurate; bot responds; seed data works. |
-| Code quality & tests             | 20  | Idiomatic Python, CI green.                                     |
-| Insight value & business mapping | 15  | Narratives help leadership act.                                 |
-| Dev X & docs                     | 10  | Fast start, clear setup, diagrams.                              |
-| Stretch innovation               | 5   | Any wow factor.                                                 |
-
-### 8 ✦ Interview Flow
-
-1. **Code/architecture dive (45 min)**
-2. **Edge-case & scaling Q\&A (30 min)**
-3. **Product thinking & culture fit (15 min)**
-
-### 9 ✦ Ground Rules
-
-Original work only; public libs are fine. Don’t commit real secrets. We may open-source the winning MVP with credit.
-
-> **Ready?** Fork ✦ Build ✦ PR ✦ Impress us.
-> Questions → **[founder@powersmy.biz](mailto:founder@powersmy.biz)**
+AI-powered engineering productivity analytics using **LangGraph agents** and **Gemini AI**. Get instant insights into your team's productivity metrics through Slack.
 
 ---
 
-### Quick Reference Links
+## ✨ Features
 
-* LangChain docs ([python.langchain.com][1]) – prompt, tool and memory helpers.
-* LangGraph overview ([langchain.com][2]) – stateful orchestration patterns.
-* GitHub Commits API (`additions`/`deletions`) ([docs.github.com][3])
-* GitHub PR Files API (per-file diff) ([docs.github.com][4])
-* Slack slash-commands guide ([api.slack.com][8])
-* Discord embeds guide ([discordjs.guide][9])
-* Git diff `--numstat` usage ([stackoverflow.com][5])
-* DORA four-key metrics ([dora.dev][7])
-* Code-churn research on defects ([stackoverflow.com][6])
+* **🤖 Agent Pipeline** (LangChain + LangGraph):
+  `Data Harvester → Diff Analyst → Insight Narrator`
+* **📊 DORA Metrics**: Lead time, deployment frequency, change failure rate, MTTR
+* **🔍 Code Churn & Risk Analysis**: Per-author metrics and anomalies
+* **💬 Slack Integration**: Slash command `/dev-report` with charts + summaries
+* **⚡ Real-Time GitHub Analysis**: Commits, PRs, diff stats
+* **🎯 Actionable Insights**: AI-generated team productivity reports via Gemini
 
-These resources should cover everything you need—happy hacking!
+---
 
-[1]: https://python.langchain.com/docs/introduction/?utm_source=chatgpt.com "Python LangChain"
-[2]: https://www.langchain.com/langgraph?utm_source=chatgpt.com "LangGraph - LangChain"
-[3]: https://docs.github.com/rest/commits/commits?utm_source=chatgpt.com "REST API endpoints for commits - GitHub Docs"
-[4]: https://docs.github.com/en/rest/pulls/pulls?utm_source=chatgpt.com "REST API endpoints for pull requests - GitHub Docs"
-[5]: https://stackoverflow.com/questions/9933325/is-there-a-way-of-having-git-show-lines-added-lines-changed-and-lines-removed?utm_source=chatgpt.com "Is there a way of having git show lines added, lines changed and ..."
-[6]: https://stackoverflow.com/questions/56941641/using-githubs-api-to-get-lines-of-code-added-deleted-per-commit-on-a-branch?utm_source=chatgpt.com "Using GitHub's API to get lines of code added/deleted per commit ..."
-[7]: https://dora.dev/guides/dora-metrics-four-keys/?utm_source=chatgpt.com "DORA's software delivery metrics: the four keys"
-[8]: https://api.slack.com/interactivity/slash-commands?utm_source=chatgpt.com "Enabling interactivity with Slash commands - Slack API"
-[9]: https://discordjs.guide/popular-topics/embeds?utm_source=chatgpt.com "Embeds | discord.js Guide"
+## 🎥 Demo Video (Local)
+
+To preview the MVP in action, [watch this video](demo/fika-demo.mp4).
+
+It walks through the Slack command usage, GitHub metrics processing, LangGraph agent pipeline, and AI insights.
+
+---
+
+
+## 🧠 System Architecture
+
+```plaintext
+┌──────────────────────────────┐
+│        Slack User            │
+│   (uses /dev-report)         │
+└────────────┬─────────────────┘
+             ▼
+      ┌───────────────────┐
+      │  Flask Web Server │ ◄─── Socket Mode
+      │  (manage.py run)  │
+      └──────┬────────────┘
+             ▼
+     ┌────────────────────────┐
+     │ LangGraph Workflow     │
+     └──────┬───────┬─────────┘
+            ▼       ▼
+    ┌────────────┐ ┌───────────────┐
+    │ Data       │ │ Diff Analyst  │
+    │ Harvester  │ │ → DORA + Churn│
+    └────┬───────┘ └───────────────┘
+         ▼
+  ┌────────────────────┐
+  │ Insight Narrator   │ ──► Gemini AI
+  └─────────┬──────────┘
+            ▼
+    ┌────────────────────┐
+    │ Slack Formatter    │ ──► Slack API (summary + chart)
+    └────────────────────┘
+```
+
+---
+
+## 🏗️ Project Structure
+
+```
+engineering-productivity-mvp/
+├── .env.example
+├── manage.py                   # CLI tool: run, seed, setup, test, etc.
+├── requirements.txt
+├── data/
+│   ├── productivity.db         # SQLite DB
+│   └── seed/sample_github_events.json
+├── scripts/
+│   ├── run_local.py
+│   ├── seed_data.py
+│   └── setup_db.py
+└── src/
+    ├── agents/                 # LangGraph agents
+    ├── graph/                  # Workflow logic
+    ├── data/                   # GitHub API, DB models
+    ├── chat/                   # Slack bot integration
+    ├── viz/                    # Charts (Plotly)
+    └── config.py               # Config loader
+```
+
+---
+
+## 🚀 Quick Start
+
+### 1. Prerequisites
+
+* Python 3.10+
+* GitHub token (`repo` or `public_repo` scope)
+* Gemini API key
+* Slack workspace with **bot installed**
+* Slack App-level Token for **Socket Mode**
+
+---
+
+### 2. Installation
+
+```bash
+# Clone the repo
+git clone https://github.com/JORDAN-RYAN1/Engineering-Productivity-Intelligence-MVP-Challenge.git
+cd engineering-productivity-mvp
+
+# Create a virtual environment (named 'venv' here)
+python -m venv venv
+
+# Activate the virtual environment
+# On macOS/Linux:
+source venv/bin/activate
+# On Windows (cmd):
+venv\Scripts\activate.bat
+# Or on Windows (PowerShell):
+venv\Scripts\Activate.ps1
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Copy env config
+cp .env.example .env
+```
+
+---
+
+### 3. Configure `.env`
+
+```env
+# Required
+GITHUB_TOKEN=ghp_xxx
+GEMINI_API_KEY=AIza...
+
+SLACK_BOT_TOKEN=xoxb-...
+SLACK_SIGNING_SECRET=...
+SLACK_APP_TOKEN=xapp-...
+
+# GitHub defaults
+DEFAULT_REPO_OWNER=your-github-username
+DEFAULT_REPO_NAME=your-repo-name
+```
+
+---
+## 🔐 4. API Keys Setup
+
+### 🔑 GitHub Personal Access Token
+
+1. Visit [GitHub Personal Access Tokens](https://github.com/settings/tokens)
+2. Click **"Generate new token (classic)"**
+3. Select scopes:
+
+   * `repo` → for private repositories
+   * `public_repo` → for public repositories only
+4. Copy the token (starts with `ghp_` or `github_pat_`)
+
+### 🤖 Google Gemini API Key
+
+1. Go to [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. Click **"Create API key"**
+3. Copy the key (starts with `AIza`)
+
+
+### 🔑 Slack Tokens Setup
+
+> You’ll need to **create a Slack App** from scratch with **Socket Mode enabled**.
+
+#### 1. Create Slack App
+
+* Go to: [https://api.slack.com/apps](https://api.slack.com/apps)
+* Click **"Create New App"** → From scratch
+* App name: `DevReportBot`
+* Workspace: your Slack workspace
+
+#### 2. Add Bot Token Scopes
+
+Navigate to **OAuth & Permissions** → Under **Bot Token Scopes**, add:
+
+```
+app_mentions:read
+channels:join
+channels:read
+chat:write
+chat:write.public
+commands
+files:read
+files:write
+```
+
+> After adding scopes, click **“Install to Workspace”**
+> Copy your **Bot Token** (starts with `xoxb-`)
+
+```env
+SLACK_BOT_TOKEN=xoxb-...
+```
+
+---
+
+#### 3. Get the Slack Signing Secret
+
+* Go to **"Basic Information"** in your Slack App settings
+* Under **App Credentials**, copy the **Signing Secret**
+
+```env
+SLACK_SIGNING_SECRET=...
+```
+
+---
+
+#### 4. Enable Socket Mode
+
+* Go to **"Socket Mode"** → Toggle **ON**
+* Click **"App-Level Tokens"** → Create new token:
+
+  * Name: `socket-connection`
+  * Scope: `connections:write`
+
+> Copy the token (starts with `xapp-`)
+
+```env
+SLACK_APP_TOKEN=xapp-...
+```
+
+---
+
+#### 5. Add Slash Command
+
+* Go to **"Slash Commands"** → Create new command:
+
+```
+Command: /dev-report
+Short Description: Get engineering productivity metrics and insights
+Usage Hint: [weekly|daily|monthly] [repo-name] [author]
+Request URL: (leave blank — Socket Mode handles this)
+```
+
+---
+
+## 🔗 Add Slack Bot to a Channel
+
+1. In your Slack workspace, navigate to the channel (e.g. `#engineering`)
+2. Use `/invite` command:
+
+```bash
+/invite @DevReportBot
+```
+
+3. Now the bot can respond in that channel when `/dev-report` is used.
+
+---
+
+## 💬 Slack Integration Details
+
+### 🔧 Command Usage
+
+```bash
+/dev-report                       # Weekly report for default repo
+/dev-report monthly               # Monthly report  
+/dev-report weekly my-repo        # Weekly report for specific repo
+/dev-report daily owner/repo      # Daily report for owner/repo
+/dev-report weekly repo author    # Report for a specific author
+```
+
+### 5. Setup Database
+
+```bash
+python manage.py setup    # Creates SQLite schema
+python manage.py seed     # (Optional) Seed with sample GitHub events
+```
+
+
+---
+### 6. Run Locally
+
+```bash
+python manage.py run      # Starts Flask + Socket Mode listener
+```
+
+Slack bot should now respond to `/dev-report` in your workspace.
+
+---
+
+
+## 📊 Metrics Tracked
+
+### DORA Metrics ([https://dora.dev](https://dora.dev))
+
+* 🚀 Deployment Frequency
+* ⏱️ Lead Time
+* ❌ Change Failure Rate
+* 🔧 MTTR
+
+### Developer Insights
+
+* Commit counts, PRs, code churn
+* Author-level activity and trends
+* Risk detection based on churn spikes
+
+---
+## ⚡ Performance
+
+* ⏱️ **Analysis time**: 30–60 seconds
+* 📈 **Charts per report**: 4
+* 🧪 **AI requests per run**: \~6 (Gemini API)
+* 💾 **Data sources**: GitHub API + SQLite
+
+---
+
+## 📈 Example Slack Output
+
+```
+📊 Weekly Productivity Report: microsoft/vscode
+
+🎯 Executive Summary
+5 contributors delivered 42 commits this week.
+
+📊 DORA Metrics:
+🚀 Deploys/day: 1.2
+⏱️ Lead time: 18.5 hrs
+❌ Failure rate: 15.8%
+🔧 MTTR: 4.2 hrs
+
+🏆 Top Contributors:
+1. alice.smith - 15 commits
+2. bob.jones - 12 commits
+
+🎯 Actions:
+- Recognize alice.smith
+- Improve review bottlenecks
+```
+## 📈 Generated Charts
+
+The system automatically creates:
+
+* 📅 **Commit Activity Timeline** — Daily commit patterns
+* 🧑‍🤝‍🧑 **Contributor Comparison** — Per-author productivity
+* 📊 **DORA Metrics Dashboard** — Four key metrics visualized
+* 🔁 **Code Churn Analysis** — Risk spikes and anomalies
+
+Charts are uploaded directly to Slack with each report.
+
+
+
+---
+
+
+## 🧰 Troubleshooting
+
+### ⚠️ "Slack command not responding"
+
+* ✅ Ensure **Socket Mode** is enabled in Slack app
+* ✅ Double-check `SLACK_APP_TOKEN` in `.env`
+* ✅ Verify bot is invited to the target Slack channel
+* ✅ Confirm you've installed the app to the workspace
+* ✅ Server must be running locally (`python manage.py run`)
+
+---
+
+### 📭 "No events found"
+
+* 🔍 Ensure `GITHUB_TOKEN` has correct scopes
+* ✅ Check repo name and owner in `.env` or command
+* 🕒 Try increasing `DEFAULT_LOOKBACK_DAYS` to expand time window
+
+---
+
+### 📉 "Charts not uploading"
+
+* ✅ Confirm `files:write` scope is in Slack app
+* 🔁 Reinstall the Slack app after adding scopes
+* 🔐 Double-check Slack Bot Token is up to date
+
+---
+
+### 🤖 "LLM API errors"
+
+* ✅ Verify your Gemini API key is correct
+* 📊 Check if you've hit your Gemini API quota limit
+* 🧪 For local testing, set:
+
+```env
+DISABLE_AI=true
+```
+
+This will skip all Gemini-related output.
+
+
+
+---
+
+## 📝 License
+
+This MVP is part of the **FIKA AI Research – Engineering Productivity Intelligence Challenge**
+Built with ❤️ using **LangGraph**, **LangChain**, and **Gemini AI**
+
+---
+
