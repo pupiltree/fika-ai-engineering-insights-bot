@@ -18,6 +18,9 @@ def send_to_slack(insight: str, author_stats: list):
     message = f"*Weekly Insight:*\n{insight}\n\n*Author Stats:*\n" + "\n".join(
         [f"- {a['author']}: ➕ {a['add']} | ➖ {a['del']} | 📁 {a['files']} files" for a in author_stats]
     )
+    if not webhook_url:
+        print("❌ Slack error: SLACK_WEBHOOK_URL is not set.")
+        return
     response = requests.post(webhook_url, json={"text": message})
     if response.status_code != 200:
         print("❌ Slack error:", response.text)

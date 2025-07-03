@@ -1,9 +1,9 @@
 import os, requests
-from dotenv import load_dotenv
+
 from state_schema import MyState
 
+from dotenv import load_dotenv
 load_dotenv()
-GITHUB_TOKEN = "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"
 
 
 
@@ -12,6 +12,10 @@ GITHUB_TOKEN = "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"
 def data_harvester_agent(state: MyState) -> MyState:
     print("🛰️ DataHarvesterAgent: fetching real GitHub data...")
     owner, repo, per_page = "vercel", "next.js", 10
+
+    GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
+    if not GITHUB_TOKEN:
+        raise ValueError("GITHUB_TOKEN environment variable not set")
 
     headers = {
         "Authorization": f"token {GITHUB_TOKEN}",
