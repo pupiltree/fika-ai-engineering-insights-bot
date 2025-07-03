@@ -4,7 +4,9 @@ from collections import defaultdict
 class DiffAnalystAgent(Runnable):
     """Processes GitHub event data to compute per-author churn stats."""
 
-    def invoke(self, events: list):
+    def invoke(self, input, config=None):
+        events = input.get("events", [])
+
         author_stats = defaultdict(lambda: {
             "additions": 0,
             "deletions": 0,
@@ -25,10 +27,8 @@ class DiffAnalystAgent(Runnable):
             author_stats[author]["files_changed"] += files
             author_stats[author]["churn"] += churn
 
-        # Flag churn spikes
         for author, stats in author_stats.items():
             if stats["churn"] > 200:
                 stats["spike"] = True
 
-        print("✅ DiffAnalystAgent: Computed stats for", len(author_stats), "authors.")
-        return dict(author_stats)
+        return {"stats": dict(author_stats)}

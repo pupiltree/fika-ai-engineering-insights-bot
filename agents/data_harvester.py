@@ -8,7 +8,7 @@ class DataHarvesterAgent(Runnable):
     def __init__(self, filepath="seed/fake_github_events.json"):
         self.filepath = Path(filepath)
 
-    def invoke(self, input=None):
+    def invoke(self, input=None,config=None):
         """Load static GitHub commit data from JSON."""
         if not self.filepath.exists():
             raise FileNotFoundError(f"❌ Seed file not found: {self.filepath}")
@@ -17,4 +17,4 @@ class DataHarvesterAgent(Runnable):
             data = json.load(f)
 
         print(f"✅ DataHarvesterAgent: Loaded {len(data)} events.")
-        return data
+        return {"events": data}
