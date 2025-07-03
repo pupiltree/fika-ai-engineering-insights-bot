@@ -1,0 +1,51 @@
+[
+  {
+    "author": "alice",
+    "additions": 120,
+    "deletions": 45,
+    "files_changed": 6,
+    "timestamp": "2024-06-28T10:00:00Z"
+  },
+  {
+    "author": "bob",
+    "additions": 34,
+    "deletions": 12,
+    "files_changed": 3,
+    "timestamp": "2024-06-28T12:00:00Z"
+  },
+  {
+    "author": "charlie",
+    "additions": 89,
+    "deletions": 20,
+    "files_changed": 5,
+    "timestamp": "2024-06-28T14:30:00Z"
+  },
+  {
+    "author": "diana",
+    "additions": 200,
+    "deletions": 50,
+    "files_changed": 10,
+    "timestamp": "2024-06-29T09:15:00Z"
+  },
+  {
+    "author": "edward",
+    "additions": 15,
+    "deletions": 5,
+    "files_changed": 1,
+    "timestamp": "2024-06-29T11:45:00Z"
+  },
+  {
+    "author": "alice",
+    "additions": 45,
+    "deletions": 30,
+    "files_changed": 4,
+    "timestamp": "2024-06-29T13:00:00Z"
+  },
+  {
+    "author": "bob",
+    "additions": 70,
+    "deletions": 25,
+    "files_changed": 3,
+    "timestamp": "2024-06-29T15:30:00Z"
+  }
+]
