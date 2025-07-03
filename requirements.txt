@@ -6,14 +6,11 @@ matplotlib
 numpy
 pandas
 requests
-python-dotenv
 langchain
 langchain-openai
 scipy
 langgraph
-dataclasses
 typing-extensions
-llama-cpp-python
 pydantic
 pytest
 tqdm
