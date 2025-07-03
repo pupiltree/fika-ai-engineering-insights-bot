@@ -145,5 +145,6 @@ The bot includes forecasting for code churn and lead time:
 ## 👥 Credits
 - Built for the FIKA AI Research MVP Challenge
 - Author: Dhinakaran Thangaraj
+- I have also attached to Demo video in the repository 
 ---
 
