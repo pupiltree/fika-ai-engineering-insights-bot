@@ -1,0 +1,146 @@
+[
+    {
+        "sha": "376c2140e1f70f6c574bcbdd04617c68a48aa187",
+        "author": "Dev-Rutwik",
+        "date": "2025-07-03T05:09:24Z",
+        "message": "\"Added Data Summary for data Analysis Agent\""
+    },
+    {
+        "sha": "f84af56ca8f32bdfebf2c626895b4ecf66a08d31",
+        "author": "Dev-Rutwik",
+        "date": "2025-07-02T14:16:49Z",
+        "message": "\"Testing the workflow\""
+    },
+    {
+        "sha": "fa83c6f29641c4aabfcbaf37e9ca15278c7105fd",
+        "author": "Dev-Rutwik",
+        "date": "2025-07-02T13:57:38Z",
+        "message": "\"Updated Readme\""
+    },
+    {
+        "sha": "e5fb2f1157745ab9a421bbcc1c59307fa55783a7",
+        "author": "Dev-Rutwik",
+        "date": "2025-07-02T13:54:47Z",
+        "message": "\"Lang Graph Pipeline is added and running\""
+    },
+    {
+        "sha": "692ed160836a3a8b31e89050b4fc99df066a54a3",
+        "author": "Dev-Rutwik",
+        "date": "2025-07-02T12:26:05Z",
+        "message": "\"Data Preparation Done\""
+    },
+    {
+        "sha": "1a68003bc65c135671b5a543b775314fa2fb04c4",
+        "author": "Dev-Rutwik",
+        "date": "2025-07-02T05:37:52Z",
+        "message": "Merge branch 'main' of https://github.com/Dev-Rutwik/Github_AI_Agent"
+    },
+    {
+        "sha": "3dd8adde499fccfba251850da7d88b87d3b08d20",
+        "author": "Dev-Rutwik",
+        "date": "2025-07-02T05:37:13Z",
+        "message": "\"Files added Testing\""
+    },
+    {
+        "sha": "3bc302899b1585eca59c1c94fd06acaf9a60206b",
+        "author": "Dev-Rutwik",
+        "date": "2025-07-02T05:11:53Z",
+        "message": "Merge pull request #1 from Dev-Rutwik/data_harvestor_agent\n\n\"Added Comments fetch function\""
+    },
+    {
+        "sha": "31c6f4d26d3bb3f858da1bcfd1e62ecbde8d7a5e",
+        "author": "Dev-Rutwik",
+        "date": "2025-07-02T05:11:23Z",
+        "message": "\"Added Comments fetch function\""
+    },
+    {
+        "sha": "31cb492af0997338b3a04d1afed310c82be6104e",
+        "author": "Dev-Rutwik",
+        "date": "2025-07-02T05:06:17Z",
+        "message": "\"Made Connections with Github API for getting commits and pull Requests\""
+    },
+    {
+        "sha": "42edbbb18bd9897b4ec104edb034694b5abf4376",
+        "author": "Dev-Rutwik",
+        "date": "2025-07-01T14:23:37Z",
+        "message": "\"Added GITHUB_PERSONAL_ACCESS_TOKEN\""
+    },
+    {
+        "sha": "1e535216662bd2b6404676f115bfd06a367a8eac",
+        "author": "Dev-Rutwik",
+        "date": "2025-07-01T13:55:56Z",
+        "message": "\"Lets Start Coding\""
+    },
+    {
+        "sha": "fe1e36236aa426bdb690e5185d5edb8fb1708d89",
+        "author": "Dev-Rutwik",
+        "date": "2025-07-01T13:54:01Z",
+        "message": "Create fake.txt"
+    },
+    {
+        "sha": "d1994c14fac88d13f0225c5070ba98c5f8f48a8b",
+        "author": "Dev-Rutwik",
+        "date": "2025-07-01T13:52:48Z",
+        "message": "first commit"
+    },
+    {
+        "sha": "eddd19b4351bad0688fc7c782e39e9b2ec944911",
+        "author": "0xglitch",
+        "date": "2025-06-30T13:08:27Z",
+        "message": "updated back to 72 hrs"
+    },
+    {
+        "sha": "11d881b44c0a1081499d6f0c32a29c12f55004ed",
+        "author": "0xglitch",
+        "date": "2025-06-29T11:21:45Z",
+        "message": "updated the deadline"
+    },
+    {
+        "sha": "69e9cb07984fda2be01549f5acbacf50c323bcb6",
+        "author": "0xglitch",
+        "date": "2025-06-28T17:20:23Z",
+        "message": "initial commit"
+    },
+    {
+        "sha": "0f9bcd28b5e3fb262730cc31e331116529e466dd",
+        "author": "0xglitch",
+        "date": "2025-06-28T16:25:02Z",
+        "message": "initial commit"
+    },
+    {
+        "sha": "039c9c6850040bb69c5ba550f039c7a087ec201f",
+        "author": "Dev-Rutwik",
+        "date": "2025-07-03T12:16:24Z",
+        "message": "\"Data Analyst Agent is Ready\""
+    },
+    {
+        "sha": "8552a34859bd0b0a0a8df50d40744e232885191c",
+        "author": "Dev-Rutwik",
+        "date": "2025-07-03T16:37:58Z",
+        "message": "\"Read Me\""
+    },
+    {
+        "sha": "72fe5d11695562fc0587ba90e5b4e0c3731355c2",
+        "author": "Dev-Rutwik",
+        "date": "2025-07-03T16:28:52Z",
+        "message": "\"Read me\""
+    },
+    {
+        "sha": "a5a74b5ce898588c9115669a4ce02cada3c30a13",
+        "author": "Dev-Rutwik",
+        "date": "2025-07-03T16:24:24Z",
+        "message": "\"Adding Read me\""
+    },
+    {
+        "sha": "a5146528ea95b3635b2ef3c68da69fbcf10ab13b",
+        "author": "Dev-Rutwik",
+        "date": "2025-07-03T16:22:12Z",
+        "message": "\"Added the Read me File\""
+    },
+    {
+        "sha": "54454689f59c5499b004f6ed62ea6331f1f87660",
+        "author": "Dev-Rutwik",
+        "date": "2025-07-03T16:11:42Z",
+        "message": "\"ALL the Agents are ready\""
+    }
+]

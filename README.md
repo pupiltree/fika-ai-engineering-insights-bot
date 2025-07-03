@@ -1,99 +1,105 @@
-## FIKA AI Research — Engineering-Productivity Intelligence **MVP** Challenge
 
-*[Learn more at **powersmy.biz**](https://powersmy.biz/)*
+An AI-powered Slack bot that analyzes GitHub repositories and generates insightful developer performance reports using LangGraph agents and Google Gemini or Mistral LLM.
 
-### 🚀 Hiring Opportunity
-
-**We're hiring!** This challenge is part of our recruitment process for engineering positions. We offer both **remote** and **on-site** work options to accommodate your preferences and lifestyle.
-
-### 1 ✦ Context
-
-We need a chat-first, AI-powered view of how every engineer and squad are performing—both technically and in terms of business value shipped. Build a **minimum-viable product (MVP)** in fewer than seven days that delivers these insights inside Slack **or** Discord.
-
-### 2 ✦ Core MVP Requirements (non-negotiables)
-
-| Area                     | Requirement                                                                                                                                                                                                                                                   |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Agent-centric design** | Use **LangChain + LangGraph** agents written in **Python 3.10+**. Provide at least two clear roles—*Data Harvester* and *Diff Analyst*—handing off to an *Insight Narrator* agent via LangGraph edges.                                                        |
-| **Data ingestion**       | Pull GitHub events via REST or webhooks. The commits API exposes `additions`, `deletions`, `changed_files` per commit ([docs.github.com][3]); the *List PR files* endpoint gives the same per-file counts ([docs.github.com][4]).                             |
-| **Metrics**              | Track commits, PR throughput, review latency, cycle time, CI failures **plus per-author diff stats** (lines ±, files touched). Optionally fall back to `git log --numstat` for local analysis ([stackoverflow.com][5]).                                       |
-| **Diff analytics layer** | Your *Diff Analyst* agent aggregates churn, flags spikes, and links code-churn outliers to defect risk (research shows churn correlates with bugs) ([stackoverflow.com][6]).                                                                                  |
-| **AI insight layer**     | Agents transform data into daily, weekly, monthly narratives that map to DORA’s four keys (lead-time, deploy frequency, change-failure, MTTR) ([dora.dev][7]). Log every prompt/response for auditability.                                                    |
-| **Chat-first output**    | A **Slack bot** (Bolt Python SDK) ([api.slack.com][8]) or **Discord bot** (discord.js slash-command with embeds) ([discordjs.guide][9]) must, on `/dev-report weekly`, post a chart/table + the agent summary. JSON API is optional but the bot is mandatory. |
-| **MVP polish**           | One-command bootstrap (`docker compose up` or `make run`). Include a seed script with fake GitHub events so reviewers see data instantly.                                                                                                                     |
-| **Docs**                 | `README.md` with bot install guide and an architecture diagram showing LangGraph nodes/edges, storage and chat layer.                                                                                                                                         |
-
-### 3 ✦ Tech Stack (required)
-
-* **Language:** Python 3.10+
-* **Agent Frameworks:** LangChain ≥ 0.1.0 ([python.langchain.com][1]) and LangGraph service or OSS package ([langchain.com][2])
-* **Chat SDK:** Slack Bolt-Python **or** discord.js (node sidecar acceptable) ([api.slack.com][8], [discordjs.guide][9])
-* **Storage:** any Python-friendly store (Postgres, SQLite, DuckDB, TinyDB).
-* **Viz:** matplotlib, Plotly, or quick-chart PNGs.
-
-### 4 ✦ Stretch Goals (optional)
-
-* Forecast next week’s cycle time or churn.
-* Code-review “influence map” graph.
-* Pluggable LLM driver (OpenAI ↔ local Llama) in < 15 min.
-* Scheduled digests (bot auto-drops Monday summary).
-
-### 5 ✦ Deliverables
-
-1. **Pull Request** to the challenge repo containing code + docs.
-2. ≤ 3-minute Loom/GIF demo (encouraged).
-
-### 6 ✦ Timeline
-
-*Fork today → PR in **72 hours** (extensions on request).*
-We’ll smoke-test your bot in our workspace, then book your interview.
-
-### 7 ✦ Evaluation Rubric (100 pts)
-
-| Category                         | Pts | What we look for                                                |
-| -------------------------------- | --- | --------------------------------------------------------------- |
-| LangGraph agent architecture     | 25  | Clear roles, deterministic edges, minimal hallucination.        |
-| MVP completeness & correctness   | 25  | Metrics and diff stats accurate; bot responds; seed data works. |
-| Code quality & tests             | 20  | Idiomatic Python, CI green.                                     |
-| Insight value & business mapping | 15  | Narratives help leadership act.                                 |
-| Dev X & docs                     | 10  | Fast start, clear setup, diagrams.                              |
-| Stretch innovation               | 5   | Any wow factor.                                                 |
-
-### 8 ✦ Interview Flow
-
-1. **Code/architecture dive (45 min)**
-2. **Edge-case & scaling Q\&A (30 min)**
-3. **Product thinking & culture fit (15 min)**
-
-### 9 ✦ Ground Rules
-
-Original work only; public libs are fine. Don’t commit real secrets. We may open-source the winning MVP with credit.
-
-> **Ready?** Fork ✦ Build ✦ PR ✦ Impress us.
-> Questions → **[founder@powersmy.biz](mailto:founder@powersmy.biz)**
+The agents work on real-time data directly from the this Github Repository.
 
 ---
 
-### Quick Reference Links
+## 🚀 Features
 
-* LangChain docs ([python.langchain.com][1]) – prompt, tool and memory helpers.
-* LangGraph overview ([langchain.com][2]) – stateful orchestration patterns.
-* GitHub Commits API (`additions`/`deletions`) ([docs.github.com][3])
-* GitHub PR Files API (per-file diff) ([docs.github.com][4])
-* Slack slash-commands guide ([api.slack.com][8])
-* Discord embeds guide ([discordjs.guide][9])
-* Git diff `--numstat` usage ([stackoverflow.com][5])
-* DORA four-key metrics ([dora.dev][7])
-* Code-churn research on defects ([stackoverflow.com][6])
+- ✅ Fetches GitHub commit and pull request data
+- 🧠 Analyzes code churn, commit frequency, risky files, and tag usage
+- 🧾 Summarizes developer performance using Mistral LLM
+- 💬 Posts interactive weekly reports to Slack via a slash command (`/dev-report`)
+- ♻️ Uses caching to avoid repeated GitHub API calls
+- 🧩 Modular architecture built using **LangGraph**, **LangChain**, and **Slack Bolt**
+- 👀Analyzed GitHub activity to calculate key DORA metrics like deployment frequency, change volume (churn), and developer commit frequency using commits, pull requests, and timestamps.
+---
 
-These resources should cover everything you need—happy hacking!
+## 🧩 Agents Overview
 
-[1]: https://python.langchain.com/docs/introduction/?utm_source=chatgpt.com "Python LangChain"
-[2]: https://www.langchain.com/langgraph?utm_source=chatgpt.com "LangGraph - LangChain"
-[3]: https://docs.github.com/rest/commits/commits?utm_source=chatgpt.com "REST API endpoints for commits - GitHub Docs"
-[4]: https://docs.github.com/en/rest/pulls/pulls?utm_source=chatgpt.com "REST API endpoints for pull requests - GitHub Docs"
-[5]: https://stackoverflow.com/questions/9933325/is-there-a-way-of-having-git-show-lines-added-lines-changed-and-lines-removed?utm_source=chatgpt.com "Is there a way of having git show lines added, lines changed and ..."
-[6]: https://stackoverflow.com/questions/56941641/using-githubs-api-to-get-lines-of-code-added-deleted-per-commit-on-a-branch?utm_source=chatgpt.com "Using GitHub's API to get lines of code added/deleted per commit ..."
-[7]: https://dora.dev/guides/dora-metrics-four-keys/?utm_source=chatgpt.com "DORA's software delivery metrics: the four keys"
-[8]: https://api.slack.com/interactivity/slash-commands?utm_source=chatgpt.com "Enabling interactivity with Slash commands - Slack API"
-[9]: https://discordjs.guide/popular-topics/embeds?utm_source=chatgpt.com "Embeds | discord.js Guide"
+### 🛠️ 1. `data_harvester_agent`
+- Fetches commits & pull requests using GitHub API
+- Uses local JSON cache to avoid refetching
+
+### 📈 2. `diff_analyst_agent`
+- Analyzes developer contributions:
+  - Commit count
+  - Churn: additions, deletions
+  - Risky files
+  - Commit frequency
+  - Structured tag usage (`fix`, `feat`, `refactor`)
+- Adds analysis to state as `developer_analysis`
+
+### 🧠 3. `narrator_agent`
+- Uses **Mistral LLM** or **Google Gemini** to convert raw analytics into an executive-level markdown report
+- Prompts it to sound like an engineering team lead
+
+---
+
+## 💬 Slack Integration
+
+- `/dev-report`: Triggers report generation via slash command
+- Posts a "loading" message first
+- Updates it with the final report after LangGraph finishes
+
+---
+
+## 🧪 How to Run (Locally)
+
+### 1. 📦 Install dependencies
+
+pip install -r requirements.txt
+
+2. 🧪 Set up environment variables (.env)
+
+Add You env variables
+
+3. 🌐 Start Slack Bot Locally
+
+python insight_agents/slack_bot.py
+
+4. 🔁 Start ngrok
+
+ngrok http 3000
+
+5. ✅ Testing without Slack
+
+You can run the system standalone using:
+
+-test_agent.py
+
+This runs the full LangGraph pipeline and prints the summary report in the terminal.
+
+### 2. 🧠 Technologies Used
+
+    >>> LangGraph
+
+    >>> LangChain
+
+    >>> Slack Bolt for Python
+
+    >>> Json for storing data
+
+    >>> MistralAI via langchain_mistralai
+
+    >>> Google Gemini 
+
+    >>> GitHub REST API (commits + PRs)
+
+    >>> Ngrok for local Slack testing
+
+### 3. Future Improvements
+    🧪 Add tests and CI workflows
+
+    📊 Visual dashboards via Slack Canvas or Notion API
+
+    🧠 Fine-tuned summarization models
+
+    ⏱️ Support for weekly/monthly filters via date ranges
+
+    💼 Multi-repo and team-based insights
+
+### Build by
+👨‍💻 Rutwik Kadam
+
