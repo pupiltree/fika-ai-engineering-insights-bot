@@ -7,7 +7,6 @@ This repository contains my submission for the FIKA AI Developer Productivity Ch
 ## ✨ Demo & Explanation
 
 🎥 [Watch the 1-minute demo video](https://vimeo.com/1098782980?share=copy)  
-📝 (Make sure to replace this with your Loom or video link!)
 
 ---
 
