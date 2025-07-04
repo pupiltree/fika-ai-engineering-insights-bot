@@ -5,6 +5,7 @@ from agents.diff_analyst import analyze_diff,analyze_prs
 from agents.narrator import narrate_insights
 from typing import TypedDict, List, Dict
 
+
 class DevState(TypedDict):
     token:str
     repo:str
