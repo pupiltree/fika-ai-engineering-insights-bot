@@ -1,3 +1,350 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+# PowerBiz Developer Analytics
+
+An AI-powered developer analytics platform using LangChain + LangGraph agents to track engineering performance and deliver insights through Slack.
+
+## Features
+
+### Core MVP Features ✅
+- **Multi-agent system** with Data Harvester, Diff Analyst, and Insight Narrator agents
+- **GitHub data integration** for tracking commits, PRs, and code changes
+- **DORA metrics tracking** for lead time, deploy frequency, change failure rate, and MTTR
+- **Slack bot integration** with `/dev-report` commands for instant insights
+- **Code churn analysis** linking patterns to defect risk
+- **Developer performance analytics** for both technical contributions and business value
+- **One-command bootstrap** with Docker Compose
+- **Seed data** for instant demo experience
+
+### Stretch Goals Implemented 🚀
+- **📈 Forecasting**: Predict next week's cycle time and code churn based on historical trends
+- **🕸️ Influence Map**: Code review collaboration graph showing knowledge bottlenecks
+- **🎯 Advanced Analytics**: PR size risk assessment, defect correlation analysis
+- **📊 Comprehensive DORA**: Full four-key metrics with performance categorization
+- **🤖 Prompt Logging**: All LLM interactions logged for auditability
+
+### Technical Highlights
+- **LangGraph orchestration** with deterministic agent handoffs
+- **SQLite/PostgreSQL** flexible storage backend
+- **Matplotlib/Plotly** visualization pipeline
+- **Async processing** for GitHub API efficiency
+- **Type-safe** Python 3.10+ with Pydantic models
+
+## Architecture
+
+```
+                   ┌───────────────┐
+                   │   GitHub API  │
+                   └───────┬───────┘
+                           │
+                           ▼
+┌────────────────┐  ┌─────────────────┐  ┌─────────────────┐  ┌───────────────┐
+│ Data Harvester ├─▶│  Diff Analyst   ├─▶│ Insight Narrator │─▶│   Slack Bot   │
+│     Agent      │  │     Agent       │  │      Agent      │  │               │
+└────────────────┘  └─────────────────┘  └─────────────────┘  └───────────────┘
+                           │                     │                     │
+                           │                     │                     │
+                           ▼                     ▼                     ▼
+                    ┌─────────────┐       ┌────────────┐       ┌─────────────┐
+                    │ Code Metrics│       │  Analytics │       │ Charts/Data │
+                    │  Database   │       │ & Insights │       │  Rendering  │
+                    └─────────────┘       └────────────┘       └─────────────┘
+```
+
+## Quick Start
+
+### Prerequisites
+
+- Python 3.10+
+- Docker and Docker Compose (optional)
+- GitHub API token ([create here](https://github.com/settings/tokens))
+- Slack Bot token ([setup guide below](#slack-app-setup))
+- OpenAI API key ([get here](https://platform.openai.com/api-keys))
+
+### One-Command Bootstrap
+
+```bash
+# Clone and start with Docker
+git clone https://github.com/yourusername/powerbiz.git
+cd powerbiz
+cp .env.example .env
+# Edit .env with your API tokens
+docker-compose up --build
+```
+
+### Manual Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/powerbiz.git
+   cd powerbiz
+   ```
+
+2. Set up environment variables:
+   ```bash
+   cp .env.example .env
+   # Edit .env with your GitHub token, Slack credentials, and OpenAI API key
+   ```
+
+3. Install and run:
+   ```bash
+   make install
+   make seed    # Populate with demo data
+   make run     # Start the Slack bot
+   ```
+
+   Or manually:
+   ```bash
+   pip install -r requirements.txt
+   python seed_data/seed.py
+   python -m powerbiz
+   ```
+
+## Slack Commands
+
+- `/dev-report daily` - Get daily developer performance insights
+- `/dev-report weekly` - Get weekly team performance report with DORA metrics
+- `/dev-report monthly` - Get monthly engineering performance overview
+- `/dev-report engineer @username` - Get performance details for a specific engineer
+
+## Development
+
+### Project Structure
+```
+powerbiz/
+├── powerbiz/
+│   ├── agents/              # LangChain + LangGraph agents
+│   │   ├── data_harvester.py    # GitHub data collection & analysis
+│   │   ├── diff_analyst.py      # Code churn & defect risk analysis  
+│   │   ├── insight_narrator.py  # Performance narrative generation
+│   │   └── workflow.py          # LangGraph orchestration
+│   ├── database/            # Database models and operations
+│   ├── github_api/          # GitHub API integration
+│   ├── slack_bot/           # Slack bot integration
+│   └── visualization/       # Charts and visualization tools
+├── tests/                   # Test suite
+├── seed_data/               # Seed data for demo purposes
+├── docker/                  # Docker configuration
+├── .env.example             # Environment configuration template
+├── docker-compose.yml       # Docker Compose configuration
+└── Makefile                 # Development commands
+```
+
+### Running Tests
+
+```bash
+# Run all tests
+make test
+
+# Or manually
+python -m pytest tests/ -v
+```
+
+### Development Commands
+
+```bash
+make help          # Show all available commands
+make install       # Install dependencies
+make run           # Run the application
+make test          # Run tests
+make seed          # Populate database with demo data
+make clean         # Clean up generated files
+make docker-run    # Run with Docker Compose
+```
+
+## ⚡ Smoke Test Ready
+
+This MVP is ready for immediate evaluation. Run the smoke test to verify everything works:
+
+```bash
+# Quick smoke test (no dependencies needed)
+python smoke_test.py
+
+# Expected output: "🎉 All smoke tests passed!"
+```
+
+### For Evaluators/Reviewers
+
+**Zero-setup demo experience:**
+
+1. **Clone & Test:**
+   ```bash
+   git clone https://github.com/yourusername/powerbiz.git
+   cd powerbiz
+   python smoke_test.py  # Verify core functionality
+   ```
+
+2. **Demo Mode (no API keys needed):**
+   ```bash
+   export DEMO_MODE=true
+   export SLACK_BOT_TOKEN=demo
+   export SLACK_SIGNING_SECRET=demo
+   export SLACK_APP_TOKEN=demo
+   python -m powerbiz
+   ```
+
+3. **With Demo Data:**
+   ```bash
+   pip install -r requirements.txt
+   python seed_data/seed.py  # Creates SQLite DB with sample data
+   python -m powerbiz
+   ```
+
+**Key features to test:**
+- `/dev-report weekly` - Returns demo engineering report
+- Agent architecture - DataHarvester → DiffAnalyst → InsightNarrator
+- DORA metrics - Lead time, deployment frequency, etc.
+- Stretch goals - Forecasting, influence maps, defect risk analysis
+
+## API Documentation
+
+### Agent Architecture
+
+The PowerBiz platform uses a multi-agent architecture orchestrated by LangGraph:
+
+1. **DataHarvesterAgent**: Collects and processes GitHub repository data
+   - Fetches commits, pull requests, and repository metadata
+   - Calculates DORA metrics and code churn statistics
+   - Handles rate limiting and async processing
+
+2. **DiffAnalystAgent**: Analyzes code changes for quality and risk
+   - Performs defect risk assessment based on code churn patterns
+   - Generates influence maps showing collaboration networks
+   - Tracks technical debt accumulation
+
+3. **InsightNarratorAgent**: Creates business-focused performance narratives
+   - Transforms technical metrics into actionable insights
+   - Generates forecasts for cycle time and deployment frequency
+   - Creates executive-friendly performance summaries
+
+### Environment Variables
+
+| Variable | Description | Required | Default |
+|----------|-------------|----------|---------|
+| `OPENAI_API_KEY` | OpenAI API key for LLM functionality | Yes | - |
+| `GITHUB_TOKEN` | GitHub personal access token | Yes | - |
+| `SLACK_BOT_TOKEN` | Slack bot token (xoxb-...) | Yes | - |
+| `SLACK_SIGNING_SECRET` | Slack app signing secret | Yes | - |
+| `SLACK_APP_TOKEN` | Slack app token (xapp-...) | Yes | - |
+| `DATABASE_URL` | Database connection string | No | `sqlite:///powerbiz.db` |
+| `LOG_LEVEL` | Logging level (DEBUG, INFO, WARNING, ERROR) | No | `INFO` |
+| `ENVIRONMENT` | Environment (development, production) | No | `development` |
+| `DEMO_MODE` | Enable demo mode (true/false) | No | `false` |
+
+### Slack App Setup
+
+To set up the Slack bot in your workspace:
+
+1. **Create a Slack App**:
+   - Go to [api.slack.com/apps](https://api.slack.com/apps)
+   - Click "Create New App" → "From scratch"
+   - Name your app "PowerBiz Analytics" and select your workspace
+
+2. **Configure Bot Permissions**:
+   - Go to "OAuth & Permissions"
+   - Add these Bot Token Scopes:
+     - `app_mentions:read`
+     - `channels:history`
+     - `chat:write`
+     - `commands`
+     - `users:read`
+
+3. **Create Slash Commands**:
+   - Go to "Slash Commands"
+   - Create `/dev-report` command
+   - Request URL: `https://your-domain.com/slack/events`
+
+4. **Enable Socket Mode** (for development):
+   - Go to "Socket Mode" and enable it
+   - Generate an App-Level Token with `connections:write` scope
+
+5. **Install to Workspace**:
+   - Go to "Install App" and click "Install to Workspace"
+   - Copy the tokens to your `.env` file
+
+### Troubleshooting
+
+**Common Issues:**
+
+1. **"Module not found" errors**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Database errors**:
+   ```bash
+   make clean  # Remove old database
+   make seed   # Recreate with demo data
+   ```
+
+3. **Slack authentication errors**:
+   - Verify all tokens in `.env` are correct
+   - Check bot permissions in Slack app settings
+   - Ensure Socket Mode is enabled for development
+
+4. **GitHub API rate limiting**:
+   - Use a personal access token with appropriate permissions
+   - Consider upgrading to GitHub Enterprise for higher limits
+
+### Security & Privacy
+
+**Data Handling:**
+- All GitHub data is processed locally or in your cloud environment
+- No sensitive code content is sent to external services
+- LLM interactions use only aggregated metrics and metadata
+- Configurable data retention policies
+
+**API Key Security:**
+- Store API keys in environment variables, never in code
+- Use `.env` files for local development
+- Consider using secrets management for production deployments
+- Rotate keys regularly according to your security policies
+
+**Network Security:**
+- HTTPS required for production Slack endpoints
+- GitHub API calls use TLS encryption
+- Consider VPN or private networking for sensitive environments
+
+## Performance & Scaling
+
+### Database Optimization
+- SQLite for development and small teams
+- PostgreSQL recommended for production
+- Indexed queries for performance at scale
+- Configurable retention policies for historical data
+
+### Monitoring & Observability
+- Structured logging with configurable levels
+- LLM prompt and response logging for auditability
+- Performance metrics tracking
+- Error reporting and alerting capabilities
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Make your changes and add tests
+4. Run the test suite: `make test`
+5. Run the smoke test: `python smoke_test.py`
+6. Submit a pull request
+
+## License
+
+MIT License - see LICENSE file for details.
+
+## Support
+
+For questions or issues:
+- Create an issue on GitHub
+- Review the troubleshooting section above
+- Check the smoke test output for diagnostic information
+
+---
+
+**Built with ❤️ using LangChain, LangGraph, and modern Python tooling.**
+=======
+=======
+>>>>>>> eddd19b4351bad0688fc7c782e39e9b2ec944911
 ## FIKA AI Research — Engineering-Productivity Intelligence **MVP** Challenge
 
 *[Learn more at **powersmy.biz**](https://powersmy.biz/)*
@@ -96,4 +443,9 @@ These resources should cover everything you need—happy hacking!
 [6]: https://stackoverflow.com/questions/56941641/using-githubs-api-to-get-lines-of-code-added-deleted-per-commit-on-a-branch?utm_source=chatgpt.com "Using GitHub's API to get lines of code added/deleted per commit ..."
 [7]: https://dora.dev/guides/dora-metrics-four-keys/?utm_source=chatgpt.com "DORA's software delivery metrics: the four keys"
 [8]: https://api.slack.com/interactivity/slash-commands?utm_source=chatgpt.com "Enabling interactivity with Slash commands - Slack API"
+<<<<<<< HEAD
 [9]: https://discordjs.guide/popular-topics/embeds?utm_source=chatgpt.com "Embeds | discord.js Guide"
+>>>>>>> eddd19b4351bad0688fc7c782e39e9b2ec944911
+=======
+[9]: https://discordjs.guide/popular-topics/embeds?utm_source=chatgpt.com "Embeds | discord.js Guide"
+>>>>>>> eddd19b4351bad0688fc7c782e39e9b2ec944911

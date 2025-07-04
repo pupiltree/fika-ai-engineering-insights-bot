@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  powerbiz:
+    build: .
+    volumes:
+      - ./data:/app/data
+      - ./.env:/app/.env
+    environment:
+      - DATABASE_URL=sqlite:///data/powerbiz.db
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: powerbiz
+      POSTGRES_USER: powerbiz
+      POSTGRES_PASSWORD: powerbiz_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+  # Optional: Redis for caching and task queues
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
