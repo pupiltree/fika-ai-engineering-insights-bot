@@ -1,0 +1,5 @@
+discord.py
+langgraph
+langchain
+requests
+dotenv
