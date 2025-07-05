@@ -1,0 +1,1989 @@
+[harvest_github_data] INPUT:
+{
+  "repo": "pupiltree/fika-ai-engineering-insights-bot",
+  "time_window": "weekly"
+}
+[harvest_github_data] OUTPUT:
+{
+  "repo": "pupiltree/fika-ai-engineering-insights-bot",
+  "time_window": "weekly",
+  "github_data": {
+    "commits": [
+      {
+        "sha": "fake0",
+        "author": "carol",
+        "additions": 145,
+        "deletions": 61,
+        "total": 206,
+        "date": "2025-07-02T12:22:57.168698"
+      },
+      {
+        "sha": "fake1",
+        "author": "alice",
+        "additions": 108,
+        "deletions": 63,
+        "total": 171,
+        "date": "2025-07-01T12:22:57.168780"
+      },
+      {
+        "sha": "fake2",
+        "author": "jai.v",
+        "additions": 52,
+        "deletions": 40,
+        "total": 92,
+        "date": "2025-06-30T12:22:57.168789"
+      },
+      {
+        "sha": "fake3",
+        "author": "bob",
+        "additions": 92,
+        "deletions": 77,
+        "total": 169,
+        "date": "2025-07-01T12:22:57.168796"
+      },
+      {
+        "sha": "fake4",
+        "author": "jai.v",
+        "additions": 120,
+        "deletions": 31,
+        "total": 151,
+        "date": "2025-07-02T12:22:57.168803"
+      },
+      {
+        "sha": "fake5",
+        "author": "alice",
+        "additions": 47,
+        "deletions": 46,
+        "total": 93,
+        "date": "2025-07-05T12:22:57.168809"
+      },
+      {
+        "sha": "fake6",
+        "author": "alice",
+        "additions": 82,
+        "deletions": 83,
+        "total": 165,
+        "date": "2025-07-02T12:22:57.168816"
+      },
+      {
+        "sha": "fake7",
+        "author": "jai.v",
+        "additions": 135,
+        "deletions": 33,
+        "total": 168,
+        "date": "2025-07-05T12:22:57.168823"
+      },
+      {
+        "sha": "fake8",
+        "author": "jai.v",
+        "additions": 19,
+        "deletions": 47,
+        "total": 66,
+        "date": "2025-07-04T12:22:57.168829"
+      },
+      {
+        "sha": "fake9",
+        "author": "alice",
+        "additions": 150,
+        "deletions": 87,
+        "total": 237,
+        "date": "2025-06-29T12:22:57.168835"
+      }
+    ]
+  }
+}
+
+[analyze_commit_churn] INPUT:
+{
+  "repo": "pupiltree/fika-ai-engineering-insights-bot",
+  "time_window": "weekly",
+  "github_data": {
+    "commits": [
+      {
+        "sha": "fake0",
+        "author": "carol",
+        "additions": 145,
+        "deletions": 61,
+        "total": 206,
+        "date": "2025-07-02T12:22:57.168698",
+        "churn": 206
+      },
+      {
+        "sha": "fake1",
+        "author": "alice",
+        "additions": 108,
+        "deletions": 63,
+        "total": 171,
+        "date": "2025-07-01T12:22:57.168780"
+      },
+      {
+        "sha": "fake2",
+        "author": "jai.v",
+        "additions": 52,
+        "deletions": 40,
+        "total": 92,
+        "date": "2025-06-30T12:22:57.168789"
+      },
+      {
+        "sha": "fake3",
+        "author": "bob",
+        "additions": 92,
+        "deletions": 77,
+        "total": 169,
+        "date": "2025-07-01T12:22:57.168796"
+      },
+      {
+        "sha": "fake4",
+        "author": "jai.v",
+        "additions": 120,
+        "deletions": 31,
+        "total": 151,
+        "date": "2025-07-02T12:22:57.168803"
+      },
+      {
+        "sha": "fake5",
+        "author": "alice",
+        "additions": 47,
+        "deletions": 46,
+        "total": 93,
+        "date": "2025-07-05T12:22:57.168809"
+      },
+      {
+        "sha": "fake6",
+        "author": "alice",
+        "additions": 82,
+        "deletions": 83,
+        "total": 165,
+        "date": "2025-07-02T12:22:57.168816"
+      },
+      {
+        "sha": "fake7",
+        "author": "jai.v",
+        "additions": 135,
+        "deletions": 33,
+        "total": 168,
+        "date": "2025-07-05T12:22:57.168823"
+      },
+      {
+        "sha": "fake8",
+        "author": "jai.v",
+        "additions": 19,
+        "deletions": 47,
+        "total": 66,
+        "date": "2025-07-04T12:22:57.168829"
+      },
+      {
+        "sha": "fake9",
+        "author": "alice",
+        "additions": 150,
+        "deletions": 87,
+        "total": 237,
+        "date": "2025-06-29T12:22:57.168835",
+        "churn": 237
+      }
+    ]
+  }
+}
+[analyze_commit_churn] OUTPUT:
+{
+  "repo": "pupiltree/fika-ai-engineering-insights-bot",
+  "time_window": "weekly",
+  "github_data": {
+    "commits": [
+      {
+        "sha": "fake0",
+        "author": "carol",
+        "additions": 145,
+        "deletions": 61,
+        "total": 206,
+        "date": "2025-07-02T12:22:57.168698",
+        "churn": 206
+      },
+      {
+        "sha": "fake1",
+        "author": "alice",
+        "additions": 108,
+        "deletions": 63,
+        "total": 171,
+        "date": "2025-07-01T12:22:57.168780"
+      },
+      {
+        "sha": "fake2",
+        "author": "jai.v",
+        "additions": 52,
+        "deletions": 40,
+        "total": 92,
+        "date": "2025-06-30T12:22:57.168789"
+      },
+      {
+        "sha": "fake3",
+        "author": "bob",
+        "additions": 92,
+        "deletions": 77,
+        "total": 169,
+        "date": "2025-07-01T12:22:57.168796"
+      },
+      {
+        "sha": "fake4",
+        "author": "jai.v",
+        "additions": 120,
+        "deletions": 31,
+        "total": 151,
+        "date": "2025-07-02T12:22:57.168803"
+      },
+      {
+        "sha": "fake5",
+        "author": "alice",
+        "additions": 47,
+        "deletions": 46,
+        "total": 93,
+        "date": "2025-07-05T12:22:57.168809"
+      },
+      {
+        "sha": "fake6",
+        "author": "alice",
+        "additions": 82,
+        "deletions": 83,
+        "total": 165,
+        "date": "2025-07-02T12:22:57.168816"
+      },
+      {
+        "sha": "fake7",
+        "author": "jai.v",
+        "additions": 135,
+        "deletions": 33,
+        "total": 168,
+        "date": "2025-07-05T12:22:57.168823"
+      },
+      {
+        "sha": "fake8",
+        "author": "jai.v",
+        "additions": 19,
+        "deletions": 47,
+        "total": 66,
+        "date": "2025-07-04T12:22:57.168829"
+      },
+      {
+        "sha": "fake9",
+        "author": "alice",
+        "additions": 150,
+        "deletions": 87,
+        "total": 237,
+        "date": "2025-06-29T12:22:57.168835",
+        "churn": 237
+      }
+    ]
+  },
+  "metrics": {
+    "author_stats": {
+      "carol": {
+        "additions": 145,
+        "deletions": 61,
+        "commits": 1
+      },
+      "alice": {
+        "additions": 387,
+        "deletions": 279,
+        "commits": 4
+      },
+      "jai.v": {
+        "additions": 326,
+        "deletions": 151,
+        "commits": 4
+      },
+      "bob": {
+        "additions": 92,
+        "deletions": 77,
+        "commits": 1
+      }
+    },
+    "high_churn_commits": [
+      {
+        "sha": "fake0",
+        "author": "carol",
+        "additions": 145,
+        "deletions": 61,
+        "total": 206,
+        "date": "2025-07-02T12:22:57.168698",
+        "churn": 206
+      },
+      {
+        "sha": "fake9",
+        "author": "alice",
+        "additions": 150,
+        "deletions": 87,
+        "total": 237,
+        "date": "2025-06-29T12:22:57.168835",
+        "churn": 237
+      }
+    ],
+    "risky_commits": [
+      {
+        "author": "carol",
+        "sha": "fake0",
+        "date": "2025-07-02T12:22:57.168698",
+        "churn": 206
+      },
+      {
+        "author": "alice",
+        "sha": "fake9",
+        "date": "2025-06-29T12:22:57.168835",
+        "churn": 237
+      }
+    ],
+    "daily_churn": {
+      "2025-07-02": 522,
+      "2025-07-01": 340,
+      "2025-06-30": 92,
+      "2025-07-05": 261,
+      "2025-07-04": 66,
+      "2025-06-29": 237
+    },
+    "spike_days": [
+      "2025-07-02"
+    ]
+  }
+}
+
+[generate_insight_summary] INPUT:
+{
+  "repo": "pupiltree/fika-ai-engineering-insights-bot",
+  "time_window": "weekly",
+  "github_data": {
+    "commits": [
+      {
+        "sha": "fake0",
+        "author": "carol",
+        "additions": 145,
+        "deletions": 61,
+        "total": 206,
+        "date": "2025-07-02T12:22:57.168698",
+        "churn": 206
+      },
+      {
+        "sha": "fake1",
+        "author": "alice",
+        "additions": 108,
+        "deletions": 63,
+        "total": 171,
+        "date": "2025-07-01T12:22:57.168780"
+      },
+      {
+        "sha": "fake2",
+        "author": "jai.v",
+        "additions": 52,
+        "deletions": 40,
+        "total": 92,
+        "date": "2025-06-30T12:22:57.168789"
+      },
+      {
+        "sha": "fake3",
+        "author": "bob",
+        "additions": 92,
+        "deletions": 77,
+        "total": 169,
+        "date": "2025-07-01T12:22:57.168796"
+      },
+      {
+        "sha": "fake4",
+        "author": "jai.v",
+        "additions": 120,
+        "deletions": 31,
+        "total": 151,
+        "date": "2025-07-02T12:22:57.168803"
+      },
+      {
+        "sha": "fake5",
+        "author": "alice",
+        "additions": 47,
+        "deletions": 46,
+        "total": 93,
+        "date": "2025-07-05T12:22:57.168809"
+      },
+      {
+        "sha": "fake6",
+        "author": "alice",
+        "additions": 82,
+        "deletions": 83,
+        "total": 165,
+        "date": "2025-07-02T12:22:57.168816"
+      },
+      {
+        "sha": "fake7",
+        "author": "jai.v",
+        "additions": 135,
+        "deletions": 33,
+        "total": 168,
+        "date": "2025-07-05T12:22:57.168823"
+      },
+      {
+        "sha": "fake8",
+        "author": "jai.v",
+        "additions": 19,
+        "deletions": 47,
+        "total": 66,
+        "date": "2025-07-04T12:22:57.168829"
+      },
+      {
+        "sha": "fake9",
+        "author": "alice",
+        "additions": 150,
+        "deletions": 87,
+        "total": 237,
+        "date": "2025-06-29T12:22:57.168835",
+        "churn": 237
+      }
+    ]
+  },
+  "metrics": {
+    "author_stats": {
+      "carol": {
+        "additions": 145,
+        "deletions": 61,
+        "commits": 1
+      },
+      "alice": {
+        "additions": 387,
+        "deletions": 279,
+        "commits": 4
+      },
+      "jai.v": {
+        "additions": 326,
+        "deletions": 151,
+        "commits": 4
+      },
+      "bob": {
+        "additions": 92,
+        "deletions": 77,
+        "commits": 1
+      }
+    },
+    "high_churn_commits": [
+      {
+        "sha": "fake0",
+        "author": "carol",
+        "additions": 145,
+        "deletions": 61,
+        "total": 206,
+        "date": "2025-07-02T12:22:57.168698",
+        "churn": 206
+      },
+      {
+        "sha": "fake9",
+        "author": "alice",
+        "additions": 150,
+        "deletions": 87,
+        "total": 237,
+        "date": "2025-06-29T12:22:57.168835",
+        "churn": 237
+      }
+    ],
+    "risky_commits": [
+      {
+        "author": "carol",
+        "sha": "fake0",
+        "date": "2025-07-02T12:22:57.168698",
+        "churn": 206
+      },
+      {
+        "author": "alice",
+        "sha": "fake9",
+        "date": "2025-06-29T12:22:57.168835",
+        "churn": 237
+      }
+    ],
+    "daily_churn": {
+      "2025-07-02": 522,
+      "2025-07-01": 340,
+      "2025-06-30": 92,
+      "2025-07-05": 261,
+      "2025-07-04": 66,
+      "2025-06-29": 237
+    },
+    "spike_days": [
+      "2025-07-02"
+    ]
+  }
+}
+[generate_insight_summary] OUTPUT:
+{
+  "repo": "pupiltree/fika-ai-engineering-insights-bot",
+  "time_window": "weekly",
+  "github_data": {
+    "commits": [
+      {
+        "sha": "fake0",
+        "author": "carol",
+        "additions": 145,
+        "deletions": 61,
+        "total": 206,
+        "date": "2025-07-02T12:22:57.168698",
+        "churn": 206
+      },
+      {
+        "sha": "fake1",
+        "author": "alice",
+        "additions": 108,
+        "deletions": 63,
+        "total": 171,
+        "date": "2025-07-01T12:22:57.168780"
+      },
+      {
+        "sha": "fake2",
+        "author": "jai.v",
+        "additions": 52,
+        "deletions": 40,
+        "total": 92,
+        "date": "2025-06-30T12:22:57.168789"
+      },
+      {
+        "sha": "fake3",
+        "author": "bob",
+        "additions": 92,
+        "deletions": 77,
+        "total": 169,
+        "date": "2025-07-01T12:22:57.168796"
+      },
+      {
+        "sha": "fake4",
+        "author": "jai.v",
+        "additions": 120,
+        "deletions": 31,
+        "total": 151,
+        "date": "2025-07-02T12:22:57.168803"
+      },
+      {
+        "sha": "fake5",
+        "author": "alice",
+        "additions": 47,
+        "deletions": 46,
+        "total": 93,
+        "date": "2025-07-05T12:22:57.168809"
+      },
+      {
+        "sha": "fake6",
+        "author": "alice",
+        "additions": 82,
+        "deletions": 83,
+        "total": 165,
+        "date": "2025-07-02T12:22:57.168816"
+      },
+      {
+        "sha": "fake7",
+        "author": "jai.v",
+        "additions": 135,
+        "deletions": 33,
+        "total": 168,
+        "date": "2025-07-05T12:22:57.168823"
+      },
+      {
+        "sha": "fake8",
+        "author": "jai.v",
+        "additions": 19,
+        "deletions": 47,
+        "total": 66,
+        "date": "2025-07-04T12:22:57.168829"
+      },
+      {
+        "sha": "fake9",
+        "author": "alice",
+        "additions": 150,
+        "deletions": 87,
+        "total": 237,
+        "date": "2025-06-29T12:22:57.168835",
+        "churn": 237
+      }
+    ]
+  },
+  "metrics": {
+    "author_stats": {
+      "carol": {
+        "additions": 145,
+        "deletions": 61,
+        "commits": 1
+      },
+      "alice": {
+        "additions": 387,
+        "deletions": 279,
+        "commits": 4
+      },
+      "jai.v": {
+        "additions": 326,
+        "deletions": 151,
+        "commits": 4
+      },
+      "bob": {
+        "additions": 92,
+        "deletions": 77,
+        "commits": 1
+      }
+    },
+    "high_churn_commits": [
+      {
+        "sha": "fake0",
+        "author": "carol",
+        "additions": 145,
+        "deletions": 61,
+        "total": 206,
+        "date": "2025-07-02T12:22:57.168698",
+        "churn": 206
+      },
+      {
+        "sha": "fake9",
+        "author": "alice",
+        "additions": 150,
+        "deletions": 87,
+        "total": 237,
+        "date": "2025-06-29T12:22:57.168835",
+        "churn": 237
+      }
+    ],
+    "risky_commits": [
+      {
+        "author": "carol",
+        "sha": "fake0",
+        "date": "2025-07-02T12:22:57.168698",
+        "churn": 206
+      },
+      {
+        "author": "alice",
+        "sha": "fake9",
+        "date": "2025-06-29T12:22:57.168835",
+        "churn": 237
+      }
+    ],
+    "daily_churn": {
+      "2025-07-02": 522,
+      "2025-07-01": 340,
+      "2025-06-30": 92,
+      "2025-07-05": 261,
+      "2025-07-04": 66,
+      "2025-06-29": 237
+    },
+    "spike_days": [
+      "2025-07-02"
+    ]
+  },
+  "insight_summary": "\ud83d\udcca *Weekly Dev Report Summary*\n\ud83d\udc64 *carol*: 1 commits, +145 / -61 lines\n\ud83d\udc64 *alice*: 4 commits, +387 / -279 lines\n\ud83d\udc64 *jai.v*: 4 commits, +326 / -151 lines\n\ud83d\udc64 *bob*: 1 commits, +92 / -77 lines\n\n\u26a0\ufe0f *High Churn Commits Detected:*\n- carol on 2025-07-02T12:22:57.168698: +145 / -61\n- alice on 2025-06-29T12:22:57.168835: +150 / -87\n\n\ud83c\udfc5 *Top Contributor:* alice"
+}
+
+[harvest_github_data] INPUT:
+{
+  "repo": "pupiltree/fika-ai-engineering-insights-bot",
+  "time_window": "weekly"
+}
+[harvest_github_data] OUTPUT:
+{
+  "repo": "pupiltree/fika-ai-engineering-insights-bot",
+  "time_window": "weekly",
+  "github_data": {
+    "commits": [
+      {
+        "sha": "fake0",
+        "author": "jai.v",
+        "additions": 96,
+        "deletions": 26,
+        "total": 122,
+        "date": "2025-06-29T12:25:06.369896"
+      },
+      {
+        "sha": "fake1",
+        "author": "alice",
+        "additions": 129,
+        "deletions": 12,
+        "total": 141,
+        "date": "2025-06-30T12:25:06.369917"
+      },
+      {
+        "sha": "fake2",
+        "author": "jai.v",
+        "additions": 44,
+        "deletions": 23,
+        "total": 67,
+        "date": "2025-07-04T12:25:06.369924"
+      },
+      {
+        "sha": "fake3",
+        "author": "jai.v",
+        "additions": 32,
+        "deletions": 69,
+        "total": 101,
+        "date": "2025-07-05T12:25:06.369931"
+      },
+      {
+        "sha": "fake4",
+        "author": "carol",
+        "additions": 44,
+        "deletions": 85,
+        "total": 129,
+        "date": "2025-06-29T12:25:06.369938"
+      },
+      {
+        "sha": "fake5",
+        "author": "bob",
+        "additions": 80,
+        "deletions": 39,
+        "total": 119,
+        "date": "2025-07-03T12:25:06.369944"
+      },
+      {
+        "sha": "fake6",
+        "author": "jai.v",
+        "additions": 88,
+        "deletions": 84,
+        "total": 172,
+        "date": "2025-07-02T12:25:06.369950"
+      },
+      {
+        "sha": "fake7",
+        "author": "bob",
+        "additions": 31,
+        "deletions": 39,
+        "total": 70,
+        "date": "2025-07-05T12:25:06.369957"
+      },
+      {
+        "sha": "fake8",
+        "author": "alice",
+        "additions": 103,
+        "deletions": 11,
+        "total": 114,
+        "date": "2025-07-05T12:25:06.369963"
+      },
+      {
+        "sha": "fake9",
+        "author": "bob",
+        "additions": 23,
+        "deletions": 42,
+        "total": 65,
+        "date": "2025-06-29T12:25:06.369969"
+      }
+    ]
+  }
+}
+
+[analyze_commit_churn] INPUT:
+{
+  "repo": "pupiltree/fika-ai-engineering-insights-bot",
+  "time_window": "weekly",
+  "github_data": {
+    "commits": [
+      {
+        "sha": "fake0",
+        "author": "jai.v",
+        "additions": 96,
+        "deletions": 26,
+        "total": 122,
+        "date": "2025-06-29T12:25:06.369896"
+      },
+      {
+        "sha": "fake1",
+        "author": "alice",
+        "additions": 129,
+        "deletions": 12,
+        "total": 141,
+        "date": "2025-06-30T12:25:06.369917"
+      },
+      {
+        "sha": "fake2",
+        "author": "jai.v",
+        "additions": 44,
+        "deletions": 23,
+        "total": 67,
+        "date": "2025-07-04T12:25:06.369924"
+      },
+      {
+        "sha": "fake3",
+        "author": "jai.v",
+        "additions": 32,
+        "deletions": 69,
+        "total": 101,
+        "date": "2025-07-05T12:25:06.369931"
+      },
+      {
+        "sha": "fake4",
+        "author": "carol",
+        "additions": 44,
+        "deletions": 85,
+        "total": 129,
+        "date": "2025-06-29T12:25:06.369938"
+      },
+      {
+        "sha": "fake5",
+        "author": "bob",
+        "additions": 80,
+        "deletions": 39,
+        "total": 119,
+        "date": "2025-07-03T12:25:06.369944"
+      },
+      {
+        "sha": "fake6",
+        "author": "jai.v",
+        "additions": 88,
+        "deletions": 84,
+        "total": 172,
+        "date": "2025-07-02T12:25:06.369950"
+      },
+      {
+        "sha": "fake7",
+        "author": "bob",
+        "additions": 31,
+        "deletions": 39,
+        "total": 70,
+        "date": "2025-07-05T12:25:06.369957"
+      },
+      {
+        "sha": "fake8",
+        "author": "alice",
+        "additions": 103,
+        "deletions": 11,
+        "total": 114,
+        "date": "2025-07-05T12:25:06.369963"
+      },
+      {
+        "sha": "fake9",
+        "author": "bob",
+        "additions": 23,
+        "deletions": 42,
+        "total": 65,
+        "date": "2025-06-29T12:25:06.369969"
+      }
+    ]
+  }
+}
+[analyze_commit_churn] OUTPUT:
+{
+  "repo": "pupiltree/fika-ai-engineering-insights-bot",
+  "time_window": "weekly",
+  "github_data": {
+    "commits": [
+      {
+        "sha": "fake0",
+        "author": "jai.v",
+        "additions": 96,
+        "deletions": 26,
+        "total": 122,
+        "date": "2025-06-29T12:25:06.369896"
+      },
+      {
+        "sha": "fake1",
+        "author": "alice",
+        "additions": 129,
+        "deletions": 12,
+        "total": 141,
+        "date": "2025-06-30T12:25:06.369917"
+      },
+      {
+        "sha": "fake2",
+        "author": "jai.v",
+        "additions": 44,
+        "deletions": 23,
+        "total": 67,
+        "date": "2025-07-04T12:25:06.369924"
+      },
+      {
+        "sha": "fake3",
+        "author": "jai.v",
+        "additions": 32,
+        "deletions": 69,
+        "total": 101,
+        "date": "2025-07-05T12:25:06.369931"
+      },
+      {
+        "sha": "fake4",
+        "author": "carol",
+        "additions": 44,
+        "deletions": 85,
+        "total": 129,
+        "date": "2025-06-29T12:25:06.369938"
+      },
+      {
+        "sha": "fake5",
+        "author": "bob",
+        "additions": 80,
+        "deletions": 39,
+        "total": 119,
+        "date": "2025-07-03T12:25:06.369944"
+      },
+      {
+        "sha": "fake6",
+        "author": "jai.v",
+        "additions": 88,
+        "deletions": 84,
+        "total": 172,
+        "date": "2025-07-02T12:25:06.369950"
+      },
+      {
+        "sha": "fake7",
+        "author": "bob",
+        "additions": 31,
+        "deletions": 39,
+        "total": 70,
+        "date": "2025-07-05T12:25:06.369957"
+      },
+      {
+        "sha": "fake8",
+        "author": "alice",
+        "additions": 103,
+        "deletions": 11,
+        "total": 114,
+        "date": "2025-07-05T12:25:06.369963"
+      },
+      {
+        "sha": "fake9",
+        "author": "bob",
+        "additions": 23,
+        "deletions": 42,
+        "total": 65,
+        "date": "2025-06-29T12:25:06.369969"
+      }
+    ]
+  },
+  "metrics": {
+    "author_stats": {
+      "jai.v": {
+        "additions": 260,
+        "deletions": 202,
+        "commits": 4
+      },
+      "alice": {
+        "additions": 232,
+        "deletions": 23,
+        "commits": 2
+      },
+      "carol": {
+        "additions": 44,
+        "deletions": 85,
+        "commits": 1
+      },
+      "bob": {
+        "additions": 134,
+        "deletions": 120,
+        "commits": 3
+      }
+    },
+    "high_churn_commits": [],
+    "risky_commits": [],
+    "daily_churn": {
+      "2025-06-29": 316,
+      "2025-06-30": 141,
+      "2025-07-04": 67,
+      "2025-07-05": 285,
+      "2025-07-03": 119,
+      "2025-07-02": 172
+    },
+    "spike_days": []
+  }
+}
+
+[generate_insight_summary] INPUT:
+{
+  "repo": "pupiltree/fika-ai-engineering-insights-bot",
+  "time_window": "weekly",
+  "github_data": {
+    "commits": [
+      {
+        "sha": "fake0",
+        "author": "jai.v",
+        "additions": 96,
+        "deletions": 26,
+        "total": 122,
+        "date": "2025-06-29T12:25:06.369896"
+      },
+      {
+        "sha": "fake1",
+        "author": "alice",
+        "additions": 129,
+        "deletions": 12,
+        "total": 141,
+        "date": "2025-06-30T12:25:06.369917"
+      },
+      {
+        "sha": "fake2",
+        "author": "jai.v",
+        "additions": 44,
+        "deletions": 23,
+        "total": 67,
+        "date": "2025-07-04T12:25:06.369924"
+      },
+      {
+        "sha": "fake3",
+        "author": "jai.v",
+        "additions": 32,
+        "deletions": 69,
+        "total": 101,
+        "date": "2025-07-05T12:25:06.369931"
+      },
+      {
+        "sha": "fake4",
+        "author": "carol",
+        "additions": 44,
+        "deletions": 85,
+        "total": 129,
+        "date": "2025-06-29T12:25:06.369938"
+      },
+      {
+        "sha": "fake5",
+        "author": "bob",
+        "additions": 80,
+        "deletions": 39,
+        "total": 119,
+        "date": "2025-07-03T12:25:06.369944"
+      },
+      {
+        "sha": "fake6",
+        "author": "jai.v",
+        "additions": 88,
+        "deletions": 84,
+        "total": 172,
+        "date": "2025-07-02T12:25:06.369950"
+      },
+      {
+        "sha": "fake7",
+        "author": "bob",
+        "additions": 31,
+        "deletions": 39,
+        "total": 70,
+        "date": "2025-07-05T12:25:06.369957"
+      },
+      {
+        "sha": "fake8",
+        "author": "alice",
+        "additions": 103,
+        "deletions": 11,
+        "total": 114,
+        "date": "2025-07-05T12:25:06.369963"
+      },
+      {
+        "sha": "fake9",
+        "author": "bob",
+        "additions": 23,
+        "deletions": 42,
+        "total": 65,
+        "date": "2025-06-29T12:25:06.369969"
+      }
+    ]
+  },
+  "metrics": {
+    "author_stats": {
+      "jai.v": {
+        "additions": 260,
+        "deletions": 202,
+        "commits": 4
+      },
+      "alice": {
+        "additions": 232,
+        "deletions": 23,
+        "commits": 2
+      },
+      "carol": {
+        "additions": 44,
+        "deletions": 85,
+        "commits": 1
+      },
+      "bob": {
+        "additions": 134,
+        "deletions": 120,
+        "commits": 3
+      }
+    },
+    "high_churn_commits": [],
+    "risky_commits": [],
+    "daily_churn": {
+      "2025-06-29": 316,
+      "2025-06-30": 141,
+      "2025-07-04": 67,
+      "2025-07-05": 285,
+      "2025-07-03": 119,
+      "2025-07-02": 172
+    },
+    "spike_days": []
+  }
+}
+[generate_insight_summary] OUTPUT:
+{
+  "repo": "pupiltree/fika-ai-engineering-insights-bot",
+  "time_window": "weekly",
+  "github_data": {
+    "commits": [
+      {
+        "sha": "fake0",
+        "author": "jai.v",
+        "additions": 96,
+        "deletions": 26,
+        "total": 122,
+        "date": "2025-06-29T12:25:06.369896"
+      },
+      {
+        "sha": "fake1",
+        "author": "alice",
+        "additions": 129,
+        "deletions": 12,
+        "total": 141,
+        "date": "2025-06-30T12:25:06.369917"
+      },
+      {
+        "sha": "fake2",
+        "author": "jai.v",
+        "additions": 44,
+        "deletions": 23,
+        "total": 67,
+        "date": "2025-07-04T12:25:06.369924"
+      },
+      {
+        "sha": "fake3",
+        "author": "jai.v",
+        "additions": 32,
+        "deletions": 69,
+        "total": 101,
+        "date": "2025-07-05T12:25:06.369931"
+      },
+      {
+        "sha": "fake4",
+        "author": "carol",
+        "additions": 44,
+        "deletions": 85,
+        "total": 129,
+        "date": "2025-06-29T12:25:06.369938"
+      },
+      {
+        "sha": "fake5",
+        "author": "bob",
+        "additions": 80,
+        "deletions": 39,
+        "total": 119,
+        "date": "2025-07-03T12:25:06.369944"
+      },
+      {
+        "sha": "fake6",
+        "author": "jai.v",
+        "additions": 88,
+        "deletions": 84,
+        "total": 172,
+        "date": "2025-07-02T12:25:06.369950"
+      },
+      {
+        "sha": "fake7",
+        "author": "bob",
+        "additions": 31,
+        "deletions": 39,
+        "total": 70,
+        "date": "2025-07-05T12:25:06.369957"
+      },
+      {
+        "sha": "fake8",
+        "author": "alice",
+        "additions": 103,
+        "deletions": 11,
+        "total": 114,
+        "date": "2025-07-05T12:25:06.369963"
+      },
+      {
+        "sha": "fake9",
+        "author": "bob",
+        "additions": 23,
+        "deletions": 42,
+        "total": 65,
+        "date": "2025-06-29T12:25:06.369969"
+      }
+    ]
+  },
+  "metrics": {
+    "author_stats": {
+      "jai.v": {
+        "additions": 260,
+        "deletions": 202,
+        "commits": 4
+      },
+      "alice": {
+        "additions": 232,
+        "deletions": 23,
+        "commits": 2
+      },
+      "carol": {
+        "additions": 44,
+        "deletions": 85,
+        "commits": 1
+      },
+      "bob": {
+        "additions": 134,
+        "deletions": 120,
+        "commits": 3
+      }
+    },
+    "high_churn_commits": [],
+    "risky_commits": [],
+    "daily_churn": {
+      "2025-06-29": 316,
+      "2025-06-30": 141,
+      "2025-07-04": 67,
+      "2025-07-05": 285,
+      "2025-07-03": 119,
+      "2025-07-02": 172
+    },
+    "spike_days": []
+  },
+  "insight_summary": "\ud83d\udcca *Weekly Dev Report Summary*\n\ud83d\udc64 *jai.v*: 4 commits, +260 / -202 lines\n\ud83d\udc64 *alice*: 2 commits, +232 / -23 lines\n\ud83d\udc64 *carol*: 1 commits, +44 / -85 lines\n\ud83d\udc64 *bob*: 3 commits, +134 / -120 lines\n\n\u2705 No high-churn commits this week.\n\n\ud83c\udfc5 *Top Contributor:* jai.v"
+}
+
+[harvest_github_data] INPUT:
+{
+  "repo": "pupiltree/fika-ai-engineering-insights-bot",
+  "time_window": "weekly"
+}
+[harvest_github_data] OUTPUT:
+{
+  "repo": "pupiltree/fika-ai-engineering-insights-bot",
+  "time_window": "weekly",
+  "github_data": {
+    "commits": [
+      {
+        "sha": "fake0",
+        "author": "alice",
+        "additions": 136,
+        "deletions": 99,
+        "total": 235,
+        "date": "2025-07-01T12:26:55.837252"
+      },
+      {
+        "sha": "fake1",
+        "author": "carol",
+        "additions": 131,
+        "deletions": 77,
+        "total": 208,
+        "date": "2025-07-02T12:26:55.837281"
+      },
+      {
+        "sha": "fake2",
+        "author": "jai.v",
+        "additions": 124,
+        "deletions": 7,
+        "total": 131,
+        "date": "2025-06-29T12:26:55.837287"
+      },
+      {
+        "sha": "fake3",
+        "author": "alice",
+        "additions": 13,
+        "deletions": 81,
+        "total": 94,
+        "date": "2025-06-30T12:26:55.837305"
+      },
+      {
+        "sha": "fake4",
+        "author": "carol",
+        "additions": 137,
+        "deletions": 9,
+        "total": 146,
+        "date": "2025-07-03T12:26:55.837310"
+      },
+      {
+        "sha": "fake5",
+        "author": "bob",
+        "additions": 138,
+        "deletions": 81,
+        "total": 219,
+        "date": "2025-07-05T12:26:55.837316"
+      },
+      {
+        "sha": "fake6",
+        "author": "jai.v",
+        "additions": 72,
+        "deletions": 83,
+        "total": 155,
+        "date": "2025-06-29T12:26:55.837322"
+      },
+      {
+        "sha": "fake7",
+        "author": "jai.v",
+        "additions": 116,
+        "deletions": 76,
+        "total": 192,
+        "date": "2025-07-05T12:26:55.837327"
+      },
+      {
+        "sha": "fake8",
+        "author": "carol",
+        "additions": 149,
+        "deletions": 97,
+        "total": 246,
+        "date": "2025-07-02T12:26:55.837332"
+      },
+      {
+        "sha": "fake9",
+        "author": "alice",
+        "additions": 38,
+        "deletions": 99,
+        "total": 137,
+        "date": "2025-07-05T12:26:55.837337"
+      }
+    ]
+  }
+}
+
+[analyze_commit_churn] INPUT:
+{
+  "repo": "pupiltree/fika-ai-engineering-insights-bot",
+  "time_window": "weekly",
+  "github_data": {
+    "commits": [
+      {
+        "sha": "fake0",
+        "author": "alice",
+        "additions": 136,
+        "deletions": 99,
+        "total": 235,
+        "date": "2025-07-01T12:26:55.837252",
+        "churn": 235
+      },
+      {
+        "sha": "fake1",
+        "author": "carol",
+        "additions": 131,
+        "deletions": 77,
+        "total": 208,
+        "date": "2025-07-02T12:26:55.837281",
+        "churn": 208
+      },
+      {
+        "sha": "fake2",
+        "author": "jai.v",
+        "additions": 124,
+        "deletions": 7,
+        "total": 131,
+        "date": "2025-06-29T12:26:55.837287"
+      },
+      {
+        "sha": "fake3",
+        "author": "alice",
+        "additions": 13,
+        "deletions": 81,
+        "total": 94,
+        "date": "2025-06-30T12:26:55.837305"
+      },
+      {
+        "sha": "fake4",
+        "author": "carol",
+        "additions": 137,
+        "deletions": 9,
+        "total": 146,
+        "date": "2025-07-03T12:26:55.837310"
+      },
+      {
+        "sha": "fake5",
+        "author": "bob",
+        "additions": 138,
+        "deletions": 81,
+        "total": 219,
+        "date": "2025-07-05T12:26:55.837316",
+        "churn": 219
+      },
+      {
+        "sha": "fake6",
+        "author": "jai.v",
+        "additions": 72,
+        "deletions": 83,
+        "total": 155,
+        "date": "2025-06-29T12:26:55.837322"
+      },
+      {
+        "sha": "fake7",
+        "author": "jai.v",
+        "additions": 116,
+        "deletions": 76,
+        "total": 192,
+        "date": "2025-07-05T12:26:55.837327"
+      },
+      {
+        "sha": "fake8",
+        "author": "carol",
+        "additions": 149,
+        "deletions": 97,
+        "total": 246,
+        "date": "2025-07-02T12:26:55.837332",
+        "churn": 246
+      },
+      {
+        "sha": "fake9",
+        "author": "alice",
+        "additions": 38,
+        "deletions": 99,
+        "total": 137,
+        "date": "2025-07-05T12:26:55.837337"
+      }
+    ]
+  }
+}
+[analyze_commit_churn] OUTPUT:
+{
+  "repo": "pupiltree/fika-ai-engineering-insights-bot",
+  "time_window": "weekly",
+  "github_data": {
+    "commits": [
+      {
+        "sha": "fake0",
+        "author": "alice",
+        "additions": 136,
+        "deletions": 99,
+        "total": 235,
+        "date": "2025-07-01T12:26:55.837252",
+        "churn": 235
+      },
+      {
+        "sha": "fake1",
+        "author": "carol",
+        "additions": 131,
+        "deletions": 77,
+        "total": 208,
+        "date": "2025-07-02T12:26:55.837281",
+        "churn": 208
+      },
+      {
+        "sha": "fake2",
+        "author": "jai.v",
+        "additions": 124,
+        "deletions": 7,
+        "total": 131,
+        "date": "2025-06-29T12:26:55.837287"
+      },
+      {
+        "sha": "fake3",
+        "author": "alice",
+        "additions": 13,
+        "deletions": 81,
+        "total": 94,
+        "date": "2025-06-30T12:26:55.837305"
+      },
+      {
+        "sha": "fake4",
+        "author": "carol",
+        "additions": 137,
+        "deletions": 9,
+        "total": 146,
+        "date": "2025-07-03T12:26:55.837310"
+      },
+      {
+        "sha": "fake5",
+        "author": "bob",
+        "additions": 138,
+        "deletions": 81,
+        "total": 219,
+        "date": "2025-07-05T12:26:55.837316",
+        "churn": 219
+      },
+      {
+        "sha": "fake6",
+        "author": "jai.v",
+        "additions": 72,
+        "deletions": 83,
+        "total": 155,
+        "date": "2025-06-29T12:26:55.837322"
+      },
+      {
+        "sha": "fake7",
+        "author": "jai.v",
+        "additions": 116,
+        "deletions": 76,
+        "total": 192,
+        "date": "2025-07-05T12:26:55.837327"
+      },
+      {
+        "sha": "fake8",
+        "author": "carol",
+        "additions": 149,
+        "deletions": 97,
+        "total": 246,
+        "date": "2025-07-02T12:26:55.837332",
+        "churn": 246
+      },
+      {
+        "sha": "fake9",
+        "author": "alice",
+        "additions": 38,
+        "deletions": 99,
+        "total": 137,
+        "date": "2025-07-05T12:26:55.837337"
+      }
+    ]
+  },
+  "metrics": {
+    "author_stats": {
+      "alice": {
+        "additions": 187,
+        "deletions": 279,
+        "commits": 3
+      },
+      "carol": {
+        "additions": 417,
+        "deletions": 183,
+        "commits": 3
+      },
+      "jai.v": {
+        "additions": 312,
+        "deletions": 166,
+        "commits": 3
+      },
+      "bob": {
+        "additions": 138,
+        "deletions": 81,
+        "commits": 1
+      }
+    },
+    "high_churn_commits": [
+      {
+        "sha": "fake0",
+        "author": "alice",
+        "additions": 136,
+        "deletions": 99,
+        "total": 235,
+        "date": "2025-07-01T12:26:55.837252",
+        "churn": 235
+      },
+      {
+        "sha": "fake1",
+        "author": "carol",
+        "additions": 131,
+        "deletions": 77,
+        "total": 208,
+        "date": "2025-07-02T12:26:55.837281",
+        "churn": 208
+      },
+      {
+        "sha": "fake5",
+        "author": "bob",
+        "additions": 138,
+        "deletions": 81,
+        "total": 219,
+        "date": "2025-07-05T12:26:55.837316",
+        "churn": 219
+      },
+      {
+        "sha": "fake8",
+        "author": "carol",
+        "additions": 149,
+        "deletions": 97,
+        "total": 246,
+        "date": "2025-07-02T12:26:55.837332",
+        "churn": 246
+      }
+    ],
+    "risky_commits": [
+      {
+        "author": "alice",
+        "sha": "fake0",
+        "date": "2025-07-01T12:26:55.837252",
+        "churn": 235
+      },
+      {
+        "author": "carol",
+        "sha": "fake1",
+        "date": "2025-07-02T12:26:55.837281",
+        "churn": 208
+      },
+      {
+        "author": "bob",
+        "sha": "fake5",
+        "date": "2025-07-05T12:26:55.837316",
+        "churn": 219
+      },
+      {
+        "author": "carol",
+        "sha": "fake8",
+        "date": "2025-07-02T12:26:55.837332",
+        "churn": 246
+      }
+    ],
+    "daily_churn": {
+      "2025-07-01": 235,
+      "2025-07-02": 454,
+      "2025-06-29": 286,
+      "2025-06-30": 94,
+      "2025-07-03": 146,
+      "2025-07-05": 548
+    },
+    "spike_days": []
+  }
+}
+
+[generate_insight_summary] INPUT:
+{
+  "repo": "pupiltree/fika-ai-engineering-insights-bot",
+  "time_window": "weekly",
+  "github_data": {
+    "commits": [
+      {
+        "sha": "fake0",
+        "author": "alice",
+        "additions": 136,
+        "deletions": 99,
+        "total": 235,
+        "date": "2025-07-01T12:26:55.837252",
+        "churn": 235
+      },
+      {
+        "sha": "fake1",
+        "author": "carol",
+        "additions": 131,
+        "deletions": 77,
+        "total": 208,
+        "date": "2025-07-02T12:26:55.837281",
+        "churn": 208
+      },
+      {
+        "sha": "fake2",
+        "author": "jai.v",
+        "additions": 124,
+        "deletions": 7,
+        "total": 131,
+        "date": "2025-06-29T12:26:55.837287"
+      },
+      {
+        "sha": "fake3",
+        "author": "alice",
+        "additions": 13,
+        "deletions": 81,
+        "total": 94,
+        "date": "2025-06-30T12:26:55.837305"
+      },
+      {
+        "sha": "fake4",
+        "author": "carol",
+        "additions": 137,
+        "deletions": 9,
+        "total": 146,
+        "date": "2025-07-03T12:26:55.837310"
+      },
+      {
+        "sha": "fake5",
+        "author": "bob",
+        "additions": 138,
+        "deletions": 81,
+        "total": 219,
+        "date": "2025-07-05T12:26:55.837316",
+        "churn": 219
+      },
+      {
+        "sha": "fake6",
+        "author": "jai.v",
+        "additions": 72,
+        "deletions": 83,
+        "total": 155,
+        "date": "2025-06-29T12:26:55.837322"
+      },
+      {
+        "sha": "fake7",
+        "author": "jai.v",
+        "additions": 116,
+        "deletions": 76,
+        "total": 192,
+        "date": "2025-07-05T12:26:55.837327"
+      },
+      {
+        "sha": "fake8",
+        "author": "carol",
+        "additions": 149,
+        "deletions": 97,
+        "total": 246,
+        "date": "2025-07-02T12:26:55.837332",
+        "churn": 246
+      },
+      {
+        "sha": "fake9",
+        "author": "alice",
+        "additions": 38,
+        "deletions": 99,
+        "total": 137,
+        "date": "2025-07-05T12:26:55.837337"
+      }
+    ]
+  },
+  "metrics": {
+    "author_stats": {
+      "alice": {
+        "additions": 187,
+        "deletions": 279,
+        "commits": 3
+      },
+      "carol": {
+        "additions": 417,
+        "deletions": 183,
+        "commits": 3
+      },
+      "jai.v": {
+        "additions": 312,
+        "deletions": 166,
+        "commits": 3
+      },
+      "bob": {
+        "additions": 138,
+        "deletions": 81,
+        "commits": 1
+      }
+    },
+    "high_churn_commits": [
+      {
+        "sha": "fake0",
+        "author": "alice",
+        "additions": 136,
+        "deletions": 99,
+        "total": 235,
+        "date": "2025-07-01T12:26:55.837252",
+        "churn": 235
+      },
+      {
+        "sha": "fake1",
+        "author": "carol",
+        "additions": 131,
+        "deletions": 77,
+        "total": 208,
+        "date": "2025-07-02T12:26:55.837281",
+        "churn": 208
+      },
+      {
+        "sha": "fake5",
+        "author": "bob",
+        "additions": 138,
+        "deletions": 81,
+        "total": 219,
+        "date": "2025-07-05T12:26:55.837316",
+        "churn": 219
+      },
+      {
+        "sha": "fake8",
+        "author": "carol",
+        "additions": 149,
+        "deletions": 97,
+        "total": 246,
+        "date": "2025-07-02T12:26:55.837332",
+        "churn": 246
+      }
+    ],
+    "risky_commits": [
+      {
+        "author": "alice",
+        "sha": "fake0",
+        "date": "2025-07-01T12:26:55.837252",
+        "churn": 235
+      },
+      {
+        "author": "carol",
+        "sha": "fake1",
+        "date": "2025-07-02T12:26:55.837281",
+        "churn": 208
+      },
+      {
+        "author": "bob",
+        "sha": "fake5",
+        "date": "2025-07-05T12:26:55.837316",
+        "churn": 219
+      },
+      {
+        "author": "carol",
+        "sha": "fake8",
+        "date": "2025-07-02T12:26:55.837332",
+        "churn": 246
+      }
+    ],
+    "daily_churn": {
+      "2025-07-01": 235,
+      "2025-07-02": 454,
+      "2025-06-29": 286,
+      "2025-06-30": 94,
+      "2025-07-03": 146,
+      "2025-07-05": 548
+    },
+    "spike_days": []
+  }
+}
+[generate_insight_summary] OUTPUT:
+{
+  "repo": "pupiltree/fika-ai-engineering-insights-bot",
+  "time_window": "weekly",
+  "github_data": {
+    "commits": [
+      {
+        "sha": "fake0",
+        "author": "alice",
+        "additions": 136,
+        "deletions": 99,
+        "total": 235,
+        "date": "2025-07-01T12:26:55.837252",
+        "churn": 235
+      },
+      {
+        "sha": "fake1",
+        "author": "carol",
+        "additions": 131,
+        "deletions": 77,
+        "total": 208,
+        "date": "2025-07-02T12:26:55.837281",
+        "churn": 208
+      },
+      {
+        "sha": "fake2",
+        "author": "jai.v",
+        "additions": 124,
+        "deletions": 7,
+        "total": 131,
+        "date": "2025-06-29T12:26:55.837287"
+      },
+      {
+        "sha": "fake3",
+        "author": "alice",
+        "additions": 13,
+        "deletions": 81,
+        "total": 94,
+        "date": "2025-06-30T12:26:55.837305"
+      },
+      {
+        "sha": "fake4",
+        "author": "carol",
+        "additions": 137,
+        "deletions": 9,
+        "total": 146,
+        "date": "2025-07-03T12:26:55.837310"
+      },
+      {
+        "sha": "fake5",
+        "author": "bob",
+        "additions": 138,
+        "deletions": 81,
+        "total": 219,
+        "date": "2025-07-05T12:26:55.837316",
+        "churn": 219
+      },
+      {
+        "sha": "fake6",
+        "author": "jai.v",
+        "additions": 72,
+        "deletions": 83,
+        "total": 155,
+        "date": "2025-06-29T12:26:55.837322"
+      },
+      {
+        "sha": "fake7",
+        "author": "jai.v",
+        "additions": 116,
+        "deletions": 76,
+        "total": 192,
+        "date": "2025-07-05T12:26:55.837327"
+      },
+      {
+        "sha": "fake8",
+        "author": "carol",
+        "additions": 149,
+        "deletions": 97,
+        "total": 246,
+        "date": "2025-07-02T12:26:55.837332",
+        "churn": 246
+      },
+      {
+        "sha": "fake9",
+        "author": "alice",
+        "additions": 38,
+        "deletions": 99,
+        "total": 137,
+        "date": "2025-07-05T12:26:55.837337"
+      }
+    ]
+  },
+  "metrics": {
+    "author_stats": {
+      "alice": {
+        "additions": 187,
+        "deletions": 279,
+        "commits": 3
+      },
+      "carol": {
+        "additions": 417,
+        "deletions": 183,
+        "commits": 3
+      },
+      "jai.v": {
+        "additions": 312,
+        "deletions": 166,
+        "commits": 3
+      },
+      "bob": {
+        "additions": 138,
+        "deletions": 81,
+        "commits": 1
+      }
+    },
+    "high_churn_commits": [
+      {
+        "sha": "fake0",
+        "author": "alice",
+        "additions": 136,
+        "deletions": 99,
+        "total": 235,
+        "date": "2025-07-01T12:26:55.837252",
+        "churn": 235
+      },
+      {
+        "sha": "fake1",
+        "author": "carol",
+        "additions": 131,
+        "deletions": 77,
+        "total": 208,
+        "date": "2025-07-02T12:26:55.837281",
+        "churn": 208
+      },
+      {
+        "sha": "fake5",
+        "author": "bob",
+        "additions": 138,
+        "deletions": 81,
+        "total": 219,
+        "date": "2025-07-05T12:26:55.837316",
+        "churn": 219
+      },
+      {
+        "sha": "fake8",
+        "author": "carol",
+        "additions": 149,
+        "deletions": 97,
+        "total": 246,
+        "date": "2025-07-02T12:26:55.837332",
+        "churn": 246
+      }
+    ],
+    "risky_commits": [
+      {
+        "author": "alice",
+        "sha": "fake0",
+        "date": "2025-07-01T12:26:55.837252",
+        "churn": 235
+      },
+      {
+        "author": "carol",
+        "sha": "fake1",
+        "date": "2025-07-02T12:26:55.837281",
+        "churn": 208
+      },
+      {
+        "author": "bob",
+        "sha": "fake5",
+        "date": "2025-07-05T12:26:55.837316",
+        "churn": 219
+      },
+      {
+        "author": "carol",
+        "sha": "fake8",
+        "date": "2025-07-02T12:26:55.837332",
+        "churn": 246
+      }
+    ],
+    "daily_churn": {
+      "2025-07-01": 235,
+      "2025-07-02": 454,
+      "2025-06-29": 286,
+      "2025-06-30": 94,
+      "2025-07-03": 146,
+      "2025-07-05": 548
+    },
+    "spike_days": []
+  },
+  "insight_summary": "\ud83d\udcca *Weekly Dev Report Summary*\n\ud83d\udc64 *alice*: 3 commits, +187 / -279 lines\n\ud83d\udc64 *carol*: 3 commits, +417 / -183 lines\n\ud83d\udc64 *jai.v*: 3 commits, +312 / -166 lines\n\ud83d\udc64 *bob*: 1 commits, +138 / -81 lines\n\n\u26a0\ufe0f *High Churn Commits Detected:*\n- alice on 2025-07-01T12:26:55.837252: +136 / -99\n- carol on 2025-07-02T12:26:55.837281: +131 / -77\n- bob on 2025-07-05T12:26:55.837316: +138 / -81\n- carol on 2025-07-02T12:26:55.837332: +149 / -97\n\n\ud83c\udfc5 *Top Contributor:* alice"
+}
+
