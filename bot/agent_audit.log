@@ -1,0 +1,515 @@
+2025-07-05 22:15:28,011 - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-07-05 22:15:28,018 - WARNING - Privileged message content intent is missing, commands may not work as expected.
+2025-07-05 22:15:28,019 - INFO - logging in using static token
+2025-07-05 22:15:30,224 - INFO - Shard ID None has connected to Gateway (Session ID: edf74516582bcf364688e992456ff6fa).
+2025-07-05 22:16:37,197 - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-07-05 22:16:37,198 - WARNING - Privileged message content intent is missing, commands may not work as expected.
+2025-07-05 22:16:37,199 - INFO - logging in using static token
+2025-07-05 22:16:39,124 - INFO - Shard ID None has connected to Gateway (Session ID: e69794c5e55c34a04c93858f7a5005f7).
+2025-07-05 22:17:21,898 - INFO - Agent Interaction: {
+  "timestamp": "2025-07-05T16:47:21.898868",
+  "agent": "DataHarvester",
+  "input": {
+    "input_state": {}
+  },
+  "output": {}
+}
+2025-07-05 22:17:53,972 - INFO - Agent Interaction: {
+  "timestamp": "2025-07-05T16:47:53.972216",
+  "agent": "DataHarvester",
+  "input": {},
+  "output": {
+    "output_state": {
+      "commit_data": [
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          124,
+          3,
+          1,
+          "2025-06-22T16:15:52Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          3,
+          1,
+          1,
+          "2024-11-20T16:00:36Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          6937,
+          0,
+          3,
+          "2024-11-20T15:55:04Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          513,
+          0,
+          1,
+          "2024-11-20T15:50:32Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          0,
+          697,
+          1,
+          "2024-11-20T15:47:44Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          0,
+          43,
+          1,
+          "2024-11-20T15:47:30Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          2,
+          2,
+          1,
+          "2024-01-16T20:35:36Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          0,
+          11,
+          1,
+          "2023-12-28T21:22:06Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          15,
+          2,
+          1,
+          "2023-12-21T10:18:06Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          740,
+          0,
+          2,
+          "2023-12-21T08:35:43Z"
+        ]
+      ],
+      "pr_count": 0,
+      "pr_throughput": 0,
+      "review_latency": 0,
+      "cycle_time": 0,
+      "ci_failures": 0
+    }
+  }
+}
+2025-07-05 22:17:53,972 - INFO - Agent Interaction: {
+  "timestamp": "2025-07-05T16:47:53.972915",
+  "agent": "DiffAnalyst",
+  "input": {
+    "input_state": {
+      "commit_data": [
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          124,
+          3,
+          1,
+          "2025-06-22T16:15:52Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          3,
+          1,
+          1,
+          "2024-11-20T16:00:36Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          6937,
+          0,
+          3,
+          "2024-11-20T15:55:04Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          513,
+          0,
+          1,
+          "2024-11-20T15:50:32Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          0,
+          697,
+          1,
+          "2024-11-20T15:47:44Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          0,
+          43,
+          1,
+          "2024-11-20T15:47:30Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          2,
+          2,
+          1,
+          "2024-01-16T20:35:36Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          0,
+          11,
+          1,
+          "2023-12-28T21:22:06Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          15,
+          2,
+          1,
+          "2023-12-21T10:18:06Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          740,
+          0,
+          2,
+          "2023-12-21T08:35:43Z"
+        ]
+      ],
+      "pr_count": 0,
+      "pr_throughput": 0,
+      "review_latency": 0,
+      "cycle_time": 0,
+      "ci_failures": 0
+    }
+  },
+  "output": {}
+}
+2025-07-05 22:17:53,972 - INFO - Agent Interaction: {
+  "timestamp": "2025-07-05T16:47:53.972915",
+  "agent": "DiffAnalyst",
+  "input": {},
+  "output": {
+    "output_state": {
+      "authors": {
+        "Purnima2004": {
+          "commits": 10,
+          "additions": 8334,
+          "deletions": 759,
+          "spikes": 1
+        }
+      },
+      "pr_count": 0,
+      "pr_throughput": 0,
+      "review_latency": 0,
+      "cycle_time": 0,
+      "ci_failures": 0,
+      "spikes": [
+        {
+          "author": "Purnima2004",
+          "churn": 6937
+        }
+      ]
+    }
+  }
+}
+2025-07-05 22:17:53,972 - INFO - Agent Interaction: {
+  "timestamp": "2025-07-05T16:47:53.972915",
+  "agent": "InsightNarrator",
+  "input": {
+    "input_state": {
+      "commit_data": [
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          124,
+          3,
+          1,
+          "2025-06-22T16:15:52Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          3,
+          1,
+          1,
+          "2024-11-20T16:00:36Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          6937,
+          0,
+          3,
+          "2024-11-20T15:55:04Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          513,
+          0,
+          1,
+          "2024-11-20T15:50:32Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          0,
+          697,
+          1,
+          "2024-11-20T15:47:44Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          0,
+          43,
+          1,
+          "2024-11-20T15:47:30Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          2,
+          2,
+          1,
+          "2024-01-16T20:35:36Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          0,
+          11,
+          1,
+          "2023-12-28T21:22:06Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          15,
+          2,
+          1,
+          "2023-12-21T10:18:06Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          740,
+          0,
+          2,
+          "2023-12-21T08:35:43Z"
+        ]
+      ],
+      "pr_count": 0,
+      "pr_throughput": 0,
+      "review_latency": 0,
+      "cycle_time": 0,
+      "ci_failures": 0,
+      "authors": {
+        "Purnima2004": {
+          "commits": 10,
+          "additions": 8334,
+          "deletions": 759,
+          "spikes": 1
+        }
+      },
+      "spikes": [
+        {
+          "author": "Purnima2004",
+          "churn": 6937
+        }
+      ]
+    }
+  },
+  "output": {}
+}
+2025-07-05 22:17:56,188 - INFO - DORA Metrics: {
+  "timestamp": "2025-07-05T16:47:56.188524",
+  "dora_metrics": {
+    "lead_time": 0,
+    "deployment_frequency": 0,
+    "change_failure_rate": 0,
+    "mttr": 2.0
+  },
+  "performance_category": "LOW"
+}
+2025-07-05 22:17:56,188 - INFO - Agent Interaction: {
+  "timestamp": "2025-07-05T16:47:56.188524",
+  "agent": "InsightNarrator",
+  "input": {},
+  "output": {
+    "output_state": {
+      "commit_data": [
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          124,
+          3,
+          1,
+          "2025-06-22T16:15:52Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          3,
+          1,
+          1,
+          "2024-11-20T16:00:36Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          6937,
+          0,
+          3,
+          "2024-11-20T15:55:04Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          513,
+          0,
+          1,
+          "2024-11-20T15:50:32Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          0,
+          697,
+          1,
+          "2024-11-20T15:47:44Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          0,
+          43,
+          1,
+          "2024-11-20T15:47:30Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          2,
+          2,
+          1,
+          "2024-01-16T20:35:36Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          0,
+          11,
+          1,
+          "2023-12-28T21:22:06Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          15,
+          2,
+          1,
+          "2023-12-21T10:18:06Z"
+        ],
+        [
+          null,
+          "commit",
+          "Purnima2004",
+          740,
+          0,
+          2,
+          "2023-12-21T08:35:43Z"
+        ]
+      ],
+      "pr_count": 0,
+      "pr_throughput": 0,
+      "review_latency": 0,
+      "cycle_time": 0,
+      "ci_failures": 0,
+      "authors": {
+        "Purnima2004": {
+          "commits": 10,
+          "additions": 8334,
+          "deletions": 759,
+          "spikes": 1
+        }
+      },
+      "spikes": [
+        {
+          "author": "Purnima2004",
+          "churn": 6937
+        }
+      ],
+      "summary": "Purnima2004: Commits: 10, Additions: 8334, Deletions: 759 (\u26a0\ufe0f 1 spike commits - higher defect risk!)\nTotal PRs: 0\nPR Throughput (last 7 days): 0\nReview Latency (avg, hrs): 0.00\nCycle Time (avg, hrs): 0.00\nCI Failures (last week): 0\n\n**DORA Metrics:**\nLead Time for Changes: 0.00 hours\nDeployment Frequency: 0 per week\nChange Failure Rate: 0.0%\nMean Time to Recovery: 2.0 hours\nPerformance Category: LOW",
+      "dora_metrics": {
+        "lead_time": 0,
+        "deployment_frequency": 0,
+        "change_failure_rate": 0,
+        "mttr": 2.0
+      },
+      "forecast_summary": "**\ud83d\udcca Next Week Forecast:**\n\u27a1\ufe0f **Cycle Time**: 24.0 hours (\ud83d\udd34 low confidence)\n\u27a1\ufe0f **Total Churn**: 1000 lines (\ud83d\udd34 low confidence)",
+      "influence_summary": "No review data available for influence map generation."
+    }
+  }
+}

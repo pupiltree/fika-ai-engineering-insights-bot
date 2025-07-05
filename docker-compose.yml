@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  bot:
+    build: .
+    volumes:
+      - .:/app
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+    command: python bot/main.py 
