@@ -1,99 +1,346 @@
-## FIKA AI Research — Engineering-Productivity Intelligence **MVP** Challenge
+# Discord Engineering Productivity Bot
 
-*[Learn more at **powersmy.biz**](https://powersmy.biz/)*
+A powerful Discord bot that analyzes GitHub data to generate comprehensive engineering productivity reports using LangChain and LangGraph agents. The bot provides DORA metrics, forecasting, and code review influence maps to help teams understand their development performance.
 
-### 🚀 Hiring Opportunity
+## 🚀 Features
 
-**We're hiring!** This challenge is part of our recruitment process for engineering positions. We offer both **remote** and **on-site** work options to accommodate your preferences and lifestyle.
+### 📊 Engineering Metrics
+- **DORA Metrics**: Deployment frequency, lead time, change failure rate, and time to restore service
+- **Code Quality Metrics**: Commit churn, PR throughput, review latency, and cycle time
+- **CI/CD Analysis**: Build failure rates and pipeline performance
 
-### 1 ✦ Context
+### 🔮 Predictive Analytics
+- **Cycle Time Forecasting**: Predict next week's average PR cycle time using time series analysis
+- **Churn Prediction**: Forecast code churn trends to identify potential issues
+- **Trend Analysis**: Identify improving or declining performance patterns
 
-We need a chat-first, AI-powered view of how every engineer and squad are performing—both technically and in terms of business value shipped. Build a **minimum-viable product (MVP)** in fewer than seven days that delivers these insights inside Slack **or** Discord.
+### 👥 Team Collaboration Insights
+- **Code Review Influence Map**: Visualize reviewer relationships and influence patterns
+- **Developer Activity Analysis**: Track individual and team contributions
+- **Collaboration Networks**: Understand team dynamics and knowledge sharing
 
-### 2 ✦ Core MVP Requirements (non-negotiables)
+### 📈 Visual Reports
+- **Weekly Report Charts**: Beautiful visualizations of key metrics
+- **Influence Network Graphs**: Interactive maps showing code review relationships
+- **Trend Analysis Plots**: Time-series visualizations of performance trends
 
-| Area                     | Requirement                                                                                                                                                                                                                                                   |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Agent-centric design** | Use **LangChain + LangGraph** agents written in **Python 3.10+**. Provide at least two clear roles—*Data Harvester* and *Diff Analyst*—handing off to an *Insight Narrator* agent via LangGraph edges.                                                        |
-| **Data ingestion**       | Pull GitHub events via REST or webhooks. The commits API exposes `additions`, `deletions`, `changed_files` per commit ([docs.github.com][3]); the *List PR files* endpoint gives the same per-file counts ([docs.github.com][4]).                             |
-| **Metrics**              | Track commits, PR throughput, review latency, cycle time, CI failures **plus per-author diff stats** (lines ±, files touched). Optionally fall back to `git log --numstat` for local analysis ([stackoverflow.com][5]).                                       |
-| **Diff analytics layer** | Your *Diff Analyst* agent aggregates churn, flags spikes, and links code-churn outliers to defect risk (research shows churn correlates with bugs) ([stackoverflow.com][6]).                                                                                  |
-| **AI insight layer**     | Agents transform data into daily, weekly, monthly narratives that map to DORA’s four keys (lead-time, deploy frequency, change-failure, MTTR) ([dora.dev][7]). Log every prompt/response for auditability.                                                    |
-| **Chat-first output**    | A **Slack bot** (Bolt Python SDK) ([api.slack.com][8]) or **Discord bot** (discord.js slash-command with embeds) ([discordjs.guide][9]) must, on `/dev-report weekly`, post a chart/table + the agent summary. JSON API is optional but the bot is mandatory. |
-| **MVP polish**           | One-command bootstrap (`docker compose up` or `make run`). Include a seed script with fake GitHub events so reviewers see data instantly.                                                                                                                     |
-| **Docs**                 | `README.md` with bot install guide and an architecture diagram showing LangGraph nodes/edges, storage and chat layer.                                                                                                                                         |
+## 🛠️ Prerequisites
 
-### 3 ✦ Tech Stack (required)
+Before setting up the bot, ensure you have:
 
-* **Language:** Python 3.10+
-* **Agent Frameworks:** LangChain ≥ 0.1.0 ([python.langchain.com][1]) and LangGraph service or OSS package ([langchain.com][2])
-* **Chat SDK:** Slack Bolt-Python **or** discord.js (node sidecar acceptable) ([api.slack.com][8], [discordjs.guide][9])
-* **Storage:** any Python-friendly store (Postgres, SQLite, DuckDB, TinyDB).
-* **Viz:** matplotlib, Plotly, or quick-chart PNGs.
+- **Python 3.8+** installed on your system
+- **Git** for version control
+- **Discord Bot Token** (see setup instructions below)
+- **GitHub Personal Access Token** (see setup instructions below)
 
-### 4 ✦ Stretch Goals (optional)
+## 📋 Installation
 
-* Forecast next week’s cycle time or churn.
-* Code-review “influence map” graph.
-* Pluggable LLM driver (OpenAI ↔ local Llama) in < 15 min.
-* Scheduled digests (bot auto-drops Monday summary).
+### Step 1: Clone the Repository
+```bash
+git clone <your-repository-url>
+cd discord_bot
+```
 
-### 5 ✦ Deliverables
+### Step 2: Create Virtual Environment
+```bash
+# On Windows
+python -m venv venv
+venv\Scripts\activate
 
-1. **Pull Request** to the challenge repo containing code + docs.
-2. ≤ 3-minute Loom/GIF demo (encouraged).
+# On macOS/Linux
+python3 -m venv venv
+source venv/bin/activate
+```
 
-### 6 ✦ Timeline
+### Step 3: Install Dependencies
+```bash
+pip install -r requirements.txt
+```
 
-*Fork today → PR in **72 hours** (extensions on request).*
-We’ll smoke-test your bot in our workspace, then book your interview.
+### Step 4: Environment Setup
+Create a `.env` file in the root directory:
+```env
+DISCORD_TOKEN=your_discord_bot_token_here
+GITHUB_TOKEN=your_github_personal_access_token_here
+```
 
-### 7 ✦ Evaluation Rubric (100 pts)
+## 🔧 Discord Bot Setup
 
-| Category                         | Pts | What we look for                                                |
-| -------------------------------- | --- | --------------------------------------------------------------- |
-| LangGraph agent architecture     | 25  | Clear roles, deterministic edges, minimal hallucination.        |
-| MVP completeness & correctness   | 25  | Metrics and diff stats accurate; bot responds; seed data works. |
-| Code quality & tests             | 20  | Idiomatic Python, CI green.                                     |
-| Insight value & business mapping | 15  | Narratives help leadership act.                                 |
-| Dev X & docs                     | 10  | Fast start, clear setup, diagrams.                              |
-| Stretch innovation               | 5   | Any wow factor.                                                 |
+### Step 1: Create a Discord Application
+1. Go to [Discord Developer Portal](https://discord.com/developers/applications)
+2. Click "New Application" and give it a name
+3. Navigate to the "Bot" section
+4. Click "Add Bot"
+5. Copy the bot token and add it to your `.env` file
 
-### 8 ✦ Interview Flow
+### Step 2: Configure Bot Permissions
+1. In the Bot section, scroll down to "Privileged Gateway Intents"
+2. Enable "Message Content Intent"
+3. Go to "OAuth2" → "URL Generator"
+4. Select scopes: `bot` and `applications.commands`
+5. Select permissions: `Send Messages`, `Read Message History`, `Use Slash Commands`
+6. Use the generated URL to invite the bot to your server
 
-1. **Code/architecture dive (45 min)**
-2. **Edge-case & scaling Q\&A (30 min)**
-3. **Product thinking & culture fit (15 min)**
+### Step 3: Bot Permissions in Discord
+1. Invite the bot using the generated URL
+2. In your Discord server, go to Server Settings → Roles
+3. Find your bot's role and ensure it has permission to:
+   - Send messages in the channel where you'll use it
+   - Read message history
+   - Use slash commands
 
-### 9 ✦ Ground Rules
+## 🔑 GitHub Token Setup
 
-Original work only; public libs are fine. Don’t commit real secrets. We may open-source the winning MVP with credit.
+### Step 1: Create Personal Access Token
+1. Go to [GitHub Settings](https://github.com/settings/tokens)
+2. Click "Generate new token (classic)"
+3. Give it a descriptive name (e.g., "Discord Bot Analytics")
+4. Select scopes:
+   - `repo` (Full control of private repositories)
+   - `read:org` (Read organization data)
+   - `read:user` (Read user profile data)
+5. Click "Generate token"
+6. Copy the token and add it to your `.env` file
 
-> **Ready?** Fork ✦ Build ✦ PR ✦ Impress us.
-> Questions → **[founder@powersmy.biz](mailto:founder@powersmy.biz)**
+### Step 2: Token Security
+- **Never commit your tokens to version control**
+- Keep your `.env` file in `.gitignore`
+- Rotate tokens regularly for security
+
+## 🚀 Running the Bot
+
+### Development Mode
+```bash
+# Activate virtual environment
+venv\Scripts\activate  # Windows
+source venv/bin/activate  # macOS/Linux
+
+# Run the bot
+python bot/main.py
+```
+
+### Production Mode
+```bash
+# Using Docker (if available)
+docker-compose up -d
+
+# Or run directly
+python bot/main.py
+```
+
+### Verification
+1. Check that the bot appears online in your Discord server
+2. Look for "Bot is running" message in the console
+3. Test the command: `/dev_report`
+
+## 📖 Usage Guide
+
+### Basic Commands
+
+#### `/dev_report`
+Generates a comprehensive weekly engineering productivity report.
+
+**What it does:**
+- Fetches GitHub data from the last 7 days
+- Calculates DORA metrics and code quality indicators
+- Generates forecasts for next week's performance
+- Creates visual charts and influence maps
+- Posts everything to Discord as formatted messages
+
+**Example Output:**
+```
+📊 Weekly Engineering Report
+
+🚀 DORA Metrics:
+• Deployment Frequency: 3 deployments/week
+• Lead Time: 2.5 days average
+• Change Failure Rate: 5% (excellent!)
+• Time to Restore: 4 hours
+
+📈 Code Quality:
+• Commit Churn: 1,250 lines (healthy)
+• PR Throughput: 8 PRs/week
+• Review Latency: 6 hours average
+• Cycle Time: 18 hours average
+
+🔮 Next Week Forecast:
+📈 Cycle Time: 20.5 hours (🟡 medium confidence)
+📉 Total Churn: 1,100 lines (🟢 high confidence)
+
+👥 Code Review Influence:
+• Top Reviewers: @alice, @bob, @charlie
+• Most Influential: @alice (15 reviews, 8 approvals)
+• Collaboration Network: 12 active reviewers
+```
+
+### Understanding the Reports
+
+#### DORA Metrics Explained
+- **Deployment Frequency**: How often code is deployed to production
+- **Lead Time**: Time from code commit to production deployment
+- **Change Failure Rate**: Percentage of deployments causing failures
+- **Time to Restore**: How long it takes to fix production issues
+
+#### Code Quality Metrics
+- **Commit Churn**: Lines added + deleted (indicates code stability)
+- **PR Throughput**: Number of pull requests merged per week
+- **Review Latency**: Time between PR creation and first review
+- **Cycle Time**: Time from PR creation to merge
+
+#### Forecasting Insights
+- **High Confidence**: Model has good historical data for accurate predictions
+- **Medium Confidence**: Some uncertainty due to limited data
+- **Low Confidence**: Insufficient data for reliable predictions
+
+#### Influence Map Interpretation
+- **Node Size**: Larger nodes = more active reviewers
+- **Edge Thickness**: Thicker lines = more frequent collaborations
+- **Node Color**: Different colors represent different teams or roles
+
+## 🔍 Troubleshooting
+
+### Common Issues
+
+#### Bot Not Responding
+```bash
+# Check if bot is running
+python bot/main.py
+
+# Verify token in .env file
+echo $DISCORD_TOKEN  # Should show your token
+```
+
+#### Import Errors
+```bash
+# Reinstall dependencies
+pip install -r requirements.txt --force-reinstall
+
+# Check Python version
+python --version  # Should be 3.8+
+```
+
+#### GitHub API Errors
+```bash
+# Verify GitHub token has correct permissions
+# Check token in .env file
+echo $GITHUB_TOKEN  # Should show your token
+```
+
+#### Missing Charts/Images
+```bash
+# Install matplotlib dependencies
+pip install matplotlib seaborn
+
+# On Windows, you might need:
+pip install pillow
+```
+
+### Debug Mode
+Enable detailed logging by modifying `bot/main.py`:
+```python
+import logging
+logging.basicConfig(level=logging.DEBUG)
+```
+
+### Environment Variables Check
+```bash
+# Verify all required variables are set
+python -c "
+import os
+from dotenv import load_dotenv
+load_dotenv()
+print('DISCORD_TOKEN:', 'SET' if os.getenv('DISCORD_TOKEN') else 'MISSING')
+print('GITHUB_TOKEN:', 'SET' if os.getenv('GITHUB_TOKEN') else 'MISSING')
+"
+```
+
+## 📁 Project Structure
+
+```
+discord_bot/
+├── bot/
+│   ├── main.py              # Discord bot entry point
+│   ├── agents.py            # LangChain/LangGraph workflow
+│   ├── github.py            # GitHub API integration
+│   ├── forecasting.py       # Time series forecasting
+│   ├── influence_map.py     # Code review influence analysis
+│   ├── visualization.py     # Chart generation
+│   └── storage.py           # Data persistence
+├── requirements.txt         # Python dependencies
+├── .env                     # Environment variables (create this)
+├── .gitignore              # Git ignore rules
+└── README.md               # This file
+```
+
+## 🔧 Configuration Options
+
+### Customizing Analysis Period
+Modify the time range in `bot/github.py`:
+```python
+# Change from 7 days to 14 days
+days_back = 14
+```
+
+### Adding New Metrics
+1. Add calculation logic in `bot/agents.py`
+2. Update the report generation in the workflow
+3. Add visualization in `bot/visualization.py`
+
+### Customizing Forecasts
+Modify forecasting parameters in `bot/forecasting.py`:
+```python
+# Change forecast period from 7 to 14 days
+future_dates = pd.date_range(start=last_date + timedelta(days=1), periods=14, freq='D')
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🆘 Support
+
+If you encounter issues:
+
+1. Check the troubleshooting section above
+2. Review the console output for error messages
+3. Verify your environment variables are set correctly
+4. Ensure all dependencies are installed
+5. Check Discord and GitHub API status
+
+For additional help, please open an issue in the repository with:
+- Your operating system
+- Python version
+- Error messages
+- Steps to reproduce the issue
+
+## 🎯 Use Cases
+
+### For Engineering Managers
+- Track team productivity trends
+- Identify bottlenecks in development process
+- Make data-driven decisions about process improvements
+- Monitor code quality and review practices
+
+### For Development Teams
+- Understand collaboration patterns
+- Identify knowledge sharing opportunities
+- Track individual and team performance
+- Celebrate improvements and achievements
+
+### For DevOps Teams
+- Monitor deployment frequency and stability
+- Track CI/CD pipeline performance
+- Identify areas for automation improvement
+- Measure time to restore service
 
 ---
 
-### Quick Reference Links
-
-* LangChain docs ([python.langchain.com][1]) – prompt, tool and memory helpers.
-* LangGraph overview ([langchain.com][2]) – stateful orchestration patterns.
-* GitHub Commits API (`additions`/`deletions`) ([docs.github.com][3])
-* GitHub PR Files API (per-file diff) ([docs.github.com][4])
-* Slack slash-commands guide ([api.slack.com][8])
-* Discord embeds guide ([discordjs.guide][9])
-* Git diff `--numstat` usage ([stackoverflow.com][5])
-* DORA four-key metrics ([dora.dev][7])
-* Code-churn research on defects ([stackoverflow.com][6])
-
-These resources should cover everything you need—happy hacking!
-
-[1]: https://python.langchain.com/docs/introduction/?utm_source=chatgpt.com "Python LangChain"
-[2]: https://www.langchain.com/langgraph?utm_source=chatgpt.com "LangGraph - LangChain"
-[3]: https://docs.github.com/rest/commits/commits?utm_source=chatgpt.com "REST API endpoints for commits - GitHub Docs"
-[4]: https://docs.github.com/en/rest/pulls/pulls?utm_source=chatgpt.com "REST API endpoints for pull requests - GitHub Docs"
-[5]: https://stackoverflow.com/questions/9933325/is-there-a-way-of-having-git-show-lines-added-lines-changed-and-lines-removed?utm_source=chatgpt.com "Is there a way of having git show lines added, lines changed and ..."
-[6]: https://stackoverflow.com/questions/56941641/using-githubs-api-to-get-lines-of-code-added-deleted-per-commit-on-a-branch?utm_source=chatgpt.com "Using GitHub's API to get lines of code added/deleted per commit ..."
-[7]: https://dora.dev/guides/dora-metrics-four-keys/?utm_source=chatgpt.com "DORA's software delivery metrics: the four keys"
-[8]: https://api.slack.com/interactivity/slash-commands?utm_source=chatgpt.com "Enabling interactivity with Slash commands - Slack API"
-[9]: https://discordjs.guide/popular-topics/embeds?utm_source=chatgpt.com "Embeds | discord.js Guide"
+**Happy coding! 🚀** 
