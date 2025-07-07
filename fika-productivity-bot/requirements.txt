@@ -1,0 +1,21 @@
+# Core
+python-dotenv>=1.0.0
+langchain>=0.1.17
+langgraph>=0.0.45
+openai>=1.13.3
+
+# Slack Bot
+slack-bolt>=1.18.0
+slack-sdk>=3.21.3
+
+# Data & Charts
+pandas>=2.2.1
+matplotlib>=3.8.4
+
+# Fast Storage
+duckdb>=0.10.0
+
+# Compatibility
+pydantic>=2.5.3
+typing-extensions>=4.10.0
+tqdm>=4.66.1

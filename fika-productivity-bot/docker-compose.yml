@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  fika-bot:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
