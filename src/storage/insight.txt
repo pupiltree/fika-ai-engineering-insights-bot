@@ -1,0 +1,9 @@
+🔍 Weekly Dev Report
+- Total Commits: 5
+- Total Churn: 50 lines of code
+- Average Churn per Commit: 10 LOC
+- Active Engineers: 5
+- Top Committer: Dev1
+- Churn vs Last Week: +24.83%
+
+Insight: Churn increased significantly — consider reviewing scope of PRs.
