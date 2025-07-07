@@ -1,4 +1,4 @@
-# agents/diff_analyst.py
+
 
 from typing import Dict, List
 import pandas as pd
@@ -16,7 +16,7 @@ def analyze_diff(data: Dict[str, List[Dict]]) -> Dict:
         output["commit_churn_summary"] = _summarize_commit_churn(commits)
         output["churn_spikes"] = _detect_commit_spikes(commits)
 
-        # ✅ Add author_stats extraction here
+        
         author_stats = (
             commits.groupby("author")[["additions", "deletions"]]
             .sum()
@@ -85,7 +85,6 @@ def _summarize_pr_stats(prs: pd.DataFrame) -> Dict:
     }
 
 
-# For local test
 if __name__ == "__main__":
     from data_harvester import harvest_data
 

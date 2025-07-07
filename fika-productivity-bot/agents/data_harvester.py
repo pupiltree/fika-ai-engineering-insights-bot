@@ -1,4 +1,4 @@
-# agents/data_harvester.py
+
 import json
 from typing import List, Dict
 from pathlib import Path
@@ -59,7 +59,6 @@ def harvest_data() -> Dict[str, List[Dict]]:
     }
 
 
-# For testing independently
 if __name__ == "__main__":
     data = harvest_data()
     print("Commits:", data["commits"])

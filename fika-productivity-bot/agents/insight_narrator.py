@@ -9,30 +9,30 @@ def generate_insights(analysis: Dict) -> Dict:
 
     insights = []
 
-    # 🧮 DORA: Deployment Frequency (PR count)
+   
     pr_summary = analysis.get("pr_summary", {})
     pr_count = pr_summary.get("total_prs", 0)
     if pr_count == 0:
-        insights.append("⚠️ No PR activity found. Engineering velocity might be low.")
+        insights.append(" No PR activity found. Engineering velocity might be low.")
     else:
-        insights.append(f"🚀 Deployment Frequency: {pr_count} PRs merged during the period.")
+        insights.append(f" Deployment Frequency: {pr_count} PRs merged during the period.")
 
-    # ⏱️ DORA: Lead Time for Changes
+    
     lead_time = pr_summary.get("avg_lead_time_hrs")
     if lead_time:
         hours = round(lead_time, 2)
-        insights.append(f"⏱️ Average lead time: {hours} hours from PR creation to merge.")
+        insights.append(f" Average lead time: {hours} hours from PR creation to merge.")
 
-    # 🔥 DORA: Change Failure Rate — proxy with churn spikes
+    
     churn_spikes = analysis.get("churn_spikes", [])
     if churn_spikes:
-        insights.append(f"⚠️ High churn detected in {len(churn_spikes)} commits. Possible quality risks.")
+        insights.append(f"High churn detected in {len(churn_spikes)} commits. Possible quality risks.")
         flagged_authors = set([c["author"] for c in churn_spikes])
-        insights.append(f"👀 Authors with high churn: {', '.join(flagged_authors)}")
+        insights.append(f"Authors with high churn: {', '.join(flagged_authors)}")
     else:
-        insights.append("✅ No high-risk churn spikes detected.")
+        insights.append(" No high-risk churn spikes detected.")
 
-    # 📊 Churn Summary
+    
     commit_summary = analysis.get("commit_churn_summary", [])
     for author_data in commit_summary:
         insights.append(
@@ -41,9 +41,9 @@ def generate_insights(analysis: Dict) -> Dict:
             f"{author_data['files_changed']} files changed)"
         )
 
-    # Generate timestamped header
+    
     today = datetime.date.today()
-    headline = f"📅 Weekly Engineering Report — {today.strftime('%B %d, %Y')}"
+    headline = f" Weekly Engineering Report — {today.strftime('%B %d, %Y')}"
     
     return {
         "headline": headline,

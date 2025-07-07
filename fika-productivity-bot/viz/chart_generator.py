@@ -1,23 +1,12 @@
 import matplotlib
-matplotlib.use('Agg')  # ✅ Use non-GUI backend to avoid GUI/thread warnings
-
+matplotlib.use('Agg')  
 import matplotlib.pyplot as plt
 import os
 from datetime import datetime
 
 
 def generate_churn_chart(author_stats: dict, output_dir="viz", filename=None):
-    """
-    Generates a bar chart of additions and deletions by author.
-
-    Args:
-        author_stats (dict): e.g., {'vivek': {'additions': 50, 'deletions': 20}, ...}
-        output_dir (str): Directory to save chart.
-        filename (str or None): Optional custom filename.
-
-    Returns:
-        str: Path to saved PNG chart file.
-    """
+   
     if filename is None:
         filename = f"churn_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
 

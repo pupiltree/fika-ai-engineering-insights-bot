@@ -9,16 +9,16 @@ from dotenv import load_dotenv
 load_dotenv()  # Load .env file
 from viz.chart_generator import generate_churn_chart
 
-# Load from environment or hardcode during testing
+
 SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")
 SLACK_APP_TOKEN = os.environ.get("SLACK_APP_TOKEN")
 
 app = App(token=SLACK_BOT_TOKEN)
 
-# /dev-report slash command
+
 @app.command("/dev-report")
 def handle_dev_report(ack, body, client):
-    ack()  # Always acknowledge the slash command
+    ack()  
 
     try:
         # Step 1: Run LangGraph report
