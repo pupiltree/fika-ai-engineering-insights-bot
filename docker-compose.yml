@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "3047:3047" 
+    command: python -u main.py 
+    tty: true  
+    stdin_open: true 
