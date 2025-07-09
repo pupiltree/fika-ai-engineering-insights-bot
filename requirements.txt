@@ -1,0 +1,5 @@
+streamlit
+matplotlib
+langchain>=0.1.0
+langgraph
+
