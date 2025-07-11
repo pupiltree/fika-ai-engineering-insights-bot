@@ -1,5 +1,7 @@
+langgraph>=0.0.30
+langchain>=0.1.17
+langchain-community>=0.0.11
 streamlit
 matplotlib
-langchain>=0.1.0
-langgraph
-
+python-dotenv
+discord.py

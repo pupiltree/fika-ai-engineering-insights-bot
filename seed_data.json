@@ -2,9 +2,9 @@
   "weekly_stats": {
     "pr_count": 6,
     "lead_time_days": 2.3,
-    "cycle_time_days": 1.5,
-    "ci_failures": 1,
-    "deploys": 3
+    "cycle_time_days": 1.9,
+    "ci_failures": 2,
+    "deploys": 4
   },
-  "diff_churn": [120, 90, 300, 150, 100, 250, 80]
+  "diff_churn": [170, 90, 20, 220, 119, 380, 80]
 }
