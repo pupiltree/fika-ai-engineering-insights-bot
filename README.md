@@ -24,7 +24,8 @@ Track weekly GitHub engineering performance with AI. This project features a Str
 ## 📸 Demo
 
 > 🖼️ Add a screenshot or Loom link here
-
+> 
+https://www.loom.com/share/a5ffe447ea434ea689e1cd70769ddfcb?sid=e54a0406-368f-4fd4-8a46-ace5a1931043
 ---
 
 ## 🧠 Tech Stack
